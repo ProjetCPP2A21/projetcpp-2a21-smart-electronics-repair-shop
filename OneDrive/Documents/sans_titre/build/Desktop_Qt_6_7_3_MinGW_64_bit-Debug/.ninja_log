@@ -1,9 +1,0 @@
-# ninja log v6
-22	5712	7803425019679546	sans_titre_autogen/timestamp	ef75efef6a856bd1
-22	5712	7803425019679546	sans_titre_autogen/mocs_compilation.cpp	ef75efef6a856bd1
-22	5712	7803425019679546	C:/Users/bjaoui/OneDrive/Documents/sans_titre/build/Desktop_Qt_6_7_3_MinGW_64_bit-Debug/sans_titre_autogen/timestamp	ef75efef6a856bd1
-22	5712	7803425019679546	C:/Users/bjaoui/OneDrive/Documents/sans_titre/build/Desktop_Qt_6_7_3_MinGW_64_bit-Debug/sans_titre_autogen/mocs_compilation.cpp	ef75efef6a856bd1
-5729	12205	7803425021806890	CMakeFiles/sans_titre.dir/sans_titre_autogen/mocs_compilation.cpp.obj	8774f30c1adfaddb
-5740	12211	7803425021913414	CMakeFiles/sans_titre.dir/main.cpp.obj	b578e64609bd7504
-5757	12214	7803425022084129	CMakeFiles/sans_titre.dir/mainwindow.cpp.obj	d88329005f49bd6
-12215	13523	7803425086657060	sans_titre.exe	e05b1eba23094b77

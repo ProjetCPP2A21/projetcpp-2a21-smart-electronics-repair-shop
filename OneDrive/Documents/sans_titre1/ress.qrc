@@ -1,6 +1,0 @@
-<RCC>
-    <qresource prefix="/">
-        <file>../../Images/logo projet.png</file>
-        <file>../../Images/logo projet1.png</file>
-    </qresource>
-</RCC>
