@@ -111,7 +111,7 @@ public:
     QPushButton *btnClearFilter_2;
     QPushButton *btnExportPDF_2;
     QPushButton *btnStatistiques_2;
-    QTableWidget *tableFournisseurs_2;
+    QTableWidget *tabaff_4;
     QPushButton *retour_11;
     QPushButton *maj_2;
     QPushButton *rechercher_2;
@@ -701,6 +701,9 @@ public:
 
         leNomEntreprise_2 = new QLineEdit(groupBox_2);
         leNomEntreprise_2->setObjectName("leNomEntreprise_2");
+        leNomEntreprise_2->setStyleSheet(QString::fromUtf8("color: rgb(255, 255, 255);\n"
+"color: rgb(106, 106, 106);\n"
+"background-color: rgb(255, 255, 255);"));
 
         formLayout_2->setWidget(2, QFormLayout::FieldRole, leNomEntreprise_2);
 
@@ -711,6 +714,7 @@ public:
 
         leContactNom_2 = new QLineEdit(groupBox_2);
         leContactNom_2->setObjectName("leContactNom_2");
+        leContactNom_2->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);"));
 
         formLayout_2->setWidget(3, QFormLayout::FieldRole, leContactNom_2);
 
@@ -721,6 +725,7 @@ public:
 
         leContactPrenom_2 = new QLineEdit(groupBox_2);
         leContactPrenom_2->setObjectName("leContactPrenom_2");
+        leContactPrenom_2->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);"));
 
         formLayout_2->setWidget(4, QFormLayout::FieldRole, leContactPrenom_2);
 
@@ -731,6 +736,7 @@ public:
 
         leTelephone_2 = new QLineEdit(groupBox_2);
         leTelephone_2->setObjectName("leTelephone_2");
+        leTelephone_2->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);"));
 
         formLayout_2->setWidget(5, QFormLayout::FieldRole, leTelephone_2);
 
@@ -741,6 +747,7 @@ public:
 
         leEmail_2 = new QLineEdit(groupBox_2);
         leEmail_2->setObjectName("leEmail_2");
+        leEmail_2->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);"));
 
         formLayout_2->setWidget(6, QFormLayout::FieldRole, leEmail_2);
 
@@ -751,6 +758,7 @@ public:
 
         leTypePieces_2 = new QLineEdit(groupBox_2);
         leTypePieces_2->setObjectName("leTypePieces_2");
+        leTypePieces_2->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);"));
 
         formLayout_2->setWidget(7, QFormLayout::FieldRole, leTypePieces_2);
 
@@ -761,6 +769,7 @@ public:
 
         teAdresse_2 = new QTextEdit(groupBox_2);
         teAdresse_2->setObjectName("teAdresse_2");
+        teAdresse_2->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);"));
 
         formLayout_2->setWidget(8, QFormLayout::FieldRole, teAdresse_2);
 
@@ -771,6 +780,8 @@ public:
 
         deDatePartenariat_2 = new QDateEdit(groupBox_2);
         deDatePartenariat_2->setObjectName("deDatePartenariat_2");
+        deDatePartenariat_2->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);\n"
+"color: rgb(72, 72, 72);"));
 
         formLayout_2->setWidget(9, QFormLayout::FieldRole, deDatePartenariat_2);
 
@@ -792,16 +803,21 @@ public:
 
         btnAjouter_2 = new QPushButton(leftPane_2);
         btnAjouter_2->setObjectName("btnAjouter_2");
+        btnAjouter_2->setStyleSheet(QString::fromUtf8("background-color: rgb(0, 255, 0);\n"
+"background-color: rgb(0, 170, 0);\n"
+"background-color: rgb(0, 170, 0);"));
 
         horizontalLayout_btns_2->addWidget(btnAjouter_2);
 
         btnModifier_2 = new QPushButton(leftPane_2);
         btnModifier_2->setObjectName("btnModifier_2");
+        btnModifier_2->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 0, 0);"));
 
         horizontalLayout_btns_2->addWidget(btnModifier_2);
 
         btnSupprimer_2 = new QPushButton(leftPane_2);
         btnSupprimer_2->setObjectName("btnSupprimer_2");
+        btnSupprimer_2->setStyleSheet(QString::fromUtf8("background-color: rgb(170, 0, 0);"));
 
         horizontalLayout_btns_2->addWidget(btnSupprimer_2);
 
@@ -814,7 +830,7 @@ public:
         tri_2->setStyleSheet(QString::fromUtf8("background-color: rgb(154, 211, 238);"));
         rightPane_2 = new QWidget(menu_fournisseur);
         rightPane_2->setObjectName("rightPane_2");
-        rightPane_2->setGeometry(QRect(525, 70, 703, 628));
+        rightPane_2->setGeometry(QRect(525, 70, 1773, 628));
         verticalLayout_right_2 = new QVBoxLayout(rightPane_2);
         verticalLayout_right_2->setObjectName("verticalLayout_right_2");
         verticalLayout_right_2->setContentsMargins(0, 0, 0, 0);
@@ -849,14 +865,18 @@ public:
 
         verticalLayout_right_2->addLayout(layoutFilters_2);
 
-        tableFournisseurs_2 = new QTableWidget(rightPane_2);
-        tableFournisseurs_2->setObjectName("tableFournisseurs_2");
+        tabaff_4 = new QTableWidget(rightPane_2);
+        tabaff_4->setObjectName("tabaff_4");
+        tabaff_4->setMinimumSize(QSize(1131, 211));
+        tabaff_4->setStyleSheet(QString::fromUtf8("background-color:rgb(139, 139, 139);\n"
+"color :rgb(255, 255, 255);\n"
+""));
 
-        verticalLayout_right_2->addWidget(tableFournisseurs_2);
+        verticalLayout_right_2->addWidget(tabaff_4);
 
         retour_11 = new QPushButton(menu_fournisseur);
         retour_11->setObjectName("retour_11");
-        retour_11->setGeometry(QRect(1120, 720, 93, 29));
+        retour_11->setGeometry(QRect(1210, 700, 93, 29));
         retour_11->setStyleSheet(QString::fromUtf8("background-color: rgb(253, 145, 4);"));
         maj_2 = new QPushButton(menu_fournisseur);
         maj_2->setObjectName("maj_2");
@@ -1715,7 +1735,7 @@ public:
         btnClearFilter_2->setText(QCoreApplication::translate("menu_employer", "Effacer filtres", nullptr));
         btnExportPDF_2->setText(QCoreApplication::translate("menu_employer", "Exporter en PDF", nullptr));
         btnStatistiques_2->setText(QCoreApplication::translate("menu_employer", "Afficher Statistiques", nullptr));
-        retour_11->setText(QCoreApplication::translate("menu_employer", "retour", nullptr));
+        retour_11->setText(QCoreApplication::translate("menu_employer", "Retour", nullptr));
         maj_2->setText(QCoreApplication::translate("menu_employer", "Mise \303\240 jour", nullptr));
         rechercher_2->setText(QCoreApplication::translate("menu_employer", "Rechercher", nullptr));
         Modifier_2->setText(QCoreApplication::translate("menu_employer", "Modifier", nullptr));

@@ -2583,6 +2583,9 @@ border-top-color: rgb(255, 255, 255);
           </item>
           <item row="1" column="1">
            <widget class="QLineEdit" name="leId_2">
+            <property name="styleSheet">
+             <string notr="true">background-color: rgb(255, 255, 255);</string>
+            </property>
             <property name="placeholderText">
              <string>ID Fournisseur</string>
             </property>
@@ -2597,6 +2600,11 @@ border-top-color: rgb(255, 255, 255);
           </item>
           <item row="2" column="1">
            <widget class="QLineEdit" name="leNomEntreprise_2">
+            <property name="styleSheet">
+             <string notr="true">color: rgb(255, 255, 255);
+color: rgb(106, 106, 106);
+background-color: rgb(255, 255, 255);</string>
+            </property>
             <property name="placeholderText">
              <string>Nom de l'entreprise</string>
             </property>
@@ -2611,6 +2619,9 @@ border-top-color: rgb(255, 255, 255);
           </item>
           <item row="3" column="1">
            <widget class="QLineEdit" name="leContactNom_2">
+            <property name="styleSheet">
+             <string notr="true">background-color: rgb(255, 255, 255);</string>
+            </property>
             <property name="placeholderText">
              <string>Nom du contact</string>
             </property>
@@ -2625,6 +2636,9 @@ border-top-color: rgb(255, 255, 255);
           </item>
           <item row="4" column="1">
            <widget class="QLineEdit" name="leContactPrenom_2">
+            <property name="styleSheet">
+             <string notr="true">background-color: rgb(255, 255, 255);</string>
+            </property>
             <property name="placeholderText">
              <string>Prénom du contact</string>
             </property>
@@ -2639,6 +2653,9 @@ border-top-color: rgb(255, 255, 255);
           </item>
           <item row="5" column="1">
            <widget class="QLineEdit" name="leTelephone_2">
+            <property name="styleSheet">
+             <string notr="true">background-color: rgb(255, 255, 255);</string>
+            </property>
             <property name="placeholderText">
              <string>Numéro de téléphone</string>
             </property>
@@ -2653,6 +2670,9 @@ border-top-color: rgb(255, 255, 255);
           </item>
           <item row="6" column="1">
            <widget class="QLineEdit" name="leEmail_2">
+            <property name="styleSheet">
+             <string notr="true">background-color: rgb(255, 255, 255);</string>
+            </property>
             <property name="placeholderText">
              <string>Adresse email</string>
             </property>
@@ -2667,6 +2687,9 @@ border-top-color: rgb(255, 255, 255);
           </item>
           <item row="7" column="1">
            <widget class="QLineEdit" name="leTypePieces_2">
+            <property name="styleSheet">
+             <string notr="true">background-color: rgb(255, 255, 255);</string>
+            </property>
             <property name="placeholderText">
              <string>e.g., Écrans, Batteries, Circuits</string>
             </property>
@@ -2681,6 +2704,9 @@ border-top-color: rgb(255, 255, 255);
           </item>
           <item row="8" column="1">
            <widget class="QTextEdit" name="teAdresse_2">
+            <property name="styleSheet">
+             <string notr="true">background-color: rgb(255, 255, 255);</string>
+            </property>
             <property name="placeholderText">
              <string>Adresse complète</string>
             </property>
@@ -2694,7 +2720,12 @@ border-top-color: rgb(255, 255, 255);
            </widget>
           </item>
           <item row="9" column="1">
-           <widget class="QDateEdit" name="deDatePartenariat_2"/>
+           <widget class="QDateEdit" name="deDatePartenariat_2">
+            <property name="styleSheet">
+             <string notr="true">background-color: rgb(255, 255, 255);
+color: rgb(72, 72, 72);</string>
+            </property>
+           </widget>
           </item>
           <item row="0" column="0">
            <widget class="QLabel" name="label_104">
@@ -2735,6 +2766,11 @@ border-top-color: rgb(255, 255, 255);
          </item>
          <item>
           <widget class="QPushButton" name="btnAjouter_2">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(0, 255, 0);
+background-color: rgb(0, 170, 0);
+background-color: rgb(0, 170, 0);</string>
+           </property>
            <property name="text">
             <string>Ajouter</string>
            </property>
@@ -2742,6 +2778,9 @@ border-top-color: rgb(255, 255, 255);
          </item>
          <item>
           <widget class="QPushButton" name="btnModifier_2">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(255, 0, 0);</string>
+           </property>
            <property name="text">
             <string>Modifier</string>
            </property>
@@ -2749,6 +2788,9 @@ border-top-color: rgb(255, 255, 255);
          </item>
          <item>
           <widget class="QPushButton" name="btnSupprimer_2">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(170, 0, 0);</string>
+           </property>
            <property name="text">
             <string>Supprimer</string>
            </property>
@@ -2779,7 +2821,7 @@ border-top-color: rgb(255, 255, 255);
        <rect>
         <x>525</x>
         <y>70</y>
-        <width>703</width>
+        <width>1773</width>
         <height>628</height>
        </rect>
       </property>
@@ -2788,6 +2830,9 @@ border-top-color: rgb(255, 255, 255);
         <layout class="QHBoxLayout" name="layoutFilters_2">
          <item>
           <widget class="QLineEdit" name="leSearch_2">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(255, 255, 255);</string>
+           </property>
            <property name="placeholderText">
             <string>Rechercher par ID Fournisseur...</string>
            </property>
@@ -2826,15 +2871,27 @@ border-top-color: rgb(255, 255, 255);
         </layout>
        </item>
        <item>
-        <widget class="QTableWidget" name="tableFournisseurs_2"/>
+        <widget class="QTableWidget" name="tabaff_4">
+         <property name="minimumSize">
+          <size>
+           <width>1131</width>
+           <height>211</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color:rgb(139, 139, 139);
+color :rgb(255, 255, 255);
+</string>
+         </property>
+        </widget>
        </item>
       </layout>
      </widget>
      <widget class="QPushButton" name="retour_11">
       <property name="geometry">
        <rect>
-        <x>1120</x>
-        <y>720</y>
+        <x>1210</x>
+        <y>700</y>
         <width>93</width>
         <height>29</height>
        </rect>
@@ -2843,7 +2900,7 @@ border-top-color: rgb(255, 255, 255);
        <string notr="true">background-color: rgb(253, 145, 4);</string>
       </property>
       <property name="text">
-       <string>retour</string>
+       <string>Retour</string>
       </property>
      </widget>
      <widget class="QPushButton" name="maj_2">
