@@ -35,8 +35,8 @@
        <rect>
         <x>400</x>
         <y>180</y>
-        <width>941</width>
-        <height>281</height>
+        <width>781</width>
+        <height>131</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -224,7 +224,7 @@ background-color: rgb(120, 120, 120);</string>
        <string>Date de naissance </string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_3">
+     <widget class="QLineEdit" name="lineEdit_6">
       <property name="geometry">
        <rect>
         <x>150</x>
@@ -238,7 +238,7 @@ background-color: rgb(120, 120, 120);</string>
 </string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_6">
+     <widget class="QLineEdit" name="lineEdit_recherche">
       <property name="geometry">
        <rect>
         <x>530</x>
@@ -264,7 +264,7 @@ background-color: rgb(120, 120, 120);</string>
        <string notr="true">background-color: rgb(255, 255, 255);</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_5">
+     <widget class="QLineEdit" name="lineEdit_email">
       <property name="geometry">
        <rect>
         <x>160</x>
@@ -543,7 +543,7 @@ background-color: rgb(120, 120, 120);</string>
        <string>ID Employé  </string>
       </property>
      </widget>
-     <widget class="QDateEdit" name="dateEdit">
+     <widget class="QDateEdit" name="lineEdit_date">
       <property name="geometry">
        <rect>
         <x>160</x>
@@ -594,7 +594,7 @@ background-color: rgb(18, 153, 29);
        <string> Mise à jour</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_7">
+     <widget class="QPushButton" name="btnSupprimer">
       <property name="geometry">
        <rect>
         <x>170</x>
@@ -612,7 +612,7 @@ background-color: rgb(253, 7, 27);</string>
        <string>supprimer </string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_2">
+     <widget class="QLineEdit" name="lineEdit_3">
       <property name="geometry">
        <rect>
         <x>140</x>
@@ -625,7 +625,7 @@ background-color: rgb(253, 7, 27);</string>
        <string notr="true">background-color: rgb(255, 255, 255);</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_6">
+     <widget class="QPushButton" name="btnModifie">
       <property name="geometry">
        <rect>
         <x>1050</x>
@@ -675,7 +675,7 @@ color: rgb(255, 255, 255);</string>
        <string> Date de recrutement </string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_4">
+     <widget class="QLineEdit" name="lineEdit_tel">
       <property name="geometry">
        <rect>
         <x>150</x>
@@ -689,7 +689,7 @@ color: rgb(255, 255, 255);</string>
 </string>
       </property>
      </widget>
-     <widget class="QDateEdit" name="dateEdit_2">
+     <widget class="QDateEdit" name="dateEdit_recrutement">
       <property name="geometry">
        <rect>
         <x>200</x>
@@ -1199,6 +1199,77 @@ background-color: rgb(253, 7, 27);
       </property>
       <property name="text">
        <string>     Retour</string>
+      </property>
+     </widget>
+     <widget class="QTableView" name="tableView">
+      <property name="geometry">
+       <rect>
+        <x>355</x>
+        <y>380</y>
+        <width>811</width>
+        <height>192</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 255);</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_7">
+      <property name="geometry">
+       <rect>
+        <x>620</x>
+        <y>650</y>
+        <width>49</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(255, 255, 255);</string>
+      </property>
+      <property name="text">
+       <string> poste</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="poste">
+      <property name="geometry">
+       <rect>
+        <x>680</x>
+        <y>650</y>
+        <width>113</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 255);</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="salaire">
+      <property name="geometry">
+       <rect>
+        <x>930</x>
+        <y>650</y>
+        <width>113</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 255, 255);</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_11">
+      <property name="geometry">
+       <rect>
+        <x>870</x>
+        <y>650</y>
+        <width>49</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(255, 255, 255);</string>
+      </property>
+      <property name="text">
+       <string> salaire</string>
       </property>
      </widget>
     </widget>

@@ -1,26 +1,39 @@
 #include "gemployer.h"
-#include <QApplication>
-#include <QMessageBox>
 #include "connection.h"
+#include <QMessageBox>
+#include <QFile>
+#include <QApplication>
+
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    Gemployer w;
-    Connection c;
-    bool test=c.createconnect();
-    if(test)
-    {w.show();
-        QMessageBox::information(nullptr, QObject::tr("database is open"),
-                                 QObject::tr("connection successful.\n"
-                                             "Click Cancel to exit."), QMessageBox::Cancel);
 
+    // ✅ Correct function name (it's instance(), not CreateInstance)
+    Connection& c = Connection::instance();
+
+    bool test = c.createConnection();
+
+    Gemployer w;
+    if (test)
+    {
+        w.show();
+        QMessageBox::information(
+            nullptr,
+            QObject::tr("Base de données"),
+            QObject::tr("Connexion établie.\nCliquer sur Annuler pour quitter."),
+            QMessageBox::Cancel
+            );
     }
     else
-        QMessageBox::critical(nullptr, QObject::tr("database is not open"),
-                              QObject::tr("connection failed.\n"
-                                          "Click Cancel to exit."), QMessageBox::Cancel);
-
-
+    {
+        // ✅ Fix typo: QMessageBOx → QMessageBox
+        QMessageBox::critical(
+            nullptr,
+            QObject::tr("Base de données"),
+            QObject::tr("Échec de la connexion.\nCliquer sur Annuler pour quitter."),
+            QMessageBox::Cancel
+            );
+    }
 
     return a.exec();
 }

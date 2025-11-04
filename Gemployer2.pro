@@ -11,11 +11,13 @@ CONFIG += c++17
 
 SOURCES += \
     connection.cpp \
+    employer.cpp \
     main.cpp \
     gemployer.cpp
 
 HEADERS += \
     connection.h \
+    employer.h \
     gemployer.h
 
 FORMS += \
