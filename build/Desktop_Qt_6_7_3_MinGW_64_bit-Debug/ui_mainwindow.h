@@ -1,0 +1,627 @@
+/********************************************************************************
+** Form generated from reading UI file 'mainwindow.ui'
+**
+** Created by: Qt User Interface Compiler version 6.7.3
+**
+** WARNING! All changes made in this file will be lost when recompiling UI file!
+********************************************************************************/
+
+#ifndef UI_MAINWINDOW_H
+#define UI_MAINWINDOW_H
+
+#include <QtCore/QVariant>
+#include <QtGui/QAction>
+#include <QtWidgets/QApplication>
+#include <QtWidgets/QDateEdit>
+#include <QtWidgets/QHeaderView>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QLineEdit>
+#include <QtWidgets/QMainWindow>
+#include <QtWidgets/QMenu>
+#include <QtWidgets/QMenuBar>
+#include <QtWidgets/QPushButton>
+#include <QtWidgets/QStackedWidget>
+#include <QtWidgets/QStatusBar>
+#include <QtWidgets/QTableWidget>
+#include <QtWidgets/QToolBar>
+#include <QtWidgets/QWidget>
+
+QT_BEGIN_NAMESPACE
+
+class Ui_MainWindow
+{
+public:
+    QAction *actionpar_age;
+    QAction *actionhistorique_de_reparation;
+    QWidget *centralWidget;
+    QStackedWidget *stackedWidgetC;
+    QWidget *page;
+    QLineEdit *IDclient;
+    QLabel *label;
+    QLabel *label_5;
+    QPushButton *rechercherC;
+    QPushButton *retourC;
+    QLineEdit *IdC;
+    QLabel *label_7;
+    QDateEdit *DateN;
+    QPushButton *PDFC;
+    QPushButton *majC;
+    QLabel *label_6;
+    QPushButton *Supprimer;
+    QDateEdit *DateI;
+    QLabel *label_4;
+    QPushButton *Ajouter;
+    QLabel *label_3;
+    QLabel *label_2;
+    QLineEdit *nomC;
+    QLineEdit *prenomC;
+    QLineEdit *telC;
+    QLineEdit *remarquesC;
+    QLabel *label_8;
+    QTableWidget *tableWidgetC;
+    QPushButton *triC;
+    QPushButton *Modifier;
+    QWidget *page_2;
+    QMenuBar *menuBar;
+    QMenu *menustatistique;
+    QMenu *menurecommendation;
+    QToolBar *mainToolBar;
+    QStatusBar *statusBar;
+
+    void setupUi(QMainWindow *MainWindow)
+    {
+        if (MainWindow->objectName().isEmpty())
+            MainWindow->setObjectName("MainWindow");
+        MainWindow->resize(1424, 888);
+        actionpar_age = new QAction(MainWindow);
+        actionpar_age->setObjectName("actionpar_age");
+        actionhistorique_de_reparation = new QAction(MainWindow);
+        actionhistorique_de_reparation->setObjectName("actionhistorique_de_reparation");
+        centralWidget = new QWidget(MainWindow);
+        centralWidget->setObjectName("centralWidget");
+        stackedWidgetC = new QStackedWidget(centralWidget);
+        stackedWidgetC->setObjectName("stackedWidgetC");
+        stackedWidgetC->setGeometry(QRect(-130, -50, 1711, 791));
+        QPalette palette;
+        QBrush brush(QColor(0, 0, 74, 255));
+        brush.setStyle(Qt::SolidPattern);
+        palette.setBrush(QPalette::Active, QPalette::Button, brush);
+        palette.setBrush(QPalette::Active, QPalette::Base, brush);
+        palette.setBrush(QPalette::Active, QPalette::Window, brush);
+        palette.setBrush(QPalette::Inactive, QPalette::Button, brush);
+        palette.setBrush(QPalette::Inactive, QPalette::Base, brush);
+        palette.setBrush(QPalette::Inactive, QPalette::Window, brush);
+        palette.setBrush(QPalette::Disabled, QPalette::Button, brush);
+        palette.setBrush(QPalette::Disabled, QPalette::Base, brush);
+        palette.setBrush(QPalette::Disabled, QPalette::Window, brush);
+        stackedWidgetC->setPalette(palette);
+        stackedWidgetC->setStyleSheet(QString::fromUtf8("background-color: rgb(0, 0, 74);"));
+        page = new QWidget();
+        page->setObjectName("page");
+        QPalette palette1;
+        palette1.setBrush(QPalette::Active, QPalette::Button, brush);
+        palette1.setBrush(QPalette::Active, QPalette::Base, brush);
+        palette1.setBrush(QPalette::Active, QPalette::Window, brush);
+        palette1.setBrush(QPalette::Inactive, QPalette::Button, brush);
+        palette1.setBrush(QPalette::Inactive, QPalette::Base, brush);
+        palette1.setBrush(QPalette::Inactive, QPalette::Window, brush);
+        palette1.setBrush(QPalette::Disabled, QPalette::Button, brush);
+        palette1.setBrush(QPalette::Disabled, QPalette::Base, brush);
+        palette1.setBrush(QPalette::Disabled, QPalette::Window, brush);
+        page->setPalette(palette1);
+        IDclient = new QLineEdit(page);
+        IDclient->setObjectName("IDclient");
+        IDclient->setGeometry(QRect(350, 120, 151, 28));
+        QPalette palette2;
+        QBrush brush1(QColor(255, 255, 255, 255));
+        brush1.setStyle(Qt::SolidPattern);
+        palette2.setBrush(QPalette::Active, QPalette::Button, brush1);
+        QBrush brush2(QColor(0, 0, 0, 255));
+        brush2.setStyle(Qt::SolidPattern);
+        palette2.setBrush(QPalette::Active, QPalette::Text, brush2);
+        palette2.setBrush(QPalette::Active, QPalette::Base, brush1);
+        palette2.setBrush(QPalette::Active, QPalette::Window, brush1);
+        palette2.setBrush(QPalette::Inactive, QPalette::Button, brush1);
+        palette2.setBrush(QPalette::Inactive, QPalette::Text, brush2);
+        palette2.setBrush(QPalette::Inactive, QPalette::Base, brush1);
+        palette2.setBrush(QPalette::Inactive, QPalette::Window, brush1);
+        palette2.setBrush(QPalette::Disabled, QPalette::Button, brush1);
+        palette2.setBrush(QPalette::Disabled, QPalette::Base, brush1);
+        palette2.setBrush(QPalette::Disabled, QPalette::Window, brush1);
+        IDclient->setPalette(palette2);
+        IDclient->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);"));
+        label = new QLabel(page);
+        label->setObjectName("label");
+        label->setGeometry(QRect(190, 280, 151, 41));
+        QFont font;
+        font.setFamilies({QString::fromUtf8("Constantia")});
+        font.setPointSize(11);
+        font.setItalic(false);
+        label->setFont(font);
+        label->setScaledContents(false);
+        label_5 = new QLabel(page);
+        label_5->setObjectName("label_5");
+        label_5->setGeometry(QRect(190, 110, 121, 41));
+        label_5->setFont(font);
+        label_5->setScaledContents(false);
+        rechercherC = new QPushButton(page);
+        rechercherC->setObjectName("rechercherC");
+        rechercherC->setGeometry(QRect(590, 90, 90, 29));
+        QPalette palette3;
+        palette3.setBrush(QPalette::Active, QPalette::Button, brush);
+        palette3.setBrush(QPalette::Active, QPalette::Base, brush);
+        palette3.setBrush(QPalette::Active, QPalette::Window, brush);
+        QBrush brush3(QColor(31, 155, 93, 255));
+        brush3.setStyle(Qt::SolidPattern);
+        palette3.setBrush(QPalette::Active, QPalette::Highlight, brush3);
+        palette3.setBrush(QPalette::Inactive, QPalette::Button, brush);
+        palette3.setBrush(QPalette::Inactive, QPalette::Base, brush);
+        palette3.setBrush(QPalette::Inactive, QPalette::Window, brush);
+        palette3.setBrush(QPalette::Inactive, QPalette::Highlight, brush3);
+        palette3.setBrush(QPalette::Disabled, QPalette::Button, brush);
+        palette3.setBrush(QPalette::Disabled, QPalette::Base, brush);
+        palette3.setBrush(QPalette::Disabled, QPalette::Window, brush);
+        palette3.setBrush(QPalette::Disabled, QPalette::Highlight, brush3);
+        rechercherC->setPalette(palette3);
+        retourC = new QPushButton(page);
+        retourC->setObjectName("retourC");
+        retourC->setGeometry(QRect(1330, 580, 90, 29));
+        QPalette palette4;
+        QBrush brush4(QColor(253, 7, 27, 255));
+        brush4.setStyle(Qt::SolidPattern);
+        palette4.setBrush(QPalette::Active, QPalette::Button, brush4);
+        palette4.setBrush(QPalette::Active, QPalette::Base, brush4);
+        palette4.setBrush(QPalette::Active, QPalette::Window, brush4);
+        palette4.setBrush(QPalette::Active, QPalette::Highlight, brush3);
+        palette4.setBrush(QPalette::Inactive, QPalette::Button, brush4);
+        palette4.setBrush(QPalette::Inactive, QPalette::Base, brush4);
+        palette4.setBrush(QPalette::Inactive, QPalette::Window, brush4);
+        palette4.setBrush(QPalette::Inactive, QPalette::Highlight, brush3);
+        palette4.setBrush(QPalette::Disabled, QPalette::Button, brush4);
+        palette4.setBrush(QPalette::Disabled, QPalette::Base, brush4);
+        palette4.setBrush(QPalette::Disabled, QPalette::Window, brush4);
+        palette4.setBrush(QPalette::Disabled, QPalette::Highlight, brush3);
+        retourC->setPalette(palette4);
+        retourC->setStyleSheet(QString::fromUtf8("background-color: rgb(253, 7, 27);"));
+        IdC = new QLineEdit(page);
+        IdC->setObjectName("IdC");
+        IdC->setGeometry(QRect(690, 90, 261, 28));
+        QPalette palette5;
+        palette5.setBrush(QPalette::Active, QPalette::Button, brush1);
+        palette5.setBrush(QPalette::Active, QPalette::Text, brush2);
+        palette5.setBrush(QPalette::Active, QPalette::Base, brush1);
+        palette5.setBrush(QPalette::Active, QPalette::Window, brush1);
+        palette5.setBrush(QPalette::Inactive, QPalette::Button, brush1);
+        palette5.setBrush(QPalette::Inactive, QPalette::Text, brush2);
+        palette5.setBrush(QPalette::Inactive, QPalette::Base, brush1);
+        palette5.setBrush(QPalette::Inactive, QPalette::Window, brush1);
+        palette5.setBrush(QPalette::Disabled, QPalette::Button, brush1);
+        palette5.setBrush(QPalette::Disabled, QPalette::Base, brush1);
+        palette5.setBrush(QPalette::Disabled, QPalette::Window, brush1);
+        IdC->setPalette(palette5);
+        IdC->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);"));
+        label_7 = new QLabel(page);
+        label_7->setObjectName("label_7");
+        label_7->setGeometry(QRect(180, 60, 241, 41));
+        QFont font1;
+        font1.setFamilies({QString::fromUtf8("Constantia")});
+        font1.setPointSize(14);
+        font1.setBold(false);
+        font1.setItalic(false);
+        font1.setUnderline(true);
+        label_7->setFont(font1);
+        label_7->setScaledContents(false);
+        DateN = new QDateEdit(page);
+        DateN->setObjectName("DateN");
+        DateN->setGeometry(QRect(360, 290, 141, 29));
+        PDFC = new QPushButton(page);
+        PDFC->setObjectName("PDFC");
+        PDFC->setGeometry(QRect(1200, 90, 90, 29));
+        QPalette palette6;
+        QBrush brush5(QColor(253, 145, 4, 255));
+        brush5.setStyle(Qt::SolidPattern);
+        palette6.setBrush(QPalette::Active, QPalette::Button, brush5);
+        palette6.setBrush(QPalette::Active, QPalette::Base, brush5);
+        palette6.setBrush(QPalette::Active, QPalette::Window, brush5);
+        palette6.setBrush(QPalette::Active, QPalette::Highlight, brush3);
+        palette6.setBrush(QPalette::Inactive, QPalette::Button, brush5);
+        palette6.setBrush(QPalette::Inactive, QPalette::Base, brush5);
+        palette6.setBrush(QPalette::Inactive, QPalette::Window, brush5);
+        palette6.setBrush(QPalette::Inactive, QPalette::Highlight, brush3);
+        palette6.setBrush(QPalette::Disabled, QPalette::Button, brush5);
+        palette6.setBrush(QPalette::Disabled, QPalette::Base, brush5);
+        palette6.setBrush(QPalette::Disabled, QPalette::Window, brush5);
+        palette6.setBrush(QPalette::Disabled, QPalette::Highlight, brush3);
+        PDFC->setPalette(palette6);
+        PDFC->setStyleSheet(QString::fromUtf8("background-color: rgb(253, 145, 4);"));
+        majC = new QPushButton(page);
+        majC->setObjectName("majC");
+        majC->setGeometry(QRect(1090, 90, 90, 29));
+        QPalette palette7;
+        QBrush brush6(QColor(18, 153, 29, 255));
+        brush6.setStyle(Qt::SolidPattern);
+        palette7.setBrush(QPalette::Active, QPalette::Button, brush6);
+        palette7.setBrush(QPalette::Active, QPalette::Base, brush6);
+        palette7.setBrush(QPalette::Active, QPalette::Window, brush6);
+        palette7.setBrush(QPalette::Active, QPalette::Highlight, brush3);
+        palette7.setBrush(QPalette::Inactive, QPalette::Button, brush6);
+        palette7.setBrush(QPalette::Inactive, QPalette::Base, brush6);
+        palette7.setBrush(QPalette::Inactive, QPalette::Window, brush6);
+        palette7.setBrush(QPalette::Inactive, QPalette::Highlight, brush3);
+        palette7.setBrush(QPalette::Disabled, QPalette::Button, brush6);
+        palette7.setBrush(QPalette::Disabled, QPalette::Base, brush6);
+        palette7.setBrush(QPalette::Disabled, QPalette::Window, brush6);
+        palette7.setBrush(QPalette::Disabled, QPalette::Highlight, brush3);
+        majC->setPalette(palette7);
+        majC->setStyleSheet(QString::fromUtf8("background-COLOR:rgb(18, 153, 29)"));
+        label_6 = new QLabel(page);
+        label_6->setObjectName("label_6");
+        label_6->setGeometry(QRect(190, 230, 151, 41));
+        label_6->setFont(font);
+        label_6->setScaledContents(false);
+        Supprimer = new QPushButton(page);
+        Supprimer->setObjectName("Supprimer");
+        Supprimer->setGeometry(QRect(290, 550, 90, 29));
+        QPalette palette8;
+        palette8.setBrush(QPalette::Active, QPalette::Button, brush4);
+        palette8.setBrush(QPalette::Active, QPalette::Base, brush4);
+        palette8.setBrush(QPalette::Active, QPalette::Window, brush4);
+        palette8.setBrush(QPalette::Active, QPalette::Highlight, brush3);
+        palette8.setBrush(QPalette::Inactive, QPalette::Button, brush4);
+        palette8.setBrush(QPalette::Inactive, QPalette::Base, brush4);
+        palette8.setBrush(QPalette::Inactive, QPalette::Window, brush4);
+        palette8.setBrush(QPalette::Inactive, QPalette::Highlight, brush3);
+        palette8.setBrush(QPalette::Disabled, QPalette::Button, brush4);
+        palette8.setBrush(QPalette::Disabled, QPalette::Base, brush4);
+        palette8.setBrush(QPalette::Disabled, QPalette::Window, brush4);
+        palette8.setBrush(QPalette::Disabled, QPalette::Highlight, brush3);
+        Supprimer->setPalette(palette8);
+        Supprimer->setStyleSheet(QString::fromUtf8("background-color: rgb(253, 7, 27);"));
+        DateI = new QDateEdit(page);
+        DateI->setObjectName("DateI");
+        DateI->setGeometry(QRect(360, 330, 141, 29));
+        label_4 = new QLabel(page);
+        label_4->setObjectName("label_4");
+        label_4->setGeometry(QRect(190, 190, 151, 41));
+        label_4->setFont(font);
+        label_4->setScaledContents(false);
+        Ajouter = new QPushButton(page);
+        Ajouter->setObjectName("Ajouter");
+        Ajouter->setGeometry(QRect(190, 550, 90, 29));
+        QPalette palette9;
+        palette9.setBrush(QPalette::Active, QPalette::Button, brush6);
+        palette9.setBrush(QPalette::Active, QPalette::Base, brush6);
+        palette9.setBrush(QPalette::Active, QPalette::Window, brush6);
+        palette9.setBrush(QPalette::Active, QPalette::Highlight, brush3);
+        palette9.setBrush(QPalette::Inactive, QPalette::Button, brush6);
+        palette9.setBrush(QPalette::Inactive, QPalette::Base, brush6);
+        palette9.setBrush(QPalette::Inactive, QPalette::Window, brush6);
+        palette9.setBrush(QPalette::Inactive, QPalette::Highlight, brush3);
+        palette9.setBrush(QPalette::Disabled, QPalette::Button, brush6);
+        palette9.setBrush(QPalette::Disabled, QPalette::Base, brush6);
+        palette9.setBrush(QPalette::Disabled, QPalette::Window, brush6);
+        palette9.setBrush(QPalette::Disabled, QPalette::Highlight, brush3);
+        Ajouter->setPalette(palette9);
+        Ajouter->setStyleSheet(QString::fromUtf8("background-color: rgb(18, 153, 29);"));
+        label_3 = new QLabel(page);
+        label_3->setObjectName("label_3");
+        label_3->setGeometry(QRect(190, 150, 151, 41));
+        label_3->setFont(font);
+        label_3->setScaledContents(false);
+        label_2 = new QLabel(page);
+        label_2->setObjectName("label_2");
+        label_2->setGeometry(QRect(190, 320, 151, 41));
+        label_2->setFont(font);
+        label_2->setScaledContents(false);
+        nomC = new QLineEdit(page);
+        nomC->setObjectName("nomC");
+        nomC->setGeometry(QRect(350, 160, 151, 28));
+        QPalette palette10;
+        palette10.setBrush(QPalette::Active, QPalette::Button, brush1);
+        palette10.setBrush(QPalette::Active, QPalette::Text, brush2);
+        palette10.setBrush(QPalette::Active, QPalette::Base, brush1);
+        palette10.setBrush(QPalette::Active, QPalette::Window, brush1);
+        palette10.setBrush(QPalette::Inactive, QPalette::Button, brush1);
+        palette10.setBrush(QPalette::Inactive, QPalette::Text, brush2);
+        palette10.setBrush(QPalette::Inactive, QPalette::Base, brush1);
+        palette10.setBrush(QPalette::Inactive, QPalette::Window, brush1);
+        palette10.setBrush(QPalette::Disabled, QPalette::Button, brush1);
+        palette10.setBrush(QPalette::Disabled, QPalette::Base, brush1);
+        palette10.setBrush(QPalette::Disabled, QPalette::Window, brush1);
+        nomC->setPalette(palette10);
+        nomC->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);"));
+        prenomC = new QLineEdit(page);
+        prenomC->setObjectName("prenomC");
+        prenomC->setGeometry(QRect(350, 200, 151, 28));
+        QPalette palette11;
+        palette11.setBrush(QPalette::Active, QPalette::Button, brush1);
+        palette11.setBrush(QPalette::Active, QPalette::Text, brush2);
+        palette11.setBrush(QPalette::Active, QPalette::Base, brush1);
+        palette11.setBrush(QPalette::Active, QPalette::Window, brush1);
+        palette11.setBrush(QPalette::Inactive, QPalette::Button, brush1);
+        palette11.setBrush(QPalette::Inactive, QPalette::Text, brush2);
+        palette11.setBrush(QPalette::Inactive, QPalette::Base, brush1);
+        palette11.setBrush(QPalette::Inactive, QPalette::Window, brush1);
+        palette11.setBrush(QPalette::Disabled, QPalette::Button, brush1);
+        palette11.setBrush(QPalette::Disabled, QPalette::Base, brush1);
+        palette11.setBrush(QPalette::Disabled, QPalette::Window, brush1);
+        prenomC->setPalette(palette11);
+        prenomC->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);"));
+        telC = new QLineEdit(page);
+        telC->setObjectName("telC");
+        telC->setGeometry(QRect(350, 240, 151, 28));
+        QPalette palette12;
+        palette12.setBrush(QPalette::Active, QPalette::Button, brush1);
+        palette12.setBrush(QPalette::Active, QPalette::Text, brush2);
+        palette12.setBrush(QPalette::Active, QPalette::Base, brush1);
+        palette12.setBrush(QPalette::Active, QPalette::Window, brush1);
+        palette12.setBrush(QPalette::Inactive, QPalette::Button, brush1);
+        palette12.setBrush(QPalette::Inactive, QPalette::Text, brush2);
+        palette12.setBrush(QPalette::Inactive, QPalette::Base, brush1);
+        palette12.setBrush(QPalette::Inactive, QPalette::Window, brush1);
+        palette12.setBrush(QPalette::Disabled, QPalette::Button, brush1);
+        palette12.setBrush(QPalette::Disabled, QPalette::Base, brush1);
+        palette12.setBrush(QPalette::Disabled, QPalette::Window, brush1);
+        telC->setPalette(palette12);
+        telC->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);"));
+        remarquesC = new QLineEdit(page);
+        remarquesC->setObjectName("remarquesC");
+        remarquesC->setGeometry(QRect(190, 400, 311, 131));
+        QPalette palette13;
+        palette13.setBrush(QPalette::Active, QPalette::Button, brush1);
+        palette13.setBrush(QPalette::Active, QPalette::Text, brush2);
+        palette13.setBrush(QPalette::Active, QPalette::Base, brush1);
+        palette13.setBrush(QPalette::Active, QPalette::Window, brush1);
+        palette13.setBrush(QPalette::Inactive, QPalette::Button, brush1);
+        palette13.setBrush(QPalette::Inactive, QPalette::Text, brush2);
+        palette13.setBrush(QPalette::Inactive, QPalette::Base, brush1);
+        palette13.setBrush(QPalette::Inactive, QPalette::Window, brush1);
+        palette13.setBrush(QPalette::Disabled, QPalette::Button, brush1);
+        palette13.setBrush(QPalette::Disabled, QPalette::Base, brush1);
+        palette13.setBrush(QPalette::Disabled, QPalette::Window, brush1);
+        remarquesC->setPalette(palette13);
+        remarquesC->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);"));
+        label_8 = new QLabel(page);
+        label_8->setObjectName("label_8");
+        label_8->setGeometry(QRect(190, 360, 241, 41));
+        label_8->setFont(font1);
+        label_8->setScaledContents(false);
+        tableWidgetC = new QTableWidget(page);
+        if (tableWidgetC->columnCount() < 7)
+            tableWidgetC->setColumnCount(7);
+        QTableWidgetItem *__qtablewidgetitem = new QTableWidgetItem();
+        __qtablewidgetitem->setBackground(QColor(126, 126, 126));
+        tableWidgetC->setHorizontalHeaderItem(0, __qtablewidgetitem);
+        QTableWidgetItem *__qtablewidgetitem1 = new QTableWidgetItem();
+        tableWidgetC->setHorizontalHeaderItem(1, __qtablewidgetitem1);
+        QTableWidgetItem *__qtablewidgetitem2 = new QTableWidgetItem();
+        tableWidgetC->setHorizontalHeaderItem(2, __qtablewidgetitem2);
+        QTableWidgetItem *__qtablewidgetitem3 = new QTableWidgetItem();
+        tableWidgetC->setHorizontalHeaderItem(3, __qtablewidgetitem3);
+        QTableWidgetItem *__qtablewidgetitem4 = new QTableWidgetItem();
+        tableWidgetC->setHorizontalHeaderItem(4, __qtablewidgetitem4);
+        QTableWidgetItem *__qtablewidgetitem5 = new QTableWidgetItem();
+        tableWidgetC->setHorizontalHeaderItem(5, __qtablewidgetitem5);
+        QTableWidgetItem *__qtablewidgetitem6 = new QTableWidgetItem();
+        tableWidgetC->setHorizontalHeaderItem(6, __qtablewidgetitem6);
+        if (tableWidgetC->rowCount() < 5)
+            tableWidgetC->setRowCount(5);
+        QTableWidgetItem *__qtablewidgetitem7 = new QTableWidgetItem();
+        tableWidgetC->setVerticalHeaderItem(0, __qtablewidgetitem7);
+        QTableWidgetItem *__qtablewidgetitem8 = new QTableWidgetItem();
+        tableWidgetC->setVerticalHeaderItem(1, __qtablewidgetitem8);
+        QTableWidgetItem *__qtablewidgetitem9 = new QTableWidgetItem();
+        tableWidgetC->setVerticalHeaderItem(2, __qtablewidgetitem9);
+        QTableWidgetItem *__qtablewidgetitem10 = new QTableWidgetItem();
+        tableWidgetC->setVerticalHeaderItem(3, __qtablewidgetitem10);
+        QTableWidgetItem *__qtablewidgetitem11 = new QTableWidgetItem();
+        tableWidgetC->setVerticalHeaderItem(4, __qtablewidgetitem11);
+        QTableWidgetItem *__qtablewidgetitem12 = new QTableWidgetItem();
+        tableWidgetC->setItem(0, 0, __qtablewidgetitem12);
+        QTableWidgetItem *__qtablewidgetitem13 = new QTableWidgetItem();
+        tableWidgetC->setItem(0, 1, __qtablewidgetitem13);
+        QTableWidgetItem *__qtablewidgetitem14 = new QTableWidgetItem();
+        tableWidgetC->setItem(0, 2, __qtablewidgetitem14);
+        QTableWidgetItem *__qtablewidgetitem15 = new QTableWidgetItem();
+        tableWidgetC->setItem(0, 3, __qtablewidgetitem15);
+        QTableWidgetItem *__qtablewidgetitem16 = new QTableWidgetItem();
+        tableWidgetC->setItem(0, 4, __qtablewidgetitem16);
+        QTableWidgetItem *__qtablewidgetitem17 = new QTableWidgetItem();
+        tableWidgetC->setItem(0, 5, __qtablewidgetitem17);
+        QTableWidgetItem *__qtablewidgetitem18 = new QTableWidgetItem();
+        tableWidgetC->setItem(1, 0, __qtablewidgetitem18);
+        QTableWidgetItem *__qtablewidgetitem19 = new QTableWidgetItem();
+        tableWidgetC->setItem(1, 1, __qtablewidgetitem19);
+        QTableWidgetItem *__qtablewidgetitem20 = new QTableWidgetItem();
+        tableWidgetC->setItem(1, 2, __qtablewidgetitem20);
+        QTableWidgetItem *__qtablewidgetitem21 = new QTableWidgetItem();
+        tableWidgetC->setItem(1, 3, __qtablewidgetitem21);
+        QTableWidgetItem *__qtablewidgetitem22 = new QTableWidgetItem();
+        tableWidgetC->setItem(1, 4, __qtablewidgetitem22);
+        QTableWidgetItem *__qtablewidgetitem23 = new QTableWidgetItem();
+        tableWidgetC->setItem(1, 5, __qtablewidgetitem23);
+        QTableWidgetItem *__qtablewidgetitem24 = new QTableWidgetItem();
+        tableWidgetC->setItem(2, 0, __qtablewidgetitem24);
+        QTableWidgetItem *__qtablewidgetitem25 = new QTableWidgetItem();
+        tableWidgetC->setItem(2, 1, __qtablewidgetitem25);
+        tableWidgetC->setObjectName("tableWidgetC");
+        tableWidgetC->setGeometry(QRect(590, 120, 821, 441));
+        QPalette palette14;
+        palette14.setBrush(QPalette::Active, QPalette::WindowText, brush2);
+        QBrush brush7(QColor(120, 120, 120, 255));
+        brush7.setStyle(Qt::SolidPattern);
+        palette14.setBrush(QPalette::Active, QPalette::Button, brush7);
+        QBrush brush8(QColor(252, 252, 252, 255));
+        brush8.setStyle(Qt::SolidPattern);
+        palette14.setBrush(QPalette::Active, QPalette::Light, brush8);
+        palette14.setBrush(QPalette::Active, QPalette::Midlight, brush1);
+        palette14.setBrush(QPalette::Active, QPalette::Mid, brush1);
+        palette14.setBrush(QPalette::Active, QPalette::Text, brush2);
+        palette14.setBrush(QPalette::Active, QPalette::Base, brush7);
+        palette14.setBrush(QPalette::Active, QPalette::Window, brush7);
+        palette14.setBrush(QPalette::Inactive, QPalette::WindowText, brush2);
+        palette14.setBrush(QPalette::Inactive, QPalette::Button, brush7);
+        palette14.setBrush(QPalette::Inactive, QPalette::Light, brush8);
+        palette14.setBrush(QPalette::Inactive, QPalette::Midlight, brush1);
+        palette14.setBrush(QPalette::Inactive, QPalette::Mid, brush1);
+        palette14.setBrush(QPalette::Inactive, QPalette::Text, brush2);
+        palette14.setBrush(QPalette::Inactive, QPalette::Base, brush7);
+        palette14.setBrush(QPalette::Inactive, QPalette::Window, brush7);
+        palette14.setBrush(QPalette::Disabled, QPalette::Button, brush7);
+        palette14.setBrush(QPalette::Disabled, QPalette::Light, brush8);
+        palette14.setBrush(QPalette::Disabled, QPalette::Midlight, brush1);
+        palette14.setBrush(QPalette::Disabled, QPalette::Mid, brush1);
+        palette14.setBrush(QPalette::Disabled, QPalette::Base, brush7);
+        palette14.setBrush(QPalette::Disabled, QPalette::Window, brush7);
+        tableWidgetC->setPalette(palette14);
+        tableWidgetC->setStyleSheet(QString::fromUtf8("background-color: rgb(120, 120, 120);\n"
+"border-top-color: rgb(255, 255, 255);\n"
+""));
+        triC = new QPushButton(page);
+        triC->setObjectName("triC");
+        triC->setGeometry(QRect(980, 90, 90, 29));
+        triC->setStyleSheet(QString::fromUtf8("background-color: rgb(154, 211, 238);"));
+        Modifier = new QPushButton(page);
+        Modifier->setObjectName("Modifier");
+        Modifier->setGeometry(QRect(1310, 90, 90, 29));
+        QPalette palette15;
+        palette15.setBrush(QPalette::Active, QPalette::Button, brush4);
+        palette15.setBrush(QPalette::Active, QPalette::Base, brush4);
+        palette15.setBrush(QPalette::Active, QPalette::Window, brush4);
+        palette15.setBrush(QPalette::Active, QPalette::Highlight, brush3);
+        palette15.setBrush(QPalette::Inactive, QPalette::Button, brush4);
+        palette15.setBrush(QPalette::Inactive, QPalette::Base, brush4);
+        palette15.setBrush(QPalette::Inactive, QPalette::Window, brush4);
+        palette15.setBrush(QPalette::Inactive, QPalette::Highlight, brush3);
+        palette15.setBrush(QPalette::Disabled, QPalette::Button, brush4);
+        palette15.setBrush(QPalette::Disabled, QPalette::Base, brush4);
+        palette15.setBrush(QPalette::Disabled, QPalette::Window, brush4);
+        palette15.setBrush(QPalette::Disabled, QPalette::Highlight, brush3);
+        Modifier->setPalette(palette15);
+        Modifier->setStyleSheet(QString::fromUtf8("background-color: rgb(253, 7, 27);"));
+        stackedWidgetC->addWidget(page);
+        page_2 = new QWidget();
+        page_2->setObjectName("page_2");
+        stackedWidgetC->addWidget(page_2);
+        MainWindow->setCentralWidget(centralWidget);
+        menuBar = new QMenuBar(MainWindow);
+        menuBar->setObjectName("menuBar");
+        menuBar->setGeometry(QRect(0, 0, 1424, 25));
+        menustatistique = new QMenu(menuBar);
+        menustatistique->setObjectName("menustatistique");
+        menurecommendation = new QMenu(menuBar);
+        menurecommendation->setObjectName("menurecommendation");
+        MainWindow->setMenuBar(menuBar);
+        mainToolBar = new QToolBar(MainWindow);
+        mainToolBar->setObjectName("mainToolBar");
+        MainWindow->addToolBar(Qt::ToolBarArea::TopToolBarArea, mainToolBar);
+        statusBar = new QStatusBar(MainWindow);
+        statusBar->setObjectName("statusBar");
+        MainWindow->setStatusBar(statusBar);
+
+        menuBar->addAction(menustatistique->menuAction());
+        menuBar->addAction(menurecommendation->menuAction());
+        menustatistique->addAction(actionpar_age);
+        menurecommendation->addAction(actionhistorique_de_reparation);
+
+        retranslateUi(MainWindow);
+
+        stackedWidgetC->setCurrentIndex(0);
+
+
+        QMetaObject::connectSlotsByName(MainWindow);
+    } // setupUi
+
+    void retranslateUi(QMainWindow *MainWindow)
+    {
+        MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "Gestion des Clients", nullptr));
+        actionpar_age->setText(QCoreApplication::translate("MainWindow", "par age", nullptr));
+        actionhistorique_de_reparation->setText(QCoreApplication::translate("MainWindow", "historique de reparation", nullptr));
+        IDclient->setText(QString());
+        label->setText(QCoreApplication::translate("MainWindow", "Date de naissance", nullptr));
+        label_5->setText(QCoreApplication::translate("MainWindow", "ID_Client", nullptr));
+        rechercherC->setText(QCoreApplication::translate("MainWindow", "Rechercher", nullptr));
+        retourC->setText(QCoreApplication::translate("MainWindow", "Retour", nullptr));
+        IdC->setText(QCoreApplication::translate("MainWindow", "rechercher par ID", nullptr));
+        label_7->setText(QCoreApplication::translate("MainWindow", "Formulaire client ", nullptr));
+        PDFC->setText(QCoreApplication::translate("MainWindow", "exporter PDF", nullptr));
+        majC->setText(QCoreApplication::translate("MainWindow", "Mise \303\240 jour", nullptr));
+        label_6->setText(QCoreApplication::translate("MainWindow", "T\303\251l\303\251phone", nullptr));
+        Supprimer->setText(QCoreApplication::translate("MainWindow", "Supprimer", nullptr));
+        label_4->setText(QCoreApplication::translate("MainWindow", "Prenom", nullptr));
+        Ajouter->setText(QCoreApplication::translate("MainWindow", "Ajouter", nullptr));
+        label_3->setText(QCoreApplication::translate("MainWindow", "Nom", nullptr));
+        label_2->setText(QCoreApplication::translate("MainWindow", "Date d'inscription ", nullptr));
+        nomC->setText(QString());
+        prenomC->setText(QString());
+        telC->setText(QString());
+        remarquesC->setText(QString());
+        label_8->setText(QCoreApplication::translate("MainWindow", "Remarques:", nullptr));
+        QTableWidgetItem *___qtablewidgetitem = tableWidgetC->horizontalHeaderItem(0);
+        ___qtablewidgetitem->setText(QCoreApplication::translate("MainWindow", "Nom", nullptr));
+        QTableWidgetItem *___qtablewidgetitem1 = tableWidgetC->horizontalHeaderItem(1);
+        ___qtablewidgetitem1->setText(QCoreApplication::translate("MainWindow", "Pr\303\251nom", nullptr));
+        QTableWidgetItem *___qtablewidgetitem2 = tableWidgetC->horizontalHeaderItem(2);
+        ___qtablewidgetitem2->setText(QCoreApplication::translate("MainWindow", " T\303\251l\303\251phone", nullptr));
+        QTableWidgetItem *___qtablewidgetitem3 = tableWidgetC->horizontalHeaderItem(3);
+        ___qtablewidgetitem3->setText(QCoreApplication::translate("MainWindow", "Date de naissance", nullptr));
+        QTableWidgetItem *___qtablewidgetitem4 = tableWidgetC->horizontalHeaderItem(4);
+        ___qtablewidgetitem4->setText(QCoreApplication::translate("MainWindow", "Date d'inscription", nullptr));
+        QTableWidgetItem *___qtablewidgetitem5 = tableWidgetC->horizontalHeaderItem(5);
+        ___qtablewidgetitem5->setText(QCoreApplication::translate("MainWindow", "ID_Client", nullptr));
+        QTableWidgetItem *___qtablewidgetitem6 = tableWidgetC->horizontalHeaderItem(6);
+        ___qtablewidgetitem6->setText(QCoreApplication::translate("MainWindow", "Remarques", nullptr));
+        QTableWidgetItem *___qtablewidgetitem7 = tableWidgetC->verticalHeaderItem(0);
+        ___qtablewidgetitem7->setText(QCoreApplication::translate("MainWindow", "CLIENT1", nullptr));
+        QTableWidgetItem *___qtablewidgetitem8 = tableWidgetC->verticalHeaderItem(1);
+        ___qtablewidgetitem8->setText(QCoreApplication::translate("MainWindow", "CLIENT2", nullptr));
+        QTableWidgetItem *___qtablewidgetitem9 = tableWidgetC->verticalHeaderItem(2);
+        ___qtablewidgetitem9->setText(QCoreApplication::translate("MainWindow", "CLIENT3", nullptr));
+        QTableWidgetItem *___qtablewidgetitem10 = tableWidgetC->verticalHeaderItem(3);
+        ___qtablewidgetitem10->setText(QCoreApplication::translate("MainWindow", "CLIENT4", nullptr));
+        QTableWidgetItem *___qtablewidgetitem11 = tableWidgetC->verticalHeaderItem(4);
+        ___qtablewidgetitem11->setText(QCoreApplication::translate("MainWindow", "CLIENTN", nullptr));
+
+        const bool __sortingEnabled = tableWidgetC->isSortingEnabled();
+        tableWidgetC->setSortingEnabled(false);
+        QTableWidgetItem *___qtablewidgetitem12 = tableWidgetC->item(0, 0);
+        ___qtablewidgetitem12->setText(QCoreApplication::translate("MainWindow", "Ben guiza", nullptr));
+        QTableWidgetItem *___qtablewidgetitem13 = tableWidgetC->item(0, 1);
+        ___qtablewidgetitem13->setText(QCoreApplication::translate("MainWindow", "Sarah", nullptr));
+        QTableWidgetItem *___qtablewidgetitem14 = tableWidgetC->item(0, 2);
+        ___qtablewidgetitem14->setText(QCoreApplication::translate("MainWindow", "94...", nullptr));
+        QTableWidgetItem *___qtablewidgetitem15 = tableWidgetC->item(0, 3);
+        ___qtablewidgetitem15->setText(QCoreApplication::translate("MainWindow", "11/05/2005", nullptr));
+        QTableWidgetItem *___qtablewidgetitem16 = tableWidgetC->item(0, 4);
+        ___qtablewidgetitem16->setText(QCoreApplication::translate("MainWindow", "....", nullptr));
+        QTableWidgetItem *___qtablewidgetitem17 = tableWidgetC->item(0, 5);
+        ___qtablewidgetitem17->setText(QCoreApplication::translate("MainWindow", "241...", nullptr));
+        QTableWidgetItem *___qtablewidgetitem18 = tableWidgetC->item(1, 0);
+        ___qtablewidgetitem18->setText(QCoreApplication::translate("MainWindow", "Oueslati", nullptr));
+        QTableWidgetItem *___qtablewidgetitem19 = tableWidgetC->item(1, 1);
+        ___qtablewidgetitem19->setText(QCoreApplication::translate("MainWindow", "Selima", nullptr));
+        QTableWidgetItem *___qtablewidgetitem20 = tableWidgetC->item(1, 2);
+        ___qtablewidgetitem20->setText(QCoreApplication::translate("MainWindow", "98...", nullptr));
+        QTableWidgetItem *___qtablewidgetitem21 = tableWidgetC->item(1, 3);
+        ___qtablewidgetitem21->setText(QCoreApplication::translate("MainWindow", "08/10/2005", nullptr));
+        QTableWidgetItem *___qtablewidgetitem22 = tableWidgetC->item(1, 4);
+        ___qtablewidgetitem22->setText(QCoreApplication::translate("MainWindow", "...", nullptr));
+        QTableWidgetItem *___qtablewidgetitem23 = tableWidgetC->item(1, 5);
+        ___qtablewidgetitem23->setText(QCoreApplication::translate("MainWindow", "231..", nullptr));
+        tableWidgetC->setSortingEnabled(__sortingEnabled);
+
+        triC->setText(QCoreApplication::translate("MainWindow", "Trier", nullptr));
+        Modifier->setText(QCoreApplication::translate("MainWindow", "Modifier", nullptr));
+        menustatistique->setTitle(QCoreApplication::translate("MainWindow", "statistique", nullptr));
+        menurecommendation->setTitle(QCoreApplication::translate("MainWindow", "recommendation ", nullptr));
+    } // retranslateUi
+
+};
+
+namespace Ui {
+    class MainWindow: public Ui_MainWindow {};
+} // namespace Ui
+
+QT_END_NAMESPACE
+
+#endif // UI_MAINWINDOW_H
