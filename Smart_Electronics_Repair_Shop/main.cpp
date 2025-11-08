@@ -10,7 +10,7 @@ int main(int argc, char *argv[])
     std::cout << "Program starting..." << std::endl; // Force console output
 
     // TEST DATABASE CONNECTION - ADD THIS BLOCK
-    Connection conn;
+    static Connection conn;
     bool connected = conn.createconnect();
 
     if (!connected) {
