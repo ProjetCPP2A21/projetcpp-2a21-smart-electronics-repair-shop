@@ -1,0 +1,256 @@
+#include "smart_electronics_repairshop.h"
+#include "ui_smart_electronics_repairshop.h"
+#include <QPushButton>
+#include "fournisseur.h"
+#include "client.h"
+#include "employe.h"
+#include <QRegularExpressionValidator> // Pour ID, Email, Tel
+#include <QRegularExpression>          // Pour ID, Email, Tel
+#include <QDoubleValidator>
+
+menu_employer::menu_employer(QWidget *parent)
+    : QMainWindow(parent)
+    , ui(new Ui::menu_employer)
+{
+
+    ui->setupUi(this);
+    // --- MISE EN PLACE DES VALIDATEURS DE SAISIE ---
+
+    // 1. Validation de l'ID: Accepte uniquement des chiffres
+    ui->lineEdit_2->setValidator(new QRegularExpressionValidator(QRegularExpression("[0-9]+"), this));
+
+    // 2. Validation du Téléphone: Accepte de 0 à 8 chiffres
+    ui->lineEdit_tel_2->setValidator(new QRegularExpressionValidator(QRegularExpression("[0-9]{0,8}"), this));
+
+    // 3. Validation de l'Email:
+    QRegularExpression emailRegex(R"(^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$)");
+    emailRegex.setPatternOptions(QRegularExpression::CaseInsensitiveOption); // Ignore maj/min
+    ui->lineEdit_email_2->setValidator(new QRegularExpressionValidator(emailRegex, this));
+
+    // 4. Validation du Salaire: (FLOTTANT / DOUBLE) <-- NOUVEL AJOUT
+    // Autorise un nombre flottant (ex: 1500.50)
+    // Ici, de 0.00 à 99,999,999.00 avec 2 décimales.
+    ui->salaire_2->setValidator(new QDoubleValidator(0.0, 99999999.0, 2, this));
+
+    // --- FIN DES VALIDATEURS ---
+    fournisseur *gestionFournisseurs = new fournisseur(ui->menu_fournisseur, this); //fournisseur
+    client *gestionClients = new client(ui->menu_client, this); //client
+    ui->stackedWidget->setCurrentWidget(ui->menu_principale);
+    connect(ui->employer, &QPushButton::clicked, [this]() {
+        goToPage(ui->menu_employe);
+    });
+    connect(ui->retour_6, &QPushButton::clicked, this, [this]() { goToPage(ui->menu_principale); });
+    connect(ui->retour_8, &QPushButton::clicked, this, [this]() { goToPage(ui->menu_principale); });
+    connect(ui->client, &QPushButton::clicked, this, [this]() { goToPage(ui->menu_client); });
+    connect(ui->stock, &QPushButton::clicked, this, [this]() { goToPage(ui->menu_stock); });
+    connect(ui->retour_5, &QPushButton::clicked, this, [this]() { goToPage(ui->menu_principale); });
+    connect(ui->appareils, &QPushButton::clicked, this, [this]() { goToPage(ui->menu_appareil); });
+    connect(ui->retour_10, &QPushButton::clicked, this, [this]() { goToPage(ui->menu_principale); });
+    connect(ui->fournisseur, &QPushButton::clicked, this, [this]() { goToPage(ui->menu_fournisseur); });
+    connect(ui->retour_11, &QPushButton::clicked, this, [this]() { goToPage(ui->menu_principale); });
+    setWindowTitle("OSANA Smart Electronics Repair Shop"); //Window Name (-r)    
+    //connexions fournisseurs:
+    connect(ui->menu_fournisseur->findChild<QPushButton*>("btnAjouter_2"), &QPushButton::clicked,
+            gestionFournisseurs, &fournisseur::ajouterFournisseur);
+    connect(ui->menu_fournisseur->findChild<QPushButton*>("rechercher_2"), &QPushButton::clicked,
+            gestionFournisseurs, &fournisseur::rechercherFournisseurParId);
+    connect(ui->menu_fournisseur->findChild<QPushButton*>("Modifier_2"), &QPushButton::clicked,
+            gestionFournisseurs, &fournisseur::modifierFournisseur);
+    connect(ui->menu_fournisseur->findChild<QPushButton*>("btnSupprimer_2"), &QPushButton::clicked,
+            gestionFournisseurs, &fournisseur::supprimerFournisseur);
+    connect(ui->menu_fournisseur->findChild<QPushButton*>("maj_2"), &QPushButton::clicked,
+            gestionFournisseurs, &fournisseur::rafraichirListeFournisseurs);
+    connect(ui->menu_fournisseur->findChild<QPushButton*>("tri_3"), &QPushButton::clicked,
+            gestionFournisseurs, &fournisseur::trierParNomEntreprise);
+
+    //connexions client:
+    connect(ui->menu_client->findChild<QPushButton*>("btnAjouterClient"), &QPushButton::clicked,
+            gestionClients, &client::ajouterClient);
+    connect(ui->menu_client->findChild<QPushButton*>("btnRechercherClient"), &QPushButton::clicked,
+            gestionClients, &client::rechercherClientParId);
+    connect(ui->menu_client->findChild<QPushButton*>("btnModifierClient"), &QPushButton::clicked,
+            gestionClients, &client::modifierClient);
+    connect(ui->menu_client->findChild<QPushButton*>("btnSupprimerClient"), &QPushButton::clicked,
+            gestionClients, &client::supprimerClient);
+    connect(ui->menu_client->findChild<QPushButton*>("btnMajClient"), &QPushButton::clicked,
+            gestionClients, &client::rafraichirListeClients);
+    connect(ui->menu_client->findChild<QPushButton*>("btnTriClient"), &QPushButton::clicked,
+            gestionClients, &client::trierParNom);
+
+}
+
+menu_employer::~menu_employer()
+{
+    delete ui;
+}
+void menu_employer::rafraichir()
+{
+    QSqlQueryModel* model = emp.afficher();
+    if (model) ui->tableView_2->setModel(model);
+}
+
+// Vide tous les champs du formulaire
+void menu_employer::viderFormulaire()
+{
+    ui->lineEdit_2->clear();
+    ui->lineEdit_4->clear();
+    ui->lineEdit_8->clear();
+    ui->lineEdit_email_2->clear();
+    ui->lineEdit_tel_2->clear();
+    ui->lineEdit_date_2->setDate(QDate::currentDate());
+    ui->dateEdit_recrutement_2->setDate(QDate::currentDate());
+    ui->poste_2->clear();
+    ui->salaire_2->clear();
+}
+
+/**
+ * @brief Vérifie que les champs requis (ID, Nom, Prénom) ne sont pas vides.
+ * @return true si les champs requis sont remplis, sinon false.
+ */
+bool menu_employer::validerChampsRequis()
+{
+    if (ui->lineEdit_2->text().isEmpty()) {
+        QMessageBox::warning(this, "Champ Requis", "L'ID ne peut pas être vide.");
+        ui->lineEdit_2->setFocus();
+        return false;
+    }
+    if (ui->lineEdit_4->text().isEmpty()) {
+        QMessageBox::warning(this, "Champ Requis", "Le Nom ne peut pas être vide.");
+        ui->lineEdit_4->setFocus();
+        return false;
+    }
+    if (ui->lineEdit_8->text().isEmpty()) {
+        QMessageBox::warning(this, "Champ Requis", "Le Prénom ne peut pas être vide.");
+        ui->lineEdit_8->setFocus();
+        return false;
+    }
+
+    // Vérifie si l'email, s'il n'est pas vide, est dans un format acceptable
+    if (!ui->lineEdit_email_2->hasAcceptableInput() && !ui->lineEdit_email_2->text().isEmpty()) {
+        QMessageBox::warning(this, "Format Invalide", "Le format de l'email est incorrect.");
+        ui->lineEdit_email_2->setFocus();
+        return false;
+    }
+
+    return true; // Tous les champs requis sont valides
+}
+
+// --- SLOTS ---
+
+// Bouton AJOUTER
+void menu_employer::on_pushButton_5_clicked()
+{
+    // 1. Vérifier si les champs obligatoires sont remplis
+    if (!validerChampsRequis()) {
+        return; // Arrête l'ajout si la validation échoue
+    }
+
+    // 2. Récupérer les données
+    emp.setId(ui->lineEdit_2->text());
+    emp.setNom(ui->lineEdit_4->text());
+    emp.setPrenom(ui->lineEdit_8->text());
+    emp.setEmail(ui->lineEdit_email_2->text());
+    emp.setTelephone(ui->lineEdit_tel_2->text().toInt());
+    emp.setDateNaissance(ui->lineEdit_date_2->date());
+    emp.setDateRecrutement(ui->dateEdit_recrutement_2->date());
+    emp.setPoste(ui->poste_2->text());
+    emp.setSalaire(ui->salaire_2->text().toDouble()); // Convertit le texte en double
+
+    // 3. Exécuter l'ajout
+    if (emp.ajouter()) {
+        rafraichir();
+        QMessageBox::information(this, "Succès", "Employé ajouté !");
+        viderFormulaire();
+    } else {
+        QMessageBox::critical(this, "Erreur", "Échec ajout (L'ID existe déjà ?)");
+    }
+}
+
+// Bouton SUPPRIMER
+void menu_employer::on_btnSupprimer_clicked()
+{
+    QString id = ui->lineEdit_2->text();
+
+    if (id.isEmpty()) {
+        QMessageBox::warning(this, "Erreur", "Veuillez saisir ou sélectionner un ID à supprimer.");
+        return;
+    }
+
+    if (emp.supprimer(id)) {
+        rafraichir();
+        QMessageBox::information(this, "Succès", "Supprimé !");
+        viderFormulaire();
+    } else {
+        QMessageBox::warning(this, "Erreur", "ID introuvable.");
+    }
+}
+
+// Bouton MODIFIER
+void menu_employer::on_btnModifier_clicked()
+{
+    // 1. Vérifier si les champs obligatoires sont remplis
+    if (!validerChampsRequis()) {
+        return; // Arrête la modification si la validation échoue
+    }
+
+    // 2. Récupérer les données
+    emp.setId(ui->lineEdit_2->text());
+    emp.setNom(ui->lineEdit_4->text());
+    emp.setPrenom(ui->lineEdit_8->text());
+    emp.setEmail(ui->lineEdit_email_2->text());
+    emp.setTelephone(ui->lineEdit_tel_2->text().toInt());
+    emp.setDateNaissance(ui->lineEdit_date_2->date());
+    emp.setDateRecrutement(ui->dateEdit_recrutement_2->date());
+    emp.setPoste(ui->poste_2->text());
+    emp.setSalaire(ui->salaire_2->text().toDouble()); // Convertit le texte en double
+
+    // 3. Exécuter la modification
+    if (emp.modifier()) {
+        rafraichir();
+        QMessageBox::information(this, "Succès", "Modifié !");
+        viderFormulaire();
+    } else {
+        QMessageBox::critical(this, "Erreur", "Échec modification (ID introuvable ?).");
+    }
+}
+
+// Champ de RECHERCHE
+void menu_employer::on_lineEdit_recherche_textChanged(const QString &text)
+{
+    if (text.isEmpty()) {
+        rafraichir();
+    } else {
+        ui->tableView_2->setModel(emp.rechercher(text));
+    }
+}
+
+// Clic sur le TABLEAU (pour pré-remplir le formulaire)
+void menu_employer::on_tableView_2_clicked(const QModelIndex &index)
+{
+    // Récupère l'ID de la première colonne (colonne 0) de la ligne cliquée
+    QString id = ui->tableView_2->model()->data(ui->tableView_2->model()->index(index.row(), 0)).toString();
+    chargerFormulaire(id); // Charge les données de cet ID dans le formulaire
+}
+
+// Charge les données d'un employé (par ID) dans le formulaire
+void menu_employer::chargerFormulaire(const QString& id)
+{
+    QSqlQuery q;
+    q.prepare("SELECT * FROM EMPLOYES WHERE ID_EMPLOYE = :id");
+    q.bindValue(":id", id);
+    if (q.exec() && q.next()) {
+        ui->lineEdit_2->setText(q.value("ID_EMPLOYE").toString());
+        ui->lineEdit_4->setText(q.value("NOMEMPLOYE").toString());
+        ui->lineEdit_8->setText(q.value("PRENOM").toString());
+        ui->lineEdit_email_2->setText(q.value("EMAIL").toString());
+        ui->lineEdit_tel_2->setText(q.value("TELEPHONE").toString());
+        ui->lineEdit_date_2->setDate(q.value("DATENAISSANCE").toDate());
+        ui->dateEdit_recrutement_2->setDate(q.value("DATERECRUTEMENT").toDate());
+        ui->poste_2->setText(q.value("POST").toString());
+        ui->salaire_2->setText(q.value("SALAIRE").toString()); // Charge le salaire
+    }
+}
+void menu_employer::goToPage(QWidget *page)
+{
+    ui->stackedWidget->setCurrentWidget(page);
+}
