@@ -2,6 +2,10 @@
 #define MENU_EMPLOYER_H
 
 #include <QMainWindow>
+#include "employer.h"
+
+// Nécessaire pour QModelIndex
+#include <QModelIndex>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -17,10 +21,24 @@ public:
     explicit menu_employer(QWidget *parent = nullptr);
     ~menu_employer();
 
+private slots:
+    void on_pushButton_5_clicked();
+    void on_btnSupprimer_clicked();
+    void on_btnModifier_clicked();
+    void on_lineEdit_recherche_textChanged(const QString &text);
+    // Correction de la faute de frappe ici (QModelKndex -> QModelIndex)
+    void on_tableView_clicked(const QModelIndex &index);
+
 private:
     Ui::menu_employer *ui;
-
     void goToPage(QWidget *page);
+    Employer emp;
+    void rafraichir();
+    void viderFormulaire();
+    void chargerFormulaire(const QString& id);
+
+    // Fonction de validation ajoutée
+    bool validerChampsRequis();
 };
 
 #endif // MENU_EMPLOYER_H
