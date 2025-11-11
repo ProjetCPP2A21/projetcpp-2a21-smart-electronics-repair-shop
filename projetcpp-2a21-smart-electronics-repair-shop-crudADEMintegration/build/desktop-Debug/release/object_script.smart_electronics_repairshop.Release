@@ -1,0 +1,12 @@
+release/appareil.o
+release/client.o
+release/connection.o
+release/employe.o
+release/fournisseur.o
+release/main.o
+release/smart_electronics_repairshop.o
+release/stock.o
+release/qrc_resources.o
+release/moc_client.o
+release/moc_fournisseur.o
+release/moc_smart_electronics_repairshop.o
