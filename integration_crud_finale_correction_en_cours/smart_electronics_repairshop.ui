@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>menu_employer</class>
- <widget class="QMainWindow" name="menu_employer">
+ <class>osana_dashboard</class>
+ <widget class="QMainWindow" name="osana_dashboard">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -17,8 +17,8 @@
    <widget class="QStackedWidget" name="stackedWidget">
     <property name="geometry">
      <rect>
-      <x>-40</x>
-      <y>-10</y>
+      <x>0</x>
+      <y>-30</y>
       <width>1661</width>
       <height>881</height>
      </rect>
@@ -2840,555 +2840,11 @@ border-top-color: rgb(255, 255, 255);
      </widget>
     </widget>
     <widget class="QWidget" name="menu_fournisseur">
-     <widget class="QWidget" name="leftPane_2">
-      <property name="geometry">
-       <rect>
-        <x>50</x>
-        <y>70</y>
-        <width>468</width>
-        <height>628</height>
-       </rect>
-      </property>
-      <layout class="QVBoxLayout" name="verticalLayout_left_2">
-       <item>
-        <widget class="QGroupBox" name="groupBox_2">
-         <property name="title">
-          <string/>
-         </property>
-         <layout class="QFormLayout" name="formLayout_2">
-          <item row="0" column="0">
-           <widget class="QLabel" name="label_104">
-            <property name="font">
-             <font>
-              <family>Constantia</family>
-              <pointsize>14</pointsize>
-              <italic>false</italic>
-              <bold>false</bold>
-              <underline>true</underline>
-             </font>
-            </property>
-            <property name="text">
-             <string>Formulaire Founrisseur </string>
-            </property>
-            <property name="scaledContents">
-             <bool>false</bool>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="0">
-           <widget class="QLabel" name="label_id_2">
-            <property name="text">
-             <string>ID Fournisseur:</string>
-            </property>
-           </widget>
-          </item>
-          <item row="2" column="0">
-           <widget class="QLabel" name="label_nom_entreprise_2">
-            <property name="text">
-             <string>Nom Entreprise:</string>
-            </property>
-           </widget>
-          </item>
-          <item row="2" column="1">
-           <widget class="QLineEdit" name="leNomEntreprise_2">
-            <property name="styleSheet">
-             <string notr="true">color: rgb(106, 106, 106);
-background-color: rgb(255, 255, 255);</string>
-            </property>
-            <property name="placeholderText">
-             <string>Nom de l'entreprise</string>
-            </property>
-           </widget>
-          </item>
-          <item row="3" column="0">
-           <widget class="QLabel" name="label_contact_nom_2">
-            <property name="text">
-             <string>Contact Nom:</string>
-            </property>
-           </widget>
-          </item>
-          <item row="3" column="1">
-           <widget class="QLineEdit" name="leContactNom_2">
-            <property name="styleSheet">
-             <string notr="true">background-color: rgb(255, 255, 255);
-color: rgb(106, 106, 106);
-</string>
-            </property>
-            <property name="placeholderText">
-             <string>Nom du contact</string>
-            </property>
-           </widget>
-          </item>
-          <item row="4" column="0">
-           <widget class="QLabel" name="label_contact_prenom_2">
-            <property name="text">
-             <string>Contact Prénom:</string>
-            </property>
-           </widget>
-          </item>
-          <item row="4" column="1">
-           <widget class="QLineEdit" name="leContactPrenom_2">
-            <property name="styleSheet">
-             <string notr="true">background-color: rgb(255, 255, 255);
-color: rgb(106, 106, 106);
-</string>
-            </property>
-            <property name="placeholderText">
-             <string>Prénom du contact</string>
-            </property>
-           </widget>
-          </item>
-          <item row="5" column="0">
-           <widget class="QLabel" name="label_telephone_2">
-            <property name="text">
-             <string>Téléphone:</string>
-            </property>
-           </widget>
-          </item>
-          <item row="5" column="1">
-           <widget class="QLineEdit" name="leTelephone_2">
-            <property name="styleSheet">
-             <string notr="true">background-color: rgb(255, 255, 255);
-color: rgb(106, 106, 106);</string>
-            </property>
-            <property name="placeholderText">
-             <string>Numéro de téléphone</string>
-            </property>
-           </widget>
-          </item>
-          <item row="6" column="0">
-           <widget class="QLabel" name="label_email_2">
-            <property name="text">
-             <string>Email:</string>
-            </property>
-           </widget>
-          </item>
-          <item row="6" column="1">
-           <widget class="QLineEdit" name="leEmail_2">
-            <property name="styleSheet">
-             <string notr="true">background-color: rgb(255, 255, 255);
-color: rgb(106, 106, 106);</string>
-            </property>
-            <property name="placeholderText">
-             <string>Adresse email</string>
-            </property>
-           </widget>
-          </item>
-          <item row="7" column="0">
-           <widget class="QLabel" name="label_type_pieces_2">
-            <property name="text">
-             <string>Type de Pièces:</string>
-            </property>
-           </widget>
-          </item>
-          <item row="7" column="1">
-           <widget class="QLineEdit" name="leTypePieces_2">
-            <property name="styleSheet">
-             <string notr="true">background-color: rgb(255, 255, 255);
-color: rgb(106, 106, 106);</string>
-            </property>
-            <property name="placeholderText">
-             <string>e.g., Écrans, Batteries, Circuits</string>
-            </property>
-           </widget>
-          </item>
-          <item row="8" column="0">
-           <widget class="QLabel" name="label_adresse_2">
-            <property name="text">
-             <string>Adresse:</string>
-            </property>
-           </widget>
-          </item>
-          <item row="8" column="1">
-           <widget class="QTextEdit" name="teAdresse_2">
-            <property name="styleSheet">
-             <string notr="true">background-color: rgb(255, 255, 255);
-color: rgb(106, 106, 106);</string>
-            </property>
-            <property name="placeholderText">
-             <string>Adresse complète</string>
-            </property>
-           </widget>
-          </item>
-          <item row="9" column="0">
-           <widget class="QLabel" name="label_date_partenariat_2">
-            <property name="text">
-             <string>Date de Partenariat:</string>
-            </property>
-           </widget>
-          </item>
-          <item row="9" column="1">
-           <widget class="QDateEdit" name="deDatePartenariat_2">
-            <property name="styleSheet">
-             <string notr="true">background-color: rgb(255, 255, 255);
-color: rgb(72, 72, 72);</string>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="1">
-           <widget class="QLineEdit" name="leld_2">
-            <property name="styleSheet">
-             <string notr="true">background-color: rgb(255, 255, 255);
-color: rgb(106, 106, 106);</string>
-            </property>
-            <property name="placeholderText">
-             <string>ID Fournisseur</string>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-       </item>
-       <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_btns_2">
-         <item>
-          <widget class="QPushButton" name="btnAjouter_2">
-           <property name="styleSheet">
-            <string notr="true">background-color: rgb(0, 255, 0);
-background-color: rgb(0, 170, 0);
-background-color: rgb(0, 170, 0);</string>
-           </property>
-           <property name="text">
-            <string>Ajouter</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-      </layout>
-     </widget>
-     <widget class="QPushButton" name="tri_2">
-      <property name="geometry">
-       <rect>
-        <x>980</x>
-        <y>130</y>
-        <width>90</width>
-        <height>29</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: rgb(154, 211, 238);</string>
-      </property>
-      <property name="text">
-       <string>Trier</string>
-      </property>
-     </widget>
-     <widget class="QWidget" name="rightPane_2">
-      <property name="geometry">
-       <rect>
-        <x>525</x>
-        <y>70</y>
-        <width>1773</width>
-        <height>628</height>
-       </rect>
-      </property>
-      <layout class="QVBoxLayout" name="verticalLayout_right_2">
-       <item>
-        <layout class="QHBoxLayout" name="layoutFilters_2"/>
-       </item>
-       <item>
-        <widget class="QTableWidget" name="tabaff_4">
-         <property name="minimumSize">
-          <size>
-           <width>1131</width>
-           <height>211</height>
-          </size>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">background-color:rgb(139, 139, 139);
-color :rgb(255, 255, 255);
-</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </widget>
-     <widget class="QPushButton" name="retour_11">
-      <property name="geometry">
-       <rect>
-        <x>1410</x>
-        <y>700</y>
-        <width>93</width>
-        <height>29</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: rgb(253, 145, 4);</string>
-      </property>
-      <property name="text">
-       <string>Retour</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="maj_2">
-      <property name="geometry">
-       <rect>
-        <x>910</x>
-        <y>110</y>
-        <width>90</width>
-        <height>29</height>
-       </rect>
-      </property>
-      <property name="palette">
-       <palette>
-        <active>
-         <colorrole role="Button">
-          <brush brushstyle="SolidPattern">
-           <color alpha="255">
-            <red>18</red>
-            <green>153</green>
-            <blue>29</blue>
-           </color>
-          </brush>
-         </colorrole>
-         <colorrole role="Base">
-          <brush brushstyle="SolidPattern">
-           <color alpha="255">
-            <red>18</red>
-            <green>153</green>
-            <blue>29</blue>
-           </color>
-          </brush>
-         </colorrole>
-         <colorrole role="Window">
-          <brush brushstyle="SolidPattern">
-           <color alpha="255">
-            <red>18</red>
-            <green>153</green>
-            <blue>29</blue>
-           </color>
-          </brush>
-         </colorrole>
-         <colorrole role="Highlight">
-          <brush brushstyle="SolidPattern">
-           <color alpha="255">
-            <red>31</red>
-            <green>155</green>
-            <blue>93</blue>
-           </color>
-          </brush>
-         </colorrole>
-        </active>
-        <inactive>
-         <colorrole role="Button">
-          <brush brushstyle="SolidPattern">
-           <color alpha="255">
-            <red>18</red>
-            <green>153</green>
-            <blue>29</blue>
-           </color>
-          </brush>
-         </colorrole>
-         <colorrole role="Base">
-          <brush brushstyle="SolidPattern">
-           <color alpha="255">
-            <red>18</red>
-            <green>153</green>
-            <blue>29</blue>
-           </color>
-          </brush>
-         </colorrole>
-         <colorrole role="Window">
-          <brush brushstyle="SolidPattern">
-           <color alpha="255">
-            <red>18</red>
-            <green>153</green>
-            <blue>29</blue>
-           </color>
-          </brush>
-         </colorrole>
-         <colorrole role="Highlight">
-          <brush brushstyle="SolidPattern">
-           <color alpha="255">
-            <red>31</red>
-            <green>155</green>
-            <blue>93</blue>
-           </color>
-          </brush>
-         </colorrole>
-        </inactive>
-        <disabled>
-         <colorrole role="Button">
-          <brush brushstyle="SolidPattern">
-           <color alpha="255">
-            <red>18</red>
-            <green>153</green>
-            <blue>29</blue>
-           </color>
-          </brush>
-         </colorrole>
-         <colorrole role="Base">
-          <brush brushstyle="SolidPattern">
-           <color alpha="255">
-            <red>18</red>
-            <green>153</green>
-            <blue>29</blue>
-           </color>
-          </brush>
-         </colorrole>
-         <colorrole role="Window">
-          <brush brushstyle="SolidPattern">
-           <color alpha="255">
-            <red>18</red>
-            <green>153</green>
-            <blue>29</blue>
-           </color>
-          </brush>
-         </colorrole>
-         <colorrole role="Highlight">
-          <brush brushstyle="SolidPattern">
-           <color alpha="255">
-            <red>31</red>
-            <green>155</green>
-            <blue>93</blue>
-           </color>
-          </brush>
-         </colorrole>
-        </disabled>
-       </palette>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-COLOR:rgb(18, 153, 29)</string>
-      </property>
-      <property name="text">
-       <string>Mise à jour</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="rechercher_2">
-      <property name="geometry">
-       <rect>
-        <x>540</x>
-        <y>110</y>
-        <width>90</width>
-        <height>29</height>
-       </rect>
-      </property>
-      <property name="palette">
-       <palette>
-        <active>
-         <colorrole role="Button">
-          <brush brushstyle="SolidPattern">
-           <color alpha="255">
-            <red>0</red>
-            <green>0</green>
-            <blue>74</blue>
-           </color>
-          </brush>
-         </colorrole>
-         <colorrole role="Base">
-          <brush brushstyle="SolidPattern">
-           <color alpha="255">
-            <red>0</red>
-            <green>0</green>
-            <blue>74</blue>
-           </color>
-          </brush>
-         </colorrole>
-         <colorrole role="Window">
-          <brush brushstyle="SolidPattern">
-           <color alpha="255">
-            <red>0</red>
-            <green>0</green>
-            <blue>74</blue>
-           </color>
-          </brush>
-         </colorrole>
-         <colorrole role="Highlight">
-          <brush brushstyle="SolidPattern">
-           <color alpha="255">
-            <red>31</red>
-            <green>155</green>
-            <blue>93</blue>
-           </color>
-          </brush>
-         </colorrole>
-        </active>
-        <inactive>
-         <colorrole role="Button">
-          <brush brushstyle="SolidPattern">
-           <color alpha="255">
-            <red>0</red>
-            <green>0</green>
-            <blue>74</blue>
-           </color>
-          </brush>
-         </colorrole>
-         <colorrole role="Base">
-          <brush brushstyle="SolidPattern">
-           <color alpha="255">
-            <red>0</red>
-            <green>0</green>
-            <blue>74</blue>
-           </color>
-          </brush>
-         </colorrole>
-         <colorrole role="Window">
-          <brush brushstyle="SolidPattern">
-           <color alpha="255">
-            <red>0</red>
-            <green>0</green>
-            <blue>74</blue>
-           </color>
-          </brush>
-         </colorrole>
-         <colorrole role="Highlight">
-          <brush brushstyle="SolidPattern">
-           <color alpha="255">
-            <red>31</red>
-            <green>155</green>
-            <blue>93</blue>
-           </color>
-          </brush>
-         </colorrole>
-        </inactive>
-        <disabled>
-         <colorrole role="Button">
-          <brush brushstyle="SolidPattern">
-           <color alpha="255">
-            <red>0</red>
-            <green>0</green>
-            <blue>74</blue>
-           </color>
-          </brush>
-         </colorrole>
-         <colorrole role="Base">
-          <brush brushstyle="SolidPattern">
-           <color alpha="255">
-            <red>0</red>
-            <green>0</green>
-            <blue>74</blue>
-           </color>
-          </brush>
-         </colorrole>
-         <colorrole role="Window">
-          <brush brushstyle="SolidPattern">
-           <color alpha="255">
-            <red>0</red>
-            <green>0</green>
-            <blue>74</blue>
-           </color>
-          </brush>
-         </colorrole>
-         <colorrole role="Highlight">
-          <brush brushstyle="SolidPattern">
-           <color alpha="255">
-            <red>31</red>
-            <green>155</green>
-            <blue>93</blue>
-           </color>
-          </brush>
-         </colorrole>
-        </disabled>
-       </palette>
-      </property>
-      <property name="text">
-       <string>Rechercher</string>
-      </property>
-     </widget>
      <widget class="QPushButton" name="Modifier_2">
       <property name="geometry">
        <rect>
-        <x>1110</x>
-        <y>110</y>
+        <x>1070</x>
+        <y>80</y>
         <width>90</width>
         <height>29</height>
        </rect>
@@ -3518,11 +2974,602 @@ color :rgb(255, 255, 255);
        <string>Modifier</string>
       </property>
      </widget>
+     <widget class="QTableWidget" name="fournisseurtabWidget">
+      <property name="geometry">
+       <rect>
+        <x>510</x>
+        <y>130</y>
+        <width>1081</width>
+        <height>501</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(153, 153, 153);
+color: rgb(0, 0, 0);</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="maj_2">
+      <property name="geometry">
+       <rect>
+        <x>870</x>
+        <y>80</y>
+        <width>90</width>
+        <height>29</height>
+       </rect>
+      </property>
+      <property name="palette">
+       <palette>
+        <active>
+         <colorrole role="Button">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>18</red>
+            <green>153</green>
+            <blue>29</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="Base">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>18</red>
+            <green>153</green>
+            <blue>29</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="Window">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>18</red>
+            <green>153</green>
+            <blue>29</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="Highlight">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>31</red>
+            <green>155</green>
+            <blue>93</blue>
+           </color>
+          </brush>
+         </colorrole>
+        </active>
+        <inactive>
+         <colorrole role="Button">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>18</red>
+            <green>153</green>
+            <blue>29</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="Base">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>18</red>
+            <green>153</green>
+            <blue>29</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="Window">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>18</red>
+            <green>153</green>
+            <blue>29</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="Highlight">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>31</red>
+            <green>155</green>
+            <blue>93</blue>
+           </color>
+          </brush>
+         </colorrole>
+        </inactive>
+        <disabled>
+         <colorrole role="Button">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>18</red>
+            <green>153</green>
+            <blue>29</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="Base">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>18</red>
+            <green>153</green>
+            <blue>29</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="Window">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>18</red>
+            <green>153</green>
+            <blue>29</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="Highlight">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>31</red>
+            <green>155</green>
+            <blue>93</blue>
+           </color>
+          </brush>
+         </colorrole>
+        </disabled>
+       </palette>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-COLOR:rgb(18, 153, 29)</string>
+      </property>
+      <property name="text">
+       <string>Mise à jour</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="PDF_2">
+      <property name="geometry">
+       <rect>
+        <x>1400</x>
+        <y>80</y>
+        <width>90</width>
+        <height>29</height>
+       </rect>
+      </property>
+      <property name="palette">
+       <palette>
+        <active>
+         <colorrole role="Button">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>253</red>
+            <green>145</green>
+            <blue>4</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="Base">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>253</red>
+            <green>145</green>
+            <blue>4</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="Window">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>253</red>
+            <green>145</green>
+            <blue>4</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="Highlight">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>31</red>
+            <green>155</green>
+            <blue>93</blue>
+           </color>
+          </brush>
+         </colorrole>
+        </active>
+        <inactive>
+         <colorrole role="Button">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>253</red>
+            <green>145</green>
+            <blue>4</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="Base">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>253</red>
+            <green>145</green>
+            <blue>4</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="Window">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>253</red>
+            <green>145</green>
+            <blue>4</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="Highlight">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>31</red>
+            <green>155</green>
+            <blue>93</blue>
+           </color>
+          </brush>
+         </colorrole>
+        </inactive>
+        <disabled>
+         <colorrole role="Button">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>253</red>
+            <green>145</green>
+            <blue>4</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="Base">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>253</red>
+            <green>145</green>
+            <blue>4</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="Window">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>253</red>
+            <green>145</green>
+            <blue>4</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="Highlight">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>31</red>
+            <green>155</green>
+            <blue>93</blue>
+           </color>
+          </brush>
+         </colorrole>
+        </disabled>
+       </palette>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(253, 145, 4);</string>
+      </property>
+      <property name="text">
+       <string>Exporter</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="retour_11">
+      <property name="geometry">
+       <rect>
+        <x>1370</x>
+        <y>670</y>
+        <width>93</width>
+        <height>29</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(253, 145, 4);</string>
+      </property>
+      <property name="text">
+       <string>Retour</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="rechercher_2">
+      <property name="geometry">
+       <rect>
+        <x>500</x>
+        <y>80</y>
+        <width>90</width>
+        <height>29</height>
+       </rect>
+      </property>
+      <property name="palette">
+       <palette>
+        <active>
+         <colorrole role="Button">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>0</red>
+            <green>0</green>
+            <blue>74</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="Base">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>0</red>
+            <green>0</green>
+            <blue>74</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="Window">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>0</red>
+            <green>0</green>
+            <blue>74</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="Highlight">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>31</red>
+            <green>155</green>
+            <blue>93</blue>
+           </color>
+          </brush>
+         </colorrole>
+        </active>
+        <inactive>
+         <colorrole role="Button">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>0</red>
+            <green>0</green>
+            <blue>74</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="Base">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>0</red>
+            <green>0</green>
+            <blue>74</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="Window">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>0</red>
+            <green>0</green>
+            <blue>74</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="Highlight">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>31</red>
+            <green>155</green>
+            <blue>93</blue>
+           </color>
+          </brush>
+         </colorrole>
+        </inactive>
+        <disabled>
+         <colorrole role="Button">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>0</red>
+            <green>0</green>
+            <blue>74</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="Base">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>0</red>
+            <green>0</green>
+            <blue>74</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="Window">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>0</red>
+            <green>0</green>
+            <blue>74</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="Highlight">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>31</red>
+            <green>155</green>
+            <blue>93</blue>
+           </color>
+          </brush>
+         </colorrole>
+        </disabled>
+       </palette>
+      </property>
+      <property name="text">
+       <string>Rechercher</string>
+      </property>
+     </widget>
+     <widget class="QWidget" name="rightPane_2">
+      <property name="geometry">
+       <rect>
+        <x>485</x>
+        <y>40</y>
+        <width>1773</width>
+        <height>628</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_right_4">
+       <item>
+        <layout class="QHBoxLayout" name="layoutFilters_4"/>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QPushButton" name="tri_3">
+      <property name="geometry">
+       <rect>
+        <x>970</x>
+        <y>80</y>
+        <width>90</width>
+        <height>29</height>
+       </rect>
+      </property>
+      <property name="palette">
+       <palette>
+        <active>
+         <colorrole role="Button">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>85</red>
+            <green>170</green>
+            <blue>255</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="Base">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>85</red>
+            <green>170</green>
+            <blue>255</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="Window">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>85</red>
+            <green>170</green>
+            <blue>255</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="Highlight">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>31</red>
+            <green>155</green>
+            <blue>93</blue>
+           </color>
+          </brush>
+         </colorrole>
+        </active>
+        <inactive>
+         <colorrole role="Button">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>85</red>
+            <green>170</green>
+            <blue>255</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="Base">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>85</red>
+            <green>170</green>
+            <blue>255</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="Window">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>85</red>
+            <green>170</green>
+            <blue>255</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="Highlight">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>31</red>
+            <green>155</green>
+            <blue>93</blue>
+           </color>
+          </brush>
+         </colorrole>
+        </inactive>
+        <disabled>
+         <colorrole role="Button">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>85</red>
+            <green>170</green>
+            <blue>255</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="Base">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>85</red>
+            <green>170</green>
+            <blue>255</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="Window">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>85</red>
+            <green>170</green>
+            <blue>255</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="Highlight">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>31</red>
+            <green>155</green>
+            <blue>93</blue>
+           </color>
+          </brush>
+         </colorrole>
+        </disabled>
+       </palette>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(85, 170, 255);</string>
+      </property>
+      <property name="text">
+       <string>Trier</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btnStatistiques_2">
+      <property name="geometry">
+       <rect>
+        <x>1280</x>
+        <y>80</y>
+        <width>111</width>
+        <height>29</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Statistiques</string>
+      </property>
+     </widget>
      <widget class="QLineEdit" name="Id_2">
       <property name="geometry">
        <rect>
-        <x>640</x>
-        <y>110</y>
+        <x>600</x>
+        <y>80</y>
         <width>261</width>
         <height>28</height>
        </rect>
@@ -3734,306 +3781,11 @@ color: rgb(106, 106, 106);</string>
        <string/>
       </property>
      </widget>
-     <widget class="QPushButton" name="PDF_2">
-      <property name="geometry">
-       <rect>
-        <x>1440</x>
-        <y>110</y>
-        <width>90</width>
-        <height>29</height>
-       </rect>
-      </property>
-      <property name="palette">
-       <palette>
-        <active>
-         <colorrole role="Button">
-          <brush brushstyle="SolidPattern">
-           <color alpha="255">
-            <red>253</red>
-            <green>145</green>
-            <blue>4</blue>
-           </color>
-          </brush>
-         </colorrole>
-         <colorrole role="Base">
-          <brush brushstyle="SolidPattern">
-           <color alpha="255">
-            <red>253</red>
-            <green>145</green>
-            <blue>4</blue>
-           </color>
-          </brush>
-         </colorrole>
-         <colorrole role="Window">
-          <brush brushstyle="SolidPattern">
-           <color alpha="255">
-            <red>253</red>
-            <green>145</green>
-            <blue>4</blue>
-           </color>
-          </brush>
-         </colorrole>
-         <colorrole role="Highlight">
-          <brush brushstyle="SolidPattern">
-           <color alpha="255">
-            <red>31</red>
-            <green>155</green>
-            <blue>93</blue>
-           </color>
-          </brush>
-         </colorrole>
-        </active>
-        <inactive>
-         <colorrole role="Button">
-          <brush brushstyle="SolidPattern">
-           <color alpha="255">
-            <red>253</red>
-            <green>145</green>
-            <blue>4</blue>
-           </color>
-          </brush>
-         </colorrole>
-         <colorrole role="Base">
-          <brush brushstyle="SolidPattern">
-           <color alpha="255">
-            <red>253</red>
-            <green>145</green>
-            <blue>4</blue>
-           </color>
-          </brush>
-         </colorrole>
-         <colorrole role="Window">
-          <brush brushstyle="SolidPattern">
-           <color alpha="255">
-            <red>253</red>
-            <green>145</green>
-            <blue>4</blue>
-           </color>
-          </brush>
-         </colorrole>
-         <colorrole role="Highlight">
-          <brush brushstyle="SolidPattern">
-           <color alpha="255">
-            <red>31</red>
-            <green>155</green>
-            <blue>93</blue>
-           </color>
-          </brush>
-         </colorrole>
-        </inactive>
-        <disabled>
-         <colorrole role="Button">
-          <brush brushstyle="SolidPattern">
-           <color alpha="255">
-            <red>253</red>
-            <green>145</green>
-            <blue>4</blue>
-           </color>
-          </brush>
-         </colorrole>
-         <colorrole role="Base">
-          <brush brushstyle="SolidPattern">
-           <color alpha="255">
-            <red>253</red>
-            <green>145</green>
-            <blue>4</blue>
-           </color>
-          </brush>
-         </colorrole>
-         <colorrole role="Window">
-          <brush brushstyle="SolidPattern">
-           <color alpha="255">
-            <red>253</red>
-            <green>145</green>
-            <blue>4</blue>
-           </color>
-          </brush>
-         </colorrole>
-         <colorrole role="Highlight">
-          <brush brushstyle="SolidPattern">
-           <color alpha="255">
-            <red>31</red>
-            <green>155</green>
-            <blue>93</blue>
-           </color>
-          </brush>
-         </colorrole>
-        </disabled>
-       </palette>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: rgb(253, 145, 4);</string>
-      </property>
-      <property name="text">
-       <string>Exporter</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="tri_3">
-      <property name="geometry">
-       <rect>
-        <x>1010</x>
-        <y>110</y>
-        <width>90</width>
-        <height>29</height>
-       </rect>
-      </property>
-      <property name="palette">
-       <palette>
-        <active>
-         <colorrole role="Button">
-          <brush brushstyle="SolidPattern">
-           <color alpha="255">
-            <red>85</red>
-            <green>170</green>
-            <blue>255</blue>
-           </color>
-          </brush>
-         </colorrole>
-         <colorrole role="Base">
-          <brush brushstyle="SolidPattern">
-           <color alpha="255">
-            <red>85</red>
-            <green>170</green>
-            <blue>255</blue>
-           </color>
-          </brush>
-         </colorrole>
-         <colorrole role="Window">
-          <brush brushstyle="SolidPattern">
-           <color alpha="255">
-            <red>85</red>
-            <green>170</green>
-            <blue>255</blue>
-           </color>
-          </brush>
-         </colorrole>
-         <colorrole role="Highlight">
-          <brush brushstyle="SolidPattern">
-           <color alpha="255">
-            <red>31</red>
-            <green>155</green>
-            <blue>93</blue>
-           </color>
-          </brush>
-         </colorrole>
-        </active>
-        <inactive>
-         <colorrole role="Button">
-          <brush brushstyle="SolidPattern">
-           <color alpha="255">
-            <red>85</red>
-            <green>170</green>
-            <blue>255</blue>
-           </color>
-          </brush>
-         </colorrole>
-         <colorrole role="Base">
-          <brush brushstyle="SolidPattern">
-           <color alpha="255">
-            <red>85</red>
-            <green>170</green>
-            <blue>255</blue>
-           </color>
-          </brush>
-         </colorrole>
-         <colorrole role="Window">
-          <brush brushstyle="SolidPattern">
-           <color alpha="255">
-            <red>85</red>
-            <green>170</green>
-            <blue>255</blue>
-           </color>
-          </brush>
-         </colorrole>
-         <colorrole role="Highlight">
-          <brush brushstyle="SolidPattern">
-           <color alpha="255">
-            <red>31</red>
-            <green>155</green>
-            <blue>93</blue>
-           </color>
-          </brush>
-         </colorrole>
-        </inactive>
-        <disabled>
-         <colorrole role="Button">
-          <brush brushstyle="SolidPattern">
-           <color alpha="255">
-            <red>85</red>
-            <green>170</green>
-            <blue>255</blue>
-           </color>
-          </brush>
-         </colorrole>
-         <colorrole role="Base">
-          <brush brushstyle="SolidPattern">
-           <color alpha="255">
-            <red>85</red>
-            <green>170</green>
-            <blue>255</blue>
-           </color>
-          </brush>
-         </colorrole>
-         <colorrole role="Window">
-          <brush brushstyle="SolidPattern">
-           <color alpha="255">
-            <red>85</red>
-            <green>170</green>
-            <blue>255</blue>
-           </color>
-          </brush>
-         </colorrole>
-         <colorrole role="Highlight">
-          <brush brushstyle="SolidPattern">
-           <color alpha="255">
-            <red>31</red>
-            <green>155</green>
-            <blue>93</blue>
-           </color>
-          </brush>
-         </colorrole>
-        </disabled>
-       </palette>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: rgb(85, 170, 255);</string>
-      </property>
-      <property name="text">
-       <string>Trier</string>
-      </property>
-     </widget>
-     <widget class="QTableWidget" name="fournisseurtabWidget">
-      <property name="geometry">
-       <rect>
-        <x>550</x>
-        <y>160</y>
-        <width>1081</width>
-        <height>501</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: rgb(153, 153, 153);
-color: rgb(0, 0, 0);</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="btnStatistiques_2">
-      <property name="geometry">
-       <rect>
-        <x>1320</x>
-        <y>110</y>
-        <width>111</width>
-        <height>29</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Statistiques</string>
-      </property>
-     </widget>
      <widget class="QPushButton" name="btnSupprimer_2">
       <property name="geometry">
        <rect>
-        <x>1210</x>
-        <y>110</y>
+        <x>1170</x>
+        <y>80</y>
         <width>101</width>
         <height>29</height>
        </rect>
@@ -4045,45 +3797,280 @@ color: rgb(0, 0, 0);</string>
        <string>Supprimer</string>
       </property>
      </widget>
-    </widget>
-    <widget class="QWidget" name="menu_stock">
-     <widget class="QLabel" name="label_18">
+     <widget class="QWidget" name="leftPane_2">
       <property name="geometry">
        <rect>
-        <x>140</x>
-        <y>70</y>
-        <width>141</width>
-        <height>20</height>
+        <x>10</x>
+        <y>40</y>
+        <width>468</width>
+        <height>628</height>
        </rect>
       </property>
-      <property name="styleSheet">
-       <string notr="true">color: rgb(255, 255, 255);</string>
+      <layout class="QVBoxLayout" name="verticalLayout_left_4">
+       <item>
+        <widget class="QGroupBox" name="groupBox_4">
+         <property name="title">
+          <string/>
+         </property>
+         <layout class="QFormLayout" name="formLayout_4">
+          <item row="0" column="0">
+           <widget class="QLabel" name="label_107">
+            <property name="font">
+             <font>
+              <family>Constantia</family>
+              <pointsize>14</pointsize>
+              <italic>false</italic>
+              <bold>false</bold>
+              <underline>true</underline>
+             </font>
+            </property>
+            <property name="text">
+             <string>Formulaire Founrisseur </string>
+            </property>
+            <property name="scaledContents">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="label_id_4">
+            <property name="text">
+             <string>ID Fournisseur:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0">
+           <widget class="QLabel" name="label_nom_entreprise_4">
+            <property name="text">
+             <string>Nom Entreprise:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <widget class="QLineEdit" name="leNomEntreprise_4">
+            <property name="styleSheet">
+             <string notr="true">color: rgb(106, 106, 106);
+background-color: rgb(255, 255, 255);</string>
+            </property>
+            <property name="placeholderText">
+             <string>Nom de l'entreprise</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="0">
+           <widget class="QLabel" name="label_contact_nom_4">
+            <property name="text">
+             <string>Contact Nom:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="1">
+           <widget class="QLineEdit" name="leContactNom_4">
+            <property name="styleSheet">
+             <string notr="true">background-color: rgb(255, 255, 255);
+color: rgb(106, 106, 106);
+</string>
+            </property>
+            <property name="placeholderText">
+             <string>Nom du contact</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="0">
+           <widget class="QLabel" name="label_contact_prenom_4">
+            <property name="text">
+             <string>Contact Prénom:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="1">
+           <widget class="QLineEdit" name="leContactPrenom_4">
+            <property name="styleSheet">
+             <string notr="true">background-color: rgb(255, 255, 255);
+color: rgb(106, 106, 106);
+</string>
+            </property>
+            <property name="placeholderText">
+             <string>Prénom du contact</string>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="0">
+           <widget class="QLabel" name="label_telephone_4">
+            <property name="text">
+             <string>Téléphone:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="1">
+           <widget class="QLineEdit" name="leTelephone_4">
+            <property name="styleSheet">
+             <string notr="true">background-color: rgb(255, 255, 255);
+color: rgb(106, 106, 106);</string>
+            </property>
+            <property name="placeholderText">
+             <string>Numéro de téléphone</string>
+            </property>
+           </widget>
+          </item>
+          <item row="6" column="0">
+           <widget class="QLabel" name="label_email_4">
+            <property name="text">
+             <string>Email:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="6" column="1">
+           <widget class="QLineEdit" name="leEmail_4">
+            <property name="styleSheet">
+             <string notr="true">background-color: rgb(255, 255, 255);
+color: rgb(106, 106, 106);</string>
+            </property>
+            <property name="placeholderText">
+             <string>Adresse email</string>
+            </property>
+           </widget>
+          </item>
+          <item row="7" column="0">
+           <widget class="QLabel" name="label_type_pieces_4">
+            <property name="text">
+             <string>Type de Pièces:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="7" column="1">
+           <widget class="QLineEdit" name="leTypePieces_4">
+            <property name="styleSheet">
+             <string notr="true">background-color: rgb(255, 255, 255);
+color: rgb(106, 106, 106);</string>
+            </property>
+            <property name="placeholderText">
+             <string>e.g., Écrans, Batteries, Circuits</string>
+            </property>
+           </widget>
+          </item>
+          <item row="8" column="0">
+           <widget class="QLabel" name="label_adresse_4">
+            <property name="text">
+             <string>Adresse:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="8" column="1">
+           <widget class="QTextEdit" name="teAdresse_4">
+            <property name="styleSheet">
+             <string notr="true">background-color: rgb(255, 255, 255);
+color: rgb(106, 106, 106);</string>
+            </property>
+            <property name="placeholderText">
+             <string>Adresse complète</string>
+            </property>
+           </widget>
+          </item>
+          <item row="9" column="0">
+           <widget class="QLabel" name="label_date_partenariat_4">
+            <property name="text">
+             <string>Date de Partenariat:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="9" column="1">
+           <widget class="QDateEdit" name="deDatePartenariat_4">
+            <property name="styleSheet">
+             <string notr="true">background-color: rgb(255, 255, 255);
+color: rgb(72, 72, 72);</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QLineEdit" name="leld_4">
+            <property name="styleSheet">
+             <string notr="true">background-color: rgb(255, 255, 255);
+color: rgb(106, 106, 106);</string>
+            </property>
+            <property name="placeholderText">
+             <string>ID Fournisseur</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_btns_4">
+         <item>
+          <widget class="QPushButton" name="btnAjouter_4">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(0, 255, 0);
+background-color: rgb(0, 170, 0);
+background-color: rgb(0, 170, 0);</string>
+           </property>
+           <property name="text">
+            <string>Ajouter</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QTableWidget" name="tabaff_6">
+      <property name="geometry">
+       <rect>
+        <x>510</x>
+        <y>130</y>
+        <width>1131</width>
+        <height>500</height>
+       </rect>
       </property>
-      <property name="text">
-       <string>Ajouter une piéce</string>
+      <property name="minimumSize">
+       <size>
+        <width>1131</width>
+        <height>211</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color:rgb(139, 139, 139);
+color :rgb(255, 255, 255);
+</string>
       </property>
      </widget>
+     <zorder>fournisseurtabWidget</zorder>
+     <zorder>retour_11</zorder>
+     <zorder>rechercher_2</zorder>
+     <zorder>rightPane_2</zorder>
+     <zorder>tri_3</zorder>
+     <zorder>btnStatistiques_2</zorder>
+     <zorder>Id_2</zorder>
+     <zorder>btnSupprimer_2</zorder>
+     <zorder>leftPane_2</zorder>
+     <zorder>Modifier_2</zorder>
+     <zorder>PDF_2</zorder>
+     <zorder>maj_2</zorder>
+     <zorder>tabaff_6</zorder>
+    </widget>
+    <widget class="QWidget" name="menu_stock">
      <widget class="QPushButton" name="retour_5">
       <property name="geometry">
        <rect>
-        <x>1430</x>
-        <y>660</y>
+        <x>740</x>
+        <y>520</y>
         <width>93</width>
         <height>29</height>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(253, 145, 4);</string>
+       <string notr="true">background-color: rgb(253, 7, 27);</string>
       </property>
       <property name="text">
        <string>retour</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_3">
+     <widget class="QPushButton" name="btmodifier_stock_3">
       <property name="geometry">
        <rect>
-        <x>1270</x>
-        <y>210</y>
+        <x>1160</x>
+        <y>150</y>
         <width>93</width>
         <height>29</height>
        </rect>
@@ -4095,40 +4082,11 @@ color: rgb(0, 0, 0);</string>
        <string>Modifier</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_11">
+     <widget class="QPushButton" name="btsupprimer_stock_3">
       <property name="geometry">
        <rect>
-        <x>230</x>
-        <y>550</y>
-        <width>93</width>
-        <height>29</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: rgb(253, 7, 27);</string>
-      </property>
-      <property name="text">
-       <string>Supprimer</string>
-      </property>
-     </widget>
-     <widget class="QLineEdit" name="lineEdit_20">
-      <property name="geometry">
-       <rect>
-        <x>220</x>
-        <y>490</y>
-        <width>113</width>
-        <height>26</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: rgb(255, 255, 255);</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_2">
-      <property name="geometry">
-       <rect>
-        <x>1380</x>
-        <y>210</y>
+        <x>1310</x>
+        <y>150</y>
         <width>93</width>
         <height>29</height>
        </rect>
@@ -4144,7 +4102,7 @@ color: rgb(0, 0, 0);</string>
       <property name="geometry">
        <rect>
         <x>90</x>
-        <y>330</y>
+        <y>310</y>
         <width>71</width>
         <height>20</height>
        </rect>
@@ -4156,24 +4114,25 @@ color: rgb(0, 0, 0);</string>
        <string>Quantité</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_11">
+     <widget class="QLineEdit" name="lineEdit_IDstock_3">
       <property name="geometry">
        <rect>
         <x>220</x>
-        <y>130</y>
+        <y>110</y>
         <width>113</width>
         <height>26</height>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(255, 255, 255);</string>
+       <string notr="true">color: rgb(15, 15, 15);
+background-color: rgb(255, 255, 255);</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_13">
       <property name="geometry">
        <rect>
         <x>90</x>
-        <y>450</y>
+        <y>460</y>
         <width>101</width>
         <height>20</height>
        </rect>
@@ -4185,43 +4144,32 @@ color: rgb(0, 0, 0);</string>
        <string>Fournisseur</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_12">
+     <widget class="QLineEdit" name="lineEdit_quantite_3">
       <property name="geometry">
        <rect>
         <x>220</x>
-        <y>210</y>
+        <y>310</y>
         <width>113</width>
         <height>26</height>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(255, 255, 255);</string>
+       <string notr="true">color: rgb(15, 15, 15);
+background-color: rgb(255, 255, 255);</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_16">
+     <widget class="QLineEdit" name="lineEdit_categorie_3">
       <property name="geometry">
        <rect>
         <x>220</x>
-        <y>330</y>
+        <y>260</y>
         <width>113</width>
         <height>26</height>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(255, 255, 255);</string>
-      </property>
-     </widget>
-     <widget class="QLineEdit" name="lineEdit_15">
-      <property name="geometry">
-       <rect>
-        <x>220</x>
-        <y>290</y>
-        <width>113</width>
-        <height>26</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: rgb(255, 255, 255);</string>
+       <string notr="true">color: rgb(15, 15, 15);
+background-color: rgb(255, 255, 255);</string>
       </property>
      </widget>
      <widget class="QLineEdit" name="lineEdit_18">
@@ -4234,20 +4182,21 @@ color: rgb(0, 0, 0);</string>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(255, 255, 255);</string>
+       <string notr="true">color: rgb(15, 15, 15);
+background-color: rgb(255, 255, 255);</string>
       </property>
      </widget>
      <widget class="QPushButton" name="pushButton">
       <property name="geometry">
        <rect>
         <x>500</x>
-        <y>620</y>
+        <y>520</y>
         <width>93</width>
         <height>29</height>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(18, 153, 45);</string>
+       <string notr="true">background-color: rgb(18, 153, 29);</string>
       </property>
       <property name="text">
        <string>Mise à jour</string>
@@ -4256,18 +4205,22 @@ color: rgb(0, 0, 0);</string>
      <widget class="QLineEdit" name="lineEdit_7">
       <property name="geometry">
        <rect>
-        <x>620</x>
-        <y>210</y>
-        <width>221</width>
-        <height>26</height>
+        <x>550</x>
+        <y>140</y>
+        <width>311</width>
+        <height>31</height>
        </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(15, 15, 15);
+background-color: rgb(255, 255, 255);</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_16">
       <property name="geometry">
        <rect>
         <x>90</x>
-        <y>490</y>
+        <y>510</y>
         <width>111</width>
         <height>20</height>
        </rect>
@@ -4279,39 +4232,24 @@ color: rgb(0, 0, 0);</string>
        <string>Date de livraison</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_17">
+     <widget class="QLineEdit" name="lineEdit_prixachat_3">
       <property name="geometry">
        <rect>
         <x>220</x>
-        <y>370</y>
+        <y>360</y>
         <width>113</width>
         <height>26</height>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(255, 255, 255);</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_12">
-      <property name="geometry">
-       <rect>
-        <x>90</x>
-        <y>210</y>
-        <width>71</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">color: rgb(255, 255, 255);</string>
-      </property>
-      <property name="text">
-       <string>ID Pièce</string>
+       <string notr="true">color: rgb(15, 15, 15);
+background-color: rgb(255, 255, 255);</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_14">
       <property name="geometry">
        <rect>
-        <x>1210</x>
+        <x>1440</x>
         <y>50</y>
         <width>121</width>
         <height>111</height>
@@ -4324,8 +4262,8 @@ color: rgb(0, 0, 0);</string>
      <widget class="QPushButton" name="pushButton_10">
       <property name="geometry">
        <rect>
-        <x>480</x>
-        <y>210</y>
+        <x>430</x>
+        <y>140</y>
         <width>93</width>
         <height>29</height>
        </rect>
@@ -4337,34 +4275,38 @@ color: rgb(0, 0, 0);</string>
        <string>Rechercher</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_13">
+     <widget class="QLineEdit" name="lineEdit_nomstock_3">
       <property name="geometry">
        <rect>
         <x>220</x>
-        <y>170</y>
+        <y>160</y>
         <width>113</width>
         <height>26</height>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(255, 255, 255);</string>
+       <string notr="true">color: rgb(15, 15, 15);
+background-color: rgb(255, 255, 255);</string>
       </property>
      </widget>
      <widget class="QDateEdit" name="dateEdit_3">
       <property name="geometry">
        <rect>
         <x>220</x>
-        <y>490</y>
+        <y>510</y>
         <width>110</width>
         <height>26</height>
        </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(255, 255, 255);</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_15">
       <property name="geometry">
        <rect>
         <x>90</x>
-        <y>290</y>
+        <y>260</y>
         <width>71</width>
         <height>20</height>
        </rect>
@@ -4396,20 +4338,21 @@ color: rgb(0, 0, 0);</string>
       <property name="geometry">
        <rect>
         <x>220</x>
-        <y>450</y>
+        <y>460</y>
         <width>113</width>
         <height>26</height>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(255, 255, 255);</string>
+       <string notr="true">color: rgb(15, 15, 15);
+background-color: rgb(255, 255, 255);</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_4">
+     <widget class="QPushButton" name="btajouter_stock_3">
       <property name="geometry">
        <rect>
-        <x>120</x>
-        <y>550</y>
+        <x>150</x>
+        <y>690</y>
         <width>93</width>
         <height>29</height>
        </rect>
@@ -4425,7 +4368,7 @@ color: rgb(0, 0, 0);</string>
       <property name="geometry">
        <rect>
         <x>90</x>
-        <y>370</y>
+        <y>360</y>
         <width>91</width>
         <height>20</height>
        </rect>
@@ -4441,7 +4384,7 @@ color: rgb(0, 0, 0);</string>
       <property name="geometry">
        <rect>
         <x>90</x>
-        <y>250</y>
+        <y>210</y>
         <width>71</width>
         <height>20</height>
        </rect>
@@ -4457,7 +4400,7 @@ color: rgb(0, 0, 0);</string>
       <property name="geometry">
        <rect>
         <x>90</x>
-        <y>170</y>
+        <y>160</y>
         <width>71</width>
         <height>20</height>
        </rect>
@@ -4472,102 +4415,38 @@ color: rgb(0, 0, 0);</string>
      <widget class="QPushButton" name="pushButton_8">
       <property name="geometry">
        <rect>
-        <x>1420</x>
-        <y>620</y>
+        <x>1370</x>
+        <y>520</y>
         <width>101</width>
         <height>29</height>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(203, 203, 203);</string>
+       <string notr="true">background-color: rgb(253, 145, 4);</string>
       </property>
       <property name="text">
        <string>Exporter PDF</string>
       </property>
      </widget>
-     <widget class="QTableWidget" name="tableWidget_2">
+     <widget class="QTableView" name="tableView_2">
       <property name="geometry">
        <rect>
-        <x>470</x>
-        <y>260</y>
+        <x>420</x>
+        <y>200</y>
         <width>1081</width>
-        <height>331</height>
+        <height>301</height>
        </rect>
       </property>
-      <property name="rowCount">
-       <number>8</number>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(15, 15, 15);
+background-color: rgb(120, 120, 120);</string>
       </property>
-      <property name="columnCount">
-       <number>9</number>
-      </property>
-      <attribute name="horizontalHeaderDefaultSectionSize">
-       <number>120</number>
-      </attribute>
-      <attribute name="verticalHeaderVisible">
-       <bool>false</bool>
-      </attribute>
-      <attribute name="verticalHeaderShowSortIndicator" stdset="0">
-       <bool>false</bool>
-      </attribute>
-      <row/>
-      <row/>
-      <row/>
-      <row/>
-      <row/>
-      <row/>
-      <row/>
-      <row/>
-      <column>
-       <property name="text">
-        <string>ID Pièce</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>Nom</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>Référence</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>Catégorie</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>Quantié </string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>Prix d'achat</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>prix de vente</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>Fournisseur</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>Date de livraison</string>
-       </property>
-      </column>
      </widget>
      <widget class="QLabel" name="label_30">
       <property name="geometry">
        <rect>
         <x>90</x>
-        <y>130</y>
+        <y>110</y>
         <width>71</width>
         <height>20</height>
        </rect>
@@ -4579,33 +4458,57 @@ color: rgb(0, 0, 0);</string>
        <string>ID Pièce</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_14">
+     <widget class="QLineEdit" name="lineEdit_referencestock_3">
       <property name="geometry">
        <rect>
         <x>220</x>
-        <y>250</y>
+        <y>210</y>
         <width>113</width>
         <height>26</height>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(255, 255, 255);</string>
+       <string notr="true">color: rgb(15, 15, 15);
+background-color: rgb(255, 255, 255);</string>
       </property>
      </widget>
      <widget class="QPushButton" name="pushButton_16">
       <property name="geometry">
        <rect>
         <x>620</x>
-        <y>620</y>
+        <y>520</y>
         <width>93</width>
         <height>29</height>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(154 , 211 , 238);</string>
+       <string notr="true">background-color: rgb(154, 211, 238);</string>
       </property>
       <property name="text">
        <string>trier</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_56">
+      <property name="geometry">
+       <rect>
+        <x>100</x>
+        <y>60</y>
+        <width>321</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Simple Indust Shaded</family>
+        <pointsize>14</pointsize>
+        <underline>true</underline>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(255, 255, 255);</string>
+      </property>
+      <property name="text">
+       <string>Formulaire pièces de rechange</string>
       </property>
      </widget>
     </widget>
@@ -4681,7 +4584,8 @@ color: rgb(0, 0, 0);</string>
          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
         <property name="styleSheet">
-         <string notr="true">background-color: rgb(255, 255, 255); </string>
+         <string notr="true">color: rgb(15, 15, 15);
+background-color: rgb(255, 255, 255); </string>
         </property>
         <property name="text">
          <string/>
@@ -4713,7 +4617,8 @@ color: rgb(0, 0, 0);</string>
          </rect>
         </property>
         <property name="styleSheet">
-         <string notr="true">background-color: rgb(255, 255, 255); </string>
+         <string notr="true">color: rgb(15, 15, 15);
+background-color: rgb(255, 255, 255); </string>
         </property>
        </widget>
        <widget class="QTableWidget" name="tabaff_3">
@@ -4855,7 +4760,8 @@ color :rgb(255, 255, 255);
          </rect>
         </property>
         <property name="styleSheet">
-         <string notr="true">background-color: rgb(255, 255, 255); </string>
+         <string notr="true">color: rgb(15, 15, 15);
+background-color: rgb(255, 255, 255); </string>
         </property>
         <property name="text">
          <string/>
@@ -5003,7 +4909,8 @@ color :rgb(255, 255, 255);
          </rect>
         </property>
         <property name="styleSheet">
-         <string notr="true">background-color: rgb(255, 255, 255); 
+         <string notr="true">color: rgb(15, 15, 15);
+background-color: rgb(255, 255, 255); 
 </string>
         </property>
         <property name="text">
@@ -5065,7 +4972,8 @@ color :rgb(255, 255, 255);
          </rect>
         </property>
         <property name="styleSheet">
-         <string notr="true">background-color: rgb(255, 255, 255); </string>
+         <string notr="true">color: rgb(15, 15, 15);
+background-color: rgb(255, 255, 255); </string>
         </property>
        </widget>
        <widget class="QPushButton" name="pushButton_44">
@@ -5120,7 +5028,7 @@ color :rgb(255, 255, 255);
      </widget>
     </widget>
     <widget class="QWidget" name="menu_principale">
-     <widget class="QToolButton" name="employer">
+     <widget class="QToolButton" name="employe">
       <property name="geometry">
        <rect>
         <x>570</x>
@@ -5241,182 +5149,25 @@ color: rgb(0, 0, 0);</string>
      <widget class="QStackedWidget" name="stackedWidget_2">
       <property name="geometry">
        <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>1671</width>
-        <height>881</height>
+        <x>40</x>
+        <y>10</y>
+        <width>1661</width>
+        <height>861</height>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(0, 0, 74);</string>
+       <string notr="true">color: rgb(15, 15, 15);
+background-color: rgb(0, 0, 74);</string>
       </property>
-      <widget class="QWidget" name="page_3">
-       <widget class="QTableWidget" name="tableWidget">
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <widget class="QWidget" name="page_4">
+       <widget class="QLabel" name="label_22">
         <property name="geometry">
          <rect>
-          <x>490</x>
-          <y>160</y>
-          <width>941</width>
-          <height>281</height>
-         </rect>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">background-color: rgb(255, 255, 255);
-background-color: rgb(120, 120, 120);
-background-color: rgb(120, 120, 120);</string>
-        </property>
-        <row>
-         <property name="text">
-          <string>1</string>
-         </property>
-         <property name="background">
-          <color>
-           <red>255</red>
-           <green>255</green>
-           <blue>255</blue>
-          </color>
-         </property>
-        </row>
-        <row/>
-        <row/>
-        <row/>
-        <row/>
-        <row/>
-        <column>
-         <property name="text">
-          <string>ID</string>
-         </property>
-         <property name="background">
-          <color>
-           <red>120</red>
-           <green>120</green>
-           <blue>120</blue>
-          </color>
-         </property>
-         <property name="foreground">
-          <brush brushstyle="NoBrush">
-           <color alpha="255">
-            <red>255</red>
-            <green>255</green>
-            <blue>255</blue>
-           </color>
-          </brush>
-         </property>
-        </column>
-        <column>
-         <property name="text">
-          <string>Nom</string>
-         </property>
-         <property name="background">
-          <color>
-           <red>120</red>
-           <green>120</green>
-           <blue>120</blue>
-          </color>
-         </property>
-         <property name="foreground">
-          <brush brushstyle="NoBrush">
-           <color alpha="255">
-            <red>255</red>
-            <green>255</green>
-            <blue>255</blue>
-           </color>
-          </brush>
-         </property>
-        </column>
-        <column>
-         <property name="text">
-          <string> Prenom</string>
-         </property>
-         <property name="background">
-          <color>
-           <red>120</red>
-           <green>120</green>
-           <blue>120</blue>
-          </color>
-         </property>
-         <property name="foreground">
-          <brush brushstyle="NoBrush">
-           <color alpha="255">
-            <red>255</red>
-            <green>255</green>
-            <blue>255</blue>
-           </color>
-          </brush>
-         </property>
-        </column>
-        <column>
-         <property name="text">
-          <string>Email</string>
-         </property>
-         <property name="background">
-          <color>
-           <red>120</red>
-           <green>120</green>
-           <blue>120</blue>
-          </color>
-         </property>
-         <property name="foreground">
-          <brush brushstyle="NoBrush">
-           <color alpha="255">
-            <red>255</red>
-            <green>255</green>
-            <blue>255</blue>
-           </color>
-          </brush>
-         </property>
-        </column>
-        <column>
-         <property name="text">
-          <string> Tel</string>
-         </property>
-         <property name="background">
-          <color>
-           <red>120</red>
-           <green>120</green>
-           <blue>120</blue>
-          </color>
-         </property>
-        </column>
-        <column>
-         <property name="text">
-          <string> Date de naissance</string>
-         </property>
-        </column>
-        <item row="3" column="0">
-         <property name="text">
-          <string/>
-         </property>
-         <property name="foreground">
-          <brush brushstyle="NoBrush">
-           <color alpha="255">
-            <red>255</red>
-            <green>255</green>
-            <blue>255</blue>
-           </color>
-          </brush>
-         </property>
-        </item>
-        <item row="4" column="2">
-         <property name="text">
-          <string/>
-         </property>
-         <property name="background">
-          <brush brushstyle="NoBrush">
-           <color alpha="255">
-            <red>255</red>
-            <green>255</green>
-            <blue>255</blue>
-           </color>
-          </brush>
-         </property>
-        </item>
-       </widget>
-       <widget class="QLabel" name="label_2">
-        <property name="geometry">
-         <rect>
-          <x>110</x>
-          <y>220</y>
+          <x>0</x>
+          <y>240</y>
           <width>63</width>
           <height>20</height>
          </rect>
@@ -5429,11 +5180,11 @@ background-color: rgb(120, 120, 120);</string>
          <string> Nom </string>
         </property>
        </widget>
-       <widget class="QLabel" name="label_6">
+       <widget class="QLabel" name="label_23">
         <property name="geometry">
          <rect>
-          <x>110</x>
-          <y>510</y>
+          <x>0</x>
+          <y>580</y>
           <width>181</width>
           <height>41</height>
          </rect>
@@ -5445,65 +5196,69 @@ background-color: rgb(120, 120, 120);</string>
          <string>Date de naissance </string>
         </property>
        </widget>
-       <widget class="QLineEdit" name="lineEdit_3">
+       <widget class="QLineEdit" name="lineEdit_8">
         <property name="geometry">
          <rect>
-          <x>240</x>
-          <y>280</y>
+          <x>160</x>
+          <y>300</y>
           <width>113</width>
           <height>26</height>
          </rect>
         </property>
         <property name="styleSheet">
-         <string notr="true">background-color: rgb(255, 255, 255);
+         <string notr="true">color: rgb(15, 15, 15);
+background-color: rgb(255, 255, 255);
 </string>
         </property>
        </widget>
-       <widget class="QLineEdit" name="lineEdit_6">
+       <widget class="QLineEdit" name="lineEdit_recherche_2">
         <property name="geometry">
          <rect>
-          <x>620</x>
-          <y>110</y>
+          <x>530</x>
+          <y>130</y>
           <width>181</width>
           <height>31</height>
          </rect>
         </property>
         <property name="styleSheet">
-         <string notr="true">background-color: rgb(255, 255, 255);</string>
+         <string notr="true">color: rgb(15, 15, 15);
+background-color: rgb(255, 255, 255);</string>
         </property>
        </widget>
-       <widget class="QLineEdit" name="lineEdit">
+       <widget class="QLineEdit" name="lineEdit_2">
         <property name="geometry">
          <rect>
-          <x>230</x>
-          <y>150</y>
+          <x>160</x>
+          <y>180</y>
           <width>113</width>
           <height>26</height>
          </rect>
         </property>
         <property name="styleSheet">
-         <string notr="true">background-color: rgb(255, 255, 255);</string>
+         <string notr="true">color: rgb(15, 15, 15);
+background-color: rgb(255, 255, 255);</string>
         </property>
        </widget>
-       <widget class="QLineEdit" name="lineEdit_5">
+       <widget class="QLineEdit" name="lineEdit_email_2">
         <property name="geometry">
          <rect>
-          <x>250</x>
-          <y>430</y>
+          <x>160</x>
+          <y>420</y>
           <width>113</width>
           <height>26</height>
          </rect>
         </property>
         <property name="styleSheet">
-         <string notr="true">background-color: rgb(255, 255, 255);
+         <string notr="true">color: rgb(15, 15, 15);
+background-color: rgb(255, 255, 255);
 </string>
         </property>
        </widget>
-       <widget class="QLabel" name="label_5">
+       <widget class="QLabel" name="label_24">
         <property name="geometry">
          <rect>
-          <x>110</x>
-          <y>430</y>
+          <x>0</x>
+          <y>410</y>
           <width>91</width>
           <height>41</height>
          </rect>
@@ -5519,8 +5274,8 @@ background-color: rgb(120, 120, 120);</string>
        <widget class="QPushButton" name="pushButton_5">
         <property name="geometry">
          <rect>
-          <x>100</x>
-          <y>680</y>
+          <x>10</x>
+          <y>700</y>
           <width>141</width>
           <height>31</height>
          </rect>
@@ -5532,11 +5287,11 @@ background-color: rgb(120, 120, 120);</string>
          <string> Ajouter </string>
         </property>
        </widget>
-       <widget class="QLabel" name="label_3">
+       <widget class="QLabel" name="label_25">
         <property name="geometry">
          <rect>
-          <x>110</x>
-          <y>280</y>
+          <x>0</x>
+          <y>300</y>
           <width>71</width>
           <height>20</height>
          </rect>
@@ -5549,11 +5304,11 @@ background-color: rgb(120, 120, 120);</string>
          <string>Prenom</string>
         </property>
        </widget>
-       <widget class="QLabel" name="label">
+       <widget class="QLabel" name="label_26">
         <property name="geometry">
          <rect>
-          <x>100</x>
-          <y>140</y>
+          <x>0</x>
+          <y>170</y>
           <width>101</width>
           <height>51</height>
          </rect>
@@ -5764,25 +5519,26 @@ background-color: rgb(120, 120, 120);</string>
          <string>ID Employé  </string>
         </property>
        </widget>
-       <widget class="QDateEdit" name="dateEdit">
+       <widget class="QDateEdit" name="lineEdit_date_2">
         <property name="geometry">
          <rect>
-          <x>250</x>
-          <y>520</y>
+          <x>160</x>
+          <y>590</y>
           <width>110</width>
           <height>26</height>
          </rect>
         </property>
         <property name="styleSheet">
          <string notr="true">background-color: rgb(255, 255, 255);
+color: rgb(15, 15, 15);
 </string>
         </property>
        </widget>
-       <widget class="QPushButton" name="ex">
+       <widget class="QPushButton" name="ex_2">
         <property name="geometry">
          <rect>
-          <x>420</x>
-          <y>680</y>
+          <x>330</x>
+          <y>700</y>
           <width>141</width>
           <height>31</height>
          </rect>
@@ -5796,11 +5552,11 @@ background-color: rgb(253, 154, 4);</string>
          <string> Exporter</string>
         </property>
        </widget>
-       <widget class="QLabel" name="mis">
+       <widget class="QLabel" name="mis_2">
         <property name="geometry">
          <rect>
-          <x>990</x>
-          <y>110</y>
+          <x>900</x>
+          <y>130</y>
           <width>111</width>
           <height>31</height>
          </rect>
@@ -5815,11 +5571,11 @@ background-color: rgb(18, 153, 29);
          <string> Mise à jour</string>
         </property>
        </widget>
-       <widget class="QPushButton" name="pushButton_7">
+       <widget class="QPushButton" name="btnSupprimer">
         <property name="geometry">
          <rect>
-          <x>260</x>
-          <y>680</y>
+          <x>170</x>
+          <y>700</y>
           <width>141</width>
           <height>31</height>
          </rect>
@@ -5833,24 +5589,25 @@ background-color: rgb(253, 7, 27);</string>
          <string>supprimer </string>
         </property>
        </widget>
-       <widget class="QLineEdit" name="lineEdit_2">
+       <widget class="QLineEdit" name="lineEdit_4">
         <property name="geometry">
          <rect>
-          <x>230</x>
-          <y>220</y>
+          <x>160</x>
+          <y>240</y>
           <width>113</width>
           <height>26</height>
          </rect>
         </property>
         <property name="styleSheet">
-         <string notr="true">background-color: rgb(255, 255, 255);</string>
+         <string notr="true">color: rgb(15, 15, 15);
+background-color: rgb(255, 255, 255);</string>
         </property>
        </widget>
-       <widget class="QPushButton" name="pushButton_6">
+       <widget class="QPushButton" name="btnModifie">
         <property name="geometry">
          <rect>
-          <x>1140</x>
-          <y>110</y>
+          <x>1050</x>
+          <y>130</y>
           <width>121</width>
           <height>31</height>
          </rect>
@@ -5863,10 +5620,10 @@ background-color: rgb(253, 7, 27);</string>
          <string> Modifier</string>
         </property>
        </widget>
-       <widget class="QLabel" name="label_4">
+       <widget class="QLabel" name="label_27">
         <property name="geometry">
          <rect>
-          <x>110</x>
+          <x>0</x>
           <y>350</y>
           <width>91</width>
           <height>41</height>
@@ -5879,56 +5636,57 @@ background-color: rgb(253, 7, 27);</string>
          <string>Téléphone </string>
         </property>
        </widget>
-       <widget class="QLabel" name="label_9">
+       <widget class="QLabel" name="label_28">
         <property name="geometry">
          <rect>
-          <x>110</x>
-          <y>620</y>
+          <x>0</x>
+          <y>650</y>
           <width>181</width>
           <height>20</height>
          </rect>
         </property>
         <property name="styleSheet">
-         <string notr="true">font: 10pt &quot;Segoe UI&quot;;
-color: rgb(255, 255, 255);</string>
+         <string notr="true">color: rgb(255, 255, 255);</string>
         </property>
         <property name="text">
-         <string> Date de recrutement </string>
+         <string>Date de recrutement </string>
         </property>
        </widget>
-       <widget class="QLineEdit" name="lineEdit_4">
+       <widget class="QLineEdit" name="lineEdit_tel_2">
         <property name="geometry">
          <rect>
-          <x>240</x>
-          <y>350</y>
+          <x>160</x>
+          <y>360</y>
           <width>113</width>
           <height>26</height>
          </rect>
         </property>
         <property name="styleSheet">
-         <string notr="true">background-color: rgb(255, 255, 255);
+         <string notr="true">color: rgb(15, 15, 15);
+background-color: rgb(255, 255, 255);
 </string>
         </property>
        </widget>
-       <widget class="QDateEdit" name="dateEdit_2">
+       <widget class="QDateEdit" name="dateEdit_recrutement_2">
         <property name="geometry">
          <rect>
-          <x>290</x>
-          <y>620</y>
+          <x>160</x>
+          <y>650</y>
           <width>110</width>
           <height>26</height>
          </rect>
         </property>
         <property name="styleSheet">
          <string notr="true">background-color: rgb(255, 255, 255);
+color: rgb(15, 15, 15);
 </string>
         </property>
        </widget>
-       <widget class="QPushButton" name="pushButton_9">
+       <widget class="QPushButton" name="pushButton_12">
         <property name="geometry">
          <rect>
-          <x>830</x>
-          <y>110</y>
+          <x>740</x>
+          <y>130</y>
           <width>131</width>
           <height>29</height>
          </rect>
@@ -6168,11 +5926,11 @@ background-color: rgb(154, 211, 238);</string>
          <string> Trier</string>
         </property>
        </widget>
-       <widget class="QLabel" name="label_8">
+       <widget class="QLabel" name="label_29">
         <property name="geometry">
          <rect>
-          <x>490</x>
-          <y>110</y>
+          <x>400</x>
+          <y>130</y>
           <width>111</width>
           <height>31</height>
          </rect>
@@ -6188,11 +5946,11 @@ background-color: rgb(0, 0, 91);
          <string> Rechercher</string>
         </property>
        </widget>
-       <widget class="QLabel" name="label_10">
+       <widget class="QLabel" name="label_31">
         <property name="geometry">
          <rect>
-          <x>100</x>
-          <y>80</y>
+          <x>10</x>
+          <y>100</y>
           <width>181</width>
           <height>51</height>
          </rect>
@@ -6404,12 +6162,87 @@ font: italic 9pt &quot;Segoe UI&quot;;</string>
          <string> Formulaire Employé</string>
         </property>
        </widget>
-       <widget class="QLabel" name="mis_2">
+       <widget class="QTableView" name="tableView_2">
         <property name="geometry">
          <rect>
-          <x>1290</x>
-          <y>110</y>
-          <width>111</width>
+          <x>330</x>
+          <y>190</y>
+          <width>941</width>
+          <height>192</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(15, 15, 15);
+background-color: rgb(255, 255, 255);</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_32">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>480</y>
+          <width>49</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 255, 255);</string>
+        </property>
+        <property name="text">
+         <string>Poste</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="poste_2">
+        <property name="geometry">
+         <rect>
+          <x>160</x>
+          <y>480</y>
+          <width>113</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(15, 15, 15);
+background-color: rgb(255, 255, 255);</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="salaire_2">
+        <property name="geometry">
+         <rect>
+          <x>160</x>
+          <y>530</y>
+          <width>113</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(255, 255, 255);
+color: rgb(15, 15, 15);
+</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_33">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>530</y>
+          <width>49</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 255, 255);</string>
+        </property>
+        <property name="text">
+         <string>Salaire</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="retour_6">
+        <property name="geometry">
+         <rect>
+          <x>1200</x>
+          <y>130</y>
+          <width>141</width>
           <height>31</height>
          </rect>
         </property>
@@ -6419,28 +6252,12 @@ background-color: rgb(253, 7, 27);
 </string>
         </property>
         <property name="text">
-         <string>     Retour</string>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="retour_4">
-        <property name="geometry">
-         <rect>
-          <x>1140</x>
-          <y>460</y>
-          <width>121</width>
-          <height>31</height>
-         </rect>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">color: rgb(255, 255, 255);
- background-color: rgb(253, 154, 4);</string>
-        </property>
-        <property name="text">
          <string>retour</string>
         </property>
        </widget>
       </widget>
-      <widget class="QWidget" name="page_4"/>
+      <widget class="QWidget" name="page_5"/>
+      <widget class="QWidget" name="page_6"/>
      </widget>
     </widget>
    </widget>

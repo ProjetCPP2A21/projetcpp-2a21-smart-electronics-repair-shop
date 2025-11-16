@@ -50,7 +50,7 @@ int client::genererIdSiVide()
     if (ok && id > 0) return id;
 
     QSqlQuery q;
-    if (!q.exec("SELECT NVL(MAX(ID_CLIENT),0)+1 AS NEXT_ID FROM SERS.CLIENT")) {
+    if (!q.exec("SELECT NVL(MAX(ID),0)+1 AS NEXT_ID FROM CLIENT")) {
         qDebug() << "Erreur récup ID:" << q.lastError().text();
         return -1;
     }
@@ -85,7 +85,7 @@ void client::ajouterClient()
 
     // Vérifier que l'email n'existe pas déjà
     QSqlQuery check;
-    check.prepare("SELECT 1 FROM SERS.CLIENT WHERE EMAIL_C = :email");
+    check.prepare("SELECT 1 FROM CLIENT WHERE EMAIL = :email");
     check.bindValue(":email", email);
     if (check.exec() && check.next()) {
         QMessageBox::warning(page, "Erreur", "Un client avec cet email existe déjà.");
@@ -100,7 +100,7 @@ void client::ajouterClient()
 
     QSqlQuery query;
     query.prepare(
-        "INSERT INTO SERS.CLIENT (ID_CLIENT, NOM_C, PRENOM_C, TEL_C, EMAIL_C, DATE_NAISSANCE, DATE_INSCRIPTION) "
+        "INSERT INTO CLIENT (ID, NOM, PRENOM, TELEPHONE, EMAIL, DATE_DE_NAISSANCE, DATE_INSCRIPTION) "
         "VALUES (:id, :nom, :prenom, :tel, :email, TO_DATE(:dn,'YYYY-MM-DD'), TO_DATE(:di,'YYYY-MM-DD'))"
         );
     query.bindValue(":id", id);
@@ -137,7 +137,7 @@ void client::rechercherClientParId()
     }
 
     QSqlQuery query;
-    query.prepare("SELECT * FROM SERS.CLIENT WHERE ID_CLIENT = :id");
+    query.prepare("SELECT * FROM CLIENT WHERE ID = :id");
     query.bindValue(":id", id);
 
     if (!query.exec()) {
@@ -146,11 +146,11 @@ void client::rechercherClientParId()
     }
 
     if (query.next()) {
-        page->findChild<QLineEdit*>("nomClientLineEdit")->setText(query.value("NOM_C").toString());
-        page->findChild<QLineEdit*>("prenomClientLineEdit")->setText(query.value("PRENOM_C").toString());
-        page->findChild<QLineEdit*>("telClientLineEdit")->setText(query.value("TEL_C").toString());
-        page->findChild<QLineEdit*>("emailClientLineEdit")->setText(query.value("EMAIL_C").toString());
-        page->findChild<QDateEdit*>("dateNaissClient")->setDate(QDate::fromString(query.value("DATE_NAISSANCE").toString(), "yyyy-MM-dd"));
+        page->findChild<QLineEdit*>("nomClientLineEdit")->setText(query.value("NOM").toString());
+        page->findChild<QLineEdit*>("prenomClientLineEdit")->setText(query.value("PRENOM").toString());
+        page->findChild<QLineEdit*>("telClientLineEdit")->setText(query.value("TELEPHONE").toString());
+        page->findChild<QLineEdit*>("emailClientLineEdit")->setText(query.value("EMAIL").toString());
+        page->findChild<QDateEdit*>("dateNaissClient")->setDate(QDate::fromString(query.value("DATE_DE_NAISSANCE").toString(), "yyyy-MM-dd"));
         page->findChild<QDateEdit*>("dateInscrClient")->setDate(QDate::fromString(query.value("DATE_INSCRIPTION").toString(), "yyyy-MM-dd"));
     } else {
         QMessageBox::information(page, "Non trouvé", "Aucun client avec cet ID.");
@@ -183,9 +183,9 @@ void client::modifierClient()
 
     QSqlQuery query;
     query.prepare(
-        "UPDATE SERS.CLIENT SET NOM_C=:nom, PRENOM_C=:prenom, TEL_C=:tel, EMAIL_C=:email, "
-        "DATE_NAISSANCE=TO_DATE(:dn,'YYYY-MM-DD'), DATE_INSCRIPTION=TO_DATE(:di,'YYYY-MM-DD') "
-        "WHERE ID_CLIENT=:id"
+        "UPDATE CLIENT SET NOM=:nom, PRENOM=:prenom, TELEPHONE=:tel, EMAIL=:email, "
+        "DATE_DE_NAISSANCE=TO_DATE(:dn,'YYYY-MM-DD'), DATE_INSCRIPTION=TO_DATE(:di,'YYYY-MM-DD') "
+        "WHERE ID=:id"
         );
     query.bindValue(":id", id);
     query.bindValue(":nom", nom);
@@ -221,7 +221,7 @@ void client::supprimerClient()
         return;
 
     QSqlQuery query;
-    query.prepare("DELETE FROM SERS.CLIENT WHERE ID_CLIENT=:id");
+    query.prepare("DELETE FROM CLIENT WHERE ID=:id");
     query.bindValue(":id", id);
 
     if (!query.exec()) {
@@ -242,16 +242,16 @@ void client::rafraichirListeClients()
 
     table->setRowCount(0);
 
-    QSqlQuery query("SELECT ID_CLIENT, NOM_C, PRENOM_C, TEL_C, EMAIL_C, DATE_NAISSANCE, DATE_INSCRIPTION FROM SERS.CLIENT");
+    QSqlQuery query("SELECT ID, NOM, PRENOM, TELEPHONE, EMAIL, DATE_DE_NAISSANCE, DATE_INSCRIPTION FROM CLIENT");
     int row = 0;
     while (query.next()) {
         table->insertRow(row);
-        table->setItem(row, 0, new QTableWidgetItem(query.value("ID_CLIENT").toString()));
-        table->setItem(row, 1, new QTableWidgetItem(query.value("NOM_C").toString()));
-        table->setItem(row, 2, new QTableWidgetItem(query.value("PRENOM_C").toString()));
-        table->setItem(row, 3, new QTableWidgetItem(query.value("TEL_C").toString()));
-        table->setItem(row, 4, new QTableWidgetItem(query.value("EMAIL_C").toString()));
-        table->setItem(row, 5, new QTableWidgetItem(query.value("DATE_NAISSANCE").toString()));
+        table->setItem(row, 0, new QTableWidgetItem(query.value("ID").toString()));
+        table->setItem(row, 1, new QTableWidgetItem(query.value("NOM").toString()));
+        table->setItem(row, 2, new QTableWidgetItem(query.value("PRENOM").toString()));
+        table->setItem(row, 3, new QTableWidgetItem(query.value("TELEPHONE").toString()));
+        table->setItem(row, 4, new QTableWidgetItem(query.value("EMAIL").toString()));
+        table->setItem(row, 5, new QTableWidgetItem(query.value("DATE_DE_NAISSANCE").toString()));
         table->setItem(row, 6, new QTableWidgetItem(query.value("DATE_INSCRIPTION").toString()));
 
         for (int col = 0; col < 7; ++col) {

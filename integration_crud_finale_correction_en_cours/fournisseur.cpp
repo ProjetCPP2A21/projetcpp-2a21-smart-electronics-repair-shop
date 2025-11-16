@@ -7,7 +7,7 @@
 fournisseur::fournisseur(QWidget *parentWidget, QObject *parent)
     : QObject(parent), page(parentWidget)
 {
-    auto table = page->findChild<QTableWidget*>("fournisseurtabWidget");
+    auto table = page->findChild<QTableWidget*>("tabaff_6");
     if (table) {
         table->setColumnCount(8);
         QStringList headers = {
@@ -44,7 +44,7 @@ bool fournisseur::validerChamps(const QString &email, const QString &telephone, 
 
 int fournisseur::genererIdSiVide()
 {
-    auto idEdit = page->findChild<QLineEdit*>("leld_2");
+    auto idEdit = page->findChild<QLineEdit*>("leld_4");
     if (!idEdit) return -1;
 
     bool ok;
@@ -63,14 +63,14 @@ int fournisseur::genererIdSiVide()
 // AJOUTER
 void fournisseur::ajouterFournisseur()
 {
-    auto nomEdit = page->findChild<QLineEdit*>("leNomEntreprise_2");
-    auto nomFEdit = page->findChild<QLineEdit*>("leContactNom_2");
-    auto prenomFEdit = page->findChild<QLineEdit*>("leContactPrenom_2");
-    auto telEdit = page->findChild<QLineEdit*>("leTelephone_2");
-    auto emailEdit = page->findChild<QLineEdit*>("leEmail_2");
-    auto typeEdit = page->findChild<QLineEdit*>("leTypePieces_2");
-    auto adrEdit = page->findChild<QTextEdit*>("teAdresse_2");
-    auto dateEdit = page->findChild<QDateEdit*>("deDatePartenariat_2");
+    auto nomEdit = page->findChild<QLineEdit*>("leNomEntreprise_4");
+    auto nomFEdit = page->findChild<QLineEdit*>("leContactNom_4");
+    auto prenomFEdit = page->findChild<QLineEdit*>("leContactPrenom_4");
+    auto telEdit = page->findChild<QLineEdit*>("leTelephone_4");
+    auto emailEdit = page->findChild<QLineEdit*>("leEmail_4");
+    auto typeEdit = page->findChild<QLineEdit*>("leTypePieces_4");
+    auto adrEdit = page->findChild<QTextEdit*>("teAdresse_4");
+    auto dateEdit = page->findChild<QDateEdit*>("deDatePartenariat_4");
 
     if (!nomEdit || !telEdit || !emailEdit || !dateEdit) {
         QMessageBox::critical(page, "Erreur", "Champs introuvables dans l'interface.");
@@ -123,7 +123,7 @@ void fournisseur::ajouterFournisseur()
 // RECHERCHER PAR ID
 void fournisseur::rechercherFournisseurParId()
 {
-    auto idEdit = page->findChild<QLineEdit*>("Id_2");
+    auto idEdit = page->findChild<QLineEdit*>("Id_4");
     if (!idEdit) return;
 
     bool ok;
@@ -144,14 +144,14 @@ void fournisseur::rechercherFournisseurParId()
     }
 
     if (query.next()) {
-        page->findChild<QLineEdit*>("leNomEntreprise_2")->setText(query.value("NOM_ENT").toString());
-        page->findChild<QLineEdit*>("leContactNom_2")->setText(query.value("NOM_F").toString());
-        page->findChild<QLineEdit*>("leContactPrenom_2")->setText(query.value("PRENOM_F").toString());
-        page->findChild<QLineEdit*>("leTelephone_2")->setText(query.value("TEL").toString());
-        page->findChild<QLineEdit*>("leEmail_2")->setText(query.value("EMAIL").toString());
-        page->findChild<QLineEdit*>("leTypePieces_2")->setText(query.value("TYPES_DES_PIECES").toString());
-        page->findChild<QTextEdit*>("teAdresse_2")->setPlainText(query.value("ADRESSE").toString());
-        page->findChild<QDateEdit*>("deDatePartenariat_2")->setDate(QDate::fromString(query.value("DATE_DE_PARTENERIAT").toString(), "yyyy-MM-dd"));
+        page->findChild<QLineEdit*>("leNomEntreprise_4")->setText(query.value("NOM_ENT").toString());
+        page->findChild<QLineEdit*>("leContactNom_4")->setText(query.value("NOM_F").toString());
+        page->findChild<QLineEdit*>("leContactPrenom_4")->setText(query.value("PRENOM_F").toString());
+        page->findChild<QLineEdit*>("leTelephone_4")->setText(query.value("TEL").toString());
+        page->findChild<QLineEdit*>("leEmail_4")->setText(query.value("EMAIL").toString());
+        page->findChild<QLineEdit*>("leTypePieces_4")->setText(query.value("TYPES_DES_PIECES").toString());
+        page->findChild<QTextEdit*>("teAdresse_4")->setPlainText(query.value("ADRESSE").toString());
+        page->findChild<QDateEdit*>("deDatePartenariat_4")->setDate(QDate::fromString(query.value("DATE_DE_PARTENERIAT").toString(), "yyyy-MM-dd"));
 
         QMessageBox::information(page, "Trouvé", "Fournisseur trouvé !");
     } else {
@@ -163,7 +163,7 @@ void fournisseur::rechercherFournisseurParId()
 // MODIFIER
 void fournisseur::modifierFournisseur()
 {
-    auto idEdit = page->findChild<QLineEdit*>("leld_2");
+    auto idEdit = page->findChild<QLineEdit*>("leld_4");
     if (!idEdit) return;
 
     bool ok;
@@ -173,14 +173,14 @@ void fournisseur::modifierFournisseur()
         return;
     }
 
-    QString nom = page->findChild<QLineEdit*>("leNomEntreprise_2")->text().trimmed();
-    QString nomF = page->findChild<QLineEdit*>("leContactNom_2")->text().trimmed();
-    QString prenomF = page->findChild<QLineEdit*>("leContactPrenom_2")->text().trimmed();
-    QString telephone = page->findChild<QLineEdit*>("leTelephone_2")->text().trimmed();
-    QString email = page->findChild<QLineEdit*>("leEmail_2")->text().trimmed();
-    QString typePieces = page->findChild<QLineEdit*>("leTypePieces_2")->text().trimmed();
-    QString adresse = page->findChild<QTextEdit*>("teAdresse_2")->toPlainText().trimmed();
-    QString date = page->findChild<QDateEdit*>("deDatePartenariat_2")->date().toString("yyyy-MM-dd");
+    QString nom = page->findChild<QLineEdit*>("leNomEntreprise_4")->text().trimmed();
+    QString nomF = page->findChild<QLineEdit*>("leContactNom_4")->text().trimmed();
+    QString prenomF = page->findChild<QLineEdit*>("leContactPrenom_4")->text().trimmed();
+    QString telephone = page->findChild<QLineEdit*>("leTelephone_4")->text().trimmed();
+    QString email = page->findChild<QLineEdit*>("leEmail_4")->text().trimmed();
+    QString typePieces = page->findChild<QLineEdit*>("leTypePieces_4")->text().trimmed();
+    QString adresse = page->findChild<QTextEdit*>("teAdresse_4")->toPlainText().trimmed();
+    QString date = page->findChild<QDateEdit*>("deDatePartenariat_4")->date().toString("yyyy-MM-dd");
 
     if (!validerChamps(email, telephone, nom))
         return;
@@ -197,8 +197,8 @@ void fournisseur::modifierFournisseur()
     }
 
     idEdit->setText(QString::number(id));
-    page->findChild<QLineEdit*>("leContactNom_2")->setText(currentNomF);
-    page->findChild<QLineEdit*>("leContactPrenom_2")->setText(currentPrenomF);
+    page->findChild<QLineEdit*>("leContactNom_4")->setText(currentNomF);
+    page->findChild<QLineEdit*>("leContactPrenom_4")->setText(currentPrenomF);
 
     QString updateQuery = "UPDATE FOURNISSEUR SET NOM_ENT=:nom, NOM_F=:nomf, PRENOM_F=:prenomf, "
                           "ADRESSE=:adr, DATE_DE_PARTENERIAT=TO_DATE(:date,'YYYY-MM-DD'), TYPES_DES_PIECES=:type";
@@ -230,7 +230,7 @@ void fournisseur::modifierFournisseur()
 // SUPPRIMER
 void fournisseur::supprimerFournisseur()
 {
-    auto idEdit = page->findChild<QLineEdit*>("leld_2");
+    auto idEdit = page->findChild<QLineEdit*>("leld_4");
     if (!idEdit) return;
 
     bool ok;
@@ -260,7 +260,7 @@ void fournisseur::supprimerFournisseur()
 // RAFRAICHIR TABLE
 void fournisseur::rafraichirListeFournisseurs()
 {
-    auto table = page->findChild<QTableWidget*>("fournisseurtabWidget");
+    auto table = page->findChild<QTableWidget*>("tabaff_6");
     if (!table) {
         QMessageBox::critical(page, "Erreur", "Tableau non trouvé !");
         return;
@@ -294,22 +294,22 @@ void fournisseur::rafraichirListeFournisseurs()
 // TRIER
 void fournisseur::trierParNomEntreprise()
 {
-    auto table = page->findChild<QTableWidget*>("fournisseurtabWidget");
+    auto table = page->findChild<QTableWidget*>("tabaff_6");
     if (table) table->sortItems(1, Qt::AscendingOrder);
 }
 
 // VIDER CHAMPS
 void fournisseur::viderChamps()
 {
-    auto idEdit = page->findChild<QLineEdit*>("leld_2");
+    auto idEdit = page->findChild<QLineEdit*>("leld_4");
     if (idEdit) idEdit->clear();
 
-    auto nom = page->findChild<QLineEdit*>("leNomEntreprise_2"); if (nom) nom->clear();
-    auto cnom = page->findChild<QLineEdit*>("leContactNom_2"); if (cnom) cnom->clear();
-    auto cprenom = page->findChild<QLineEdit*>("leContactPrenom_2"); if (cprenom) cprenom->clear();
-    auto tel = page->findChild<QLineEdit*>("leTelephone_2"); if (tel) tel->clear();
-    auto mail = page->findChild<QLineEdit*>("leEmail_2"); if (mail) mail->clear();
-    auto type = page->findChild<QLineEdit*>("leTypePieces_2"); if (type) type->clear();
-    auto adr = page->findChild<QTextEdit*>("teAdresse_2"); if (adr) adr->clear();
-    auto date = page->findChild<QDateEdit*>("deDatePartenariat_2"); if (date) date->setDate(QDate::currentDate());
+    auto nom = page->findChild<QLineEdit*>("leNomEntreprise_4"); if (nom) nom->clear();
+    auto cnom = page->findChild<QLineEdit*>("leContactNom_4"); if (cnom) cnom->clear();
+    auto cprenom = page->findChild<QLineEdit*>("leContactPrenom_4"); if (cprenom) cprenom->clear();
+    auto tel = page->findChild<QLineEdit*>("leTelephone_4"); if (tel) tel->clear();
+    auto mail = page->findChild<QLineEdit*>("leEmail_4"); if (mail) mail->clear();
+    auto type = page->findChild<QLineEdit*>("leTypePieces_4"); if (type) type->clear();
+    auto adr = page->findChild<QTextEdit*>("teAdresse_4"); if (adr) adr->clear();
+    auto date = page->findChild<QDateEdit*>("deDatePartenariat_4"); if (date) date->setDate(QDate::currentDate());
 }

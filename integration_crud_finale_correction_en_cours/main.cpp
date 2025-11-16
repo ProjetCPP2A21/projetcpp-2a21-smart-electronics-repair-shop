@@ -18,7 +18,7 @@ int main(int argc, char *argv[])
         // Don't exit - let the user decide what to do
     }
 
-    menu_employer w;
+    osana_dashboard w;
     w.show();
     return a.exec();
 }
