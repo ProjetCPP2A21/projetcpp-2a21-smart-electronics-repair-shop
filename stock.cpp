@@ -101,3 +101,45 @@ bool stock::modifier()
 
     return true;
 }
+QSqlQueryModel* stock::rechercher(QString nom)
+{
+    QSqlQueryModel *model = new QSqlQueryModel();
+    QSqlQuery query;
+
+    query.prepare("SELECT * FROM stock WHERE NOMPIECE LIKE :nom");
+    query.bindValue(":nom", "%" + nom + "%"); // '%' pour trouver n'importe où
+
+    if (!query.exec()) {
+        qDebug() << "Erreur recherche:" << query.lastError().text();
+    }
+
+    model->setQuery(query);
+
+    // En-têtes
+    model->setHeaderData(0, Qt::Horizontal, QObject::tr("ID_STOCK"));
+    model->setHeaderData(1, Qt::Horizontal, QObject::tr("NOMPIECE"));
+    model->setHeaderData(2, Qt::Horizontal, QObject::tr("REFERENCE"));
+    model->setHeaderData(3, Qt::Horizontal, QObject::tr("CATEGORIE"));
+    model->setHeaderData(4, Qt::Horizontal, QObject::tr("QUANTITE"));
+    model->setHeaderData(5, Qt::Horizontal, QObject::tr("PRIXACHAT"));
+    model->setHeaderData(6, Qt::Horizontal, QObject::tr("PRIXVENTE"));
+    model->setHeaderData(7, Qt::Horizontal, QObject::tr("FOURNISSEUR"));
+    model->setHeaderData(8, Qt::Horizontal, QObject::tr("DATELIVRAISON"));
+
+    return model;
+}
+
+QSqlQueryModel* stock::trier(QString critere, QString ordre)
+{
+    QSqlQueryModel * model = new QSqlQueryModel();
+
+    QString queryStr = "SELECT * FROM stock ORDER BY " + critere + " " + ordre;
+
+    model->setQuery(queryStr);
+
+    if (model->lastError().isValid()) {
+        qDebug() << "Erreur tri:" << model->lastError();
+    }
+
+    return model;
+}

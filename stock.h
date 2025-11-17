@@ -37,6 +37,9 @@ public:
     QSqlQueryModel * afficher();
     bool supprimer(int);
     bool modifier();
+    QSqlQueryModel * rechercher(QString nom);
+    QSqlQueryModel * trier(QString critere, QString ordre);
+
 
 
 

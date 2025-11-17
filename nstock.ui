@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>prixachat_2</class>
- <widget class="QMainWindow" name="prixachat_2">
+ <class>stock</class>
+ <widget class="QMainWindow" name="stock">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1496</width>
+    <width>1557</width>
     <height>600</height>
    </rect>
   </property>
@@ -22,8 +22,8 @@ background-color: rgb(0, 0, 74);</string>
    <widget class="QPushButton" name="btmodifier_stock">
     <property name="geometry">
      <rect>
-      <x>1350</x>
-      <y>110</y>
+      <x>1060</x>
+      <y>30</y>
       <width>93</width>
       <height>29</height>
      </rect>
@@ -38,8 +38,8 @@ background-color: rgb(0, 0, 74);</string>
    <widget class="QPushButton" name="btsupprimer_stock">
     <property name="geometry">
      <rect>
-      <x>1230</x>
-      <y>110</y>
+      <x>1290</x>
+      <y>30</y>
       <width>93</width>
       <height>29</height>
      </rect>
@@ -54,7 +54,7 @@ background-color: rgb(0, 0, 74);</string>
    <widget class="QPushButton" name="btajouter_stock">
     <property name="geometry">
      <rect>
-      <x>180</x>
+      <x>250</x>
       <y>450</y>
       <width>93</width>
       <height>29</height>
@@ -70,8 +70,8 @@ background-color: rgb(0, 0, 74);</string>
    <widget class="QPushButton" name="pushButton_5">
     <property name="geometry">
      <rect>
-      <x>540</x>
-      <y>460</y>
+      <x>450</x>
+      <y>300</y>
       <width>93</width>
       <height>29</height>
      </rect>
@@ -83,43 +83,11 @@ background-color: rgb(0, 0, 74);</string>
      <string>Retour</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_6">
+   <widget class="QPushButton" name="btexporterPDF_stock">
     <property name="geometry">
      <rect>
-      <x>650</x>
-      <y>460</y>
-      <width>93</width>
-      <height>29</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: rgb(18, 153, 29);</string>
-    </property>
-    <property name="text">
-     <string>Mise à jour</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_7">
-    <property name="geometry">
-     <rect>
-      <x>490</x>
-      <y>110</y>
-      <width>93</width>
-      <height>29</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: rgb(168, 168, 168);</string>
-    </property>
-    <property name="text">
-     <string>Rechercher</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_8">
-    <property name="geometry">
-     <rect>
-      <x>1350</x>
-      <y>450</y>
+      <x>1170</x>
+      <y>30</y>
       <width>93</width>
       <height>29</height>
      </rect>
@@ -134,10 +102,10 @@ background-color: rgb(0, 0, 74);</string>
    <widget class="QTableView" name="tableView">
     <property name="geometry">
      <rect>
-      <x>430</x>
-      <y>160</y>
-      <width>1041</width>
-      <height>271</height>
+      <x>450</x>
+      <y>70</y>
+      <width>1091</width>
+      <height>221</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -147,13 +115,13 @@ background-color: rgb(0, 0, 74);</string>
      <number>40</number>
     </attribute>
     <attribute name="horizontalHeaderDefaultSectionSize">
-     <number>120</number>
+     <number>100</number>
     </attribute>
    </widget>
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>220</x>
+      <x>290</x>
       <y>20</y>
       <width>151</width>
       <height>31</height>
@@ -176,7 +144,7 @@ background-color: rgb(0, 0, 74);</string>
    <widget class="QLineEdit" name="lineEdit_nomstock">
     <property name="geometry">
      <rect>
-      <x>250</x>
+      <x>320</x>
       <y>120</y>
       <width>113</width>
       <height>26</height>
@@ -189,7 +157,7 @@ background-color: rgb(0, 0, 74);</string>
    <widget class="QLineEdit" name="lineEdit_referencestock">
     <property name="geometry">
      <rect>
-      <x>250</x>
+      <x>320</x>
       <y>160</y>
       <width>113</width>
       <height>26</height>
@@ -202,7 +170,7 @@ background-color: rgb(0, 0, 74);</string>
    <widget class="QLineEdit" name="lineEdit_categorie">
     <property name="geometry">
      <rect>
-      <x>250</x>
+      <x>320</x>
       <y>200</y>
       <width>113</width>
       <height>26</height>
@@ -215,7 +183,7 @@ background-color: rgb(0, 0, 74);</string>
    <widget class="QLineEdit" name="lineEdit_quantite">
     <property name="geometry">
      <rect>
-      <x>250</x>
+      <x>320</x>
       <y>240</y>
       <width>113</width>
       <height>26</height>
@@ -228,7 +196,7 @@ background-color: rgb(0, 0, 74);</string>
    <widget class="QLineEdit" name="lineEdit_prixachat">
     <property name="geometry">
      <rect>
-      <x>250</x>
+      <x>320</x>
       <y>280</y>
       <width>113</width>
       <height>26</height>
@@ -241,7 +209,7 @@ background-color: rgb(0, 0, 74);</string>
    <widget class="QLineEdit" name="lineEdit_prixvente">
     <property name="geometry">
      <rect>
-      <x>250</x>
+      <x>320</x>
       <y>320</y>
       <width>113</width>
       <height>26</height>
@@ -254,7 +222,7 @@ background-color: rgb(0, 0, 74);</string>
    <widget class="QLineEdit" name="lineEdit_fournisseur">
     <property name="geometry">
      <rect>
-      <x>250</x>
+      <x>320</x>
       <y>360</y>
       <width>113</width>
       <height>26</height>
@@ -267,7 +235,7 @@ background-color: rgb(0, 0, 74);</string>
    <widget class="QLabel" name="datelivraison">
     <property name="geometry">
      <rect>
-      <x>100</x>
+      <x>170</x>
       <y>400</y>
       <width>111</width>
       <height>20</height>
@@ -283,7 +251,7 @@ background-color: rgb(0, 0, 74);</string>
    <widget class="QDateEdit" name="dateEdit">
     <property name="geometry">
      <rect>
-      <x>250</x>
+      <x>320</x>
       <y>400</y>
       <width>110</width>
       <height>26</height>
@@ -296,7 +264,7 @@ background-color: rgb(0, 0, 74);</string>
    <widget class="QLabel" name="fournisseur">
     <property name="geometry">
      <rect>
-      <x>100</x>
+      <x>170</x>
       <y>360</y>
       <width>111</width>
       <height>20</height>
@@ -312,7 +280,7 @@ background-color: rgb(0, 0, 74);</string>
    <widget class="QLabel" name="prixvente">
     <property name="geometry">
      <rect>
-      <x>100</x>
+      <x>170</x>
       <y>320</y>
       <width>111</width>
       <height>20</height>
@@ -328,7 +296,7 @@ background-color: rgb(0, 0, 74);</string>
    <widget class="QLabel" name="prixachat">
     <property name="geometry">
      <rect>
-      <x>100</x>
+      <x>170</x>
       <y>280</y>
       <width>111</width>
       <height>20</height>
@@ -344,7 +312,7 @@ background-color: rgb(0, 0, 74);</string>
    <widget class="QLabel" name="quantite">
     <property name="geometry">
      <rect>
-      <x>100</x>
+      <x>170</x>
       <y>240</y>
       <width>111</width>
       <height>20</height>
@@ -360,7 +328,7 @@ background-color: rgb(0, 0, 74);</string>
    <widget class="QLabel" name="categorie">
     <property name="geometry">
      <rect>
-      <x>100</x>
+      <x>170</x>
       <y>200</y>
       <width>111</width>
       <height>20</height>
@@ -376,7 +344,7 @@ background-color: rgb(0, 0, 74);</string>
    <widget class="QLabel" name="nom">
     <property name="geometry">
      <rect>
-      <x>100</x>
+      <x>170</x>
       <y>120</y>
       <width>111</width>
       <height>20</height>
@@ -392,7 +360,7 @@ background-color: rgb(0, 0, 74);</string>
    <widget class="QLabel" name="id">
     <property name="geometry">
      <rect>
-      <x>100</x>
+      <x>170</x>
       <y>80</y>
       <width>111</width>
       <height>20</height>
@@ -405,11 +373,11 @@ background-color: rgb(0, 0, 74);</string>
      <string>ID Pièce</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_9">
+   <widget class="QPushButton" name="bttrier_stock">
     <property name="geometry">
      <rect>
-      <x>770</x>
-      <y>460</y>
+      <x>560</x>
+      <y>300</y>
       <width>93</width>
       <height>29</height>
      </rect>
@@ -421,11 +389,11 @@ background-color: rgb(0, 0, 74);</string>
      <string>Trier</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit_8">
+   <widget class="QLineEdit" name="lineEdit_recherche_stock">
     <property name="geometry">
      <rect>
-      <x>610</x>
-      <y>110</y>
+      <x>600</x>
+      <y>30</y>
       <width>301</width>
       <height>26</height>
      </rect>
@@ -437,7 +405,7 @@ background-color: rgb(0, 0, 74);</string>
    <widget class="QLabel" name="catgorie">
     <property name="geometry">
      <rect>
-      <x>0</x>
+      <x>70</x>
       <y>20</y>
       <width>7</width>
       <height>20</height>
@@ -450,8 +418,8 @@ background-color: rgb(0, 0, 74);</string>
    <widget class="QLabel" name="label_11">
     <property name="geometry">
      <rect>
-      <x>1320</x>
-      <y>0</y>
+      <x>1390</x>
+      <y>-20</y>
       <width>91</width>
       <height>71</height>
      </rect>
@@ -466,7 +434,7 @@ background-color: rgb(0, 0, 74);</string>
    <widget class="QLineEdit" name="lineEdit_IDstock">
     <property name="geometry">
      <rect>
-      <x>250</x>
+      <x>320</x>
       <y>80</y>
       <width>113</width>
       <height>26</height>
@@ -479,7 +447,7 @@ background-color: rgb(0, 0, 74);</string>
    <widget class="QLabel" name="reference_2">
     <property name="geometry">
      <rect>
-      <x>100</x>
+      <x>170</x>
       <y>160</y>
       <width>111</width>
       <height>20</height>
@@ -492,14 +460,104 @@ background-color: rgb(0, 0, 74);</string>
      <string>Reference</string>
     </property>
    </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>-20</y>
+      <width>1491</width>
+      <height>571</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>80</x>
+      <y>-40</y>
+      <width>1541</width>
+      <height>611</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btstatistique_stock">
+    <property name="geometry">
+     <rect>
+      <x>670</x>
+      <y>300</y>
+      <width>93</width>
+      <height>29</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(18, 153, 29);</string>
+    </property>
+    <property name="text">
+     <string>stat</string>
+    </property>
+   </widget>
+   <widget class="QFrame" name="frame">
+    <property name="geometry">
+     <rect>
+      <x>450</x>
+      <y>-20</y>
+      <width>141</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Shape::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Shadow::Raised</enum>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btrechercher_stock">
+    <property name="geometry">
+     <rect>
+      <x>480</x>
+      <y>30</y>
+      <width>93</width>
+      <height>29</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(168, 168, 168);</string>
+    </property>
+    <property name="text">
+     <string>Rechercher</string>
+    </property>
+   </widget>
+   <widget class="QFrame" name="chartFrame&#10;">
+    <property name="geometry">
+     <rect>
+      <x>810</x>
+      <y>299</y>
+      <width>541</width>
+      <height>271</height>
+     </rect>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Shape::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Shadow::Raised</enum>
+    </property>
+   </widget>
+   <zorder>label_3</zorder>
+   <zorder>label_2</zorder>
    <zorder>catgorie</zorder>
    <zorder>btmodifier_stock</zorder>
    <zorder>btsupprimer_stock</zorder>
    <zorder>btajouter_stock</zorder>
    <zorder>pushButton_5</zorder>
-   <zorder>pushButton_6</zorder>
-   <zorder>pushButton_7</zorder>
-   <zorder>pushButton_8</zorder>
+   <zorder>btexporterPDF_stock</zorder>
    <zorder>tableView</zorder>
    <zorder>label</zorder>
    <zorder>lineEdit_nomstock</zorder>
@@ -518,18 +576,23 @@ background-color: rgb(0, 0, 74);</string>
    <zorder>categorie</zorder>
    <zorder>nom</zorder>
    <zorder>id</zorder>
-   <zorder>pushButton_9</zorder>
-   <zorder>lineEdit_8</zorder>
+   <zorder>bttrier_stock</zorder>
+   <zorder>lineEdit_recherche_stock</zorder>
    <zorder>label_11</zorder>
    <zorder>lineEdit_IDstock</zorder>
    <zorder>reference_2</zorder>
+   <zorder>btstatistique_stock</zorder>
+   <zorder>frame</zorder>
+   <zorder>btrechercher_stock</zorder>
+   <zorder>chartFrame
+</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1496</width>
+     <width>1557</width>
      <height>26</height>
     </rect>
    </property>
