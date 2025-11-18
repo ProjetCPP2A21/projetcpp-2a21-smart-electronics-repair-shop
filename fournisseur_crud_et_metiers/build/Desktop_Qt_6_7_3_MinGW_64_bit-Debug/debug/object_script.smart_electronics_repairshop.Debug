@@ -1,0 +1,12 @@
+debug/appareil.o
+debug/client.o
+debug/connection.o
+debug/employe.o
+debug/fournisseur.o
+debug/main.o
+debug/smart_electronics_repairshop.o
+debug/stock.o
+debug/qrc_resources.o
+debug/moc_client.o
+debug/moc_fournisseur.o
+debug/moc_smart_electronics_repairshop.o
