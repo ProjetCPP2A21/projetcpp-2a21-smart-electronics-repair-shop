@@ -32,6 +32,8 @@ public:
     void setFournisseur(QString f) {fournisseur = f; }
     void setDatelivraison(QString l) {datelivraison = l; }
     void setID(int id) {this->id = id; }
+
+
     //fonctionnalités
     bool ajouter();
     QSqlQueryModel * afficher();

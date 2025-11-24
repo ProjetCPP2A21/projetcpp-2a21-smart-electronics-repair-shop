@@ -4,6 +4,7 @@
 #include <QDebug>
 #include <QSqlError>
 #include <QMessageBox>
+#include <QApplication>
 
 stock::stock(int id, QString nom, QString reference, QString categorie, QString quantite,
              QString prixachat, QString prixvente, QString fournisseur, QString datelivraison)
@@ -47,23 +48,24 @@ bool stock::ajouter()
 
 QSqlQueryModel* stock::afficher()
 {
-    QSqlQueryModel * model=new QSqlQueryModel();
-    model->setQuery("select * from stock");
+    QSqlQueryModel *model = new QSqlQueryModel();
+    model->setQuery("SELECT * FROM stock");
 
 
-    model->setHeaderData(0,Qt::Horizontal,QObject::tr("ID_STOCK"));
-    model->setHeaderData(1,Qt::Horizontal,QObject::tr("NOMPIECE"));
-    model->setHeaderData(2,Qt::Horizontal,QObject::tr("REFERENCE"));
-    model->setHeaderData(3,Qt::Horizontal,QObject::tr("CATEGORIE"));
-    model->setHeaderData(4,Qt::Horizontal,QObject::tr("QUANTITE"));
-    model->setHeaderData(5,Qt::Horizontal,QObject::tr("PRIXACHAT"));
-    model->setHeaderData(6,Qt::Horizontal,QObject::tr("PRIXVENTE"));
-    model->setHeaderData(7,Qt::Horizontal,QObject::tr("FOURNISSEUR"));
-    model->setHeaderData(8,Qt::Horizontal,QObject::tr("DATELIVRAISON"));
+
+ model->setHeaderData(0, Qt::Horizontal, QObject::tr("ID_STOCK"));
+    model->setHeaderData(1, Qt::Horizontal, QObject::tr("NOMPIECE"));
+    model->setHeaderData(2, Qt::Horizontal, QObject::tr("REFERENCE"));
+    model->setHeaderData(3, Qt::Horizontal, QObject::tr("CATEGORIE"));
+    model->setHeaderData(4, Qt::Horizontal, QObject::tr("QUANTITE"));
+    model->setHeaderData(5, Qt::Horizontal, QObject::tr("PRIXACHAT"));
+    model->setHeaderData(6, Qt::Horizontal, QObject::tr("PRIXVENTE"));
+    model->setHeaderData(7, Qt::Horizontal, QObject::tr("FOURNISSEUR"));
+    model->setHeaderData(8, Qt::Horizontal, QObject::tr("DATELIVRAISON"));
 
     return model;
-
 }
+
 
 bool stock::supprimer(int id)
 {
