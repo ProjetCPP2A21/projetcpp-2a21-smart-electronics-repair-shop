@@ -398,93 +398,6 @@ void fournisseur::afficherStatistiques()
     dialog.setLayout(layout);
     dialog.exec();
 }
-//EXPORTATION PDF
-
-
-void fournisseur::exporterPDF()
-{
-    auto table = page->findChild<QTableWidget*>("tabaff_6");
-    if (!table || table->rowCount() == 0) {
-        QMessageBox::warning(page, "Attention", "Aucun fournisseur à exporter.");
-        return;
-    }
-
-    // Choix du fichier PDF
-    QString fileName = QFileDialog::getSaveFileName(
-        page,
-        "Exporter en PDF",
-        "Fournisseurs_" + QDate::currentDate().toString("yyyy-MM-dd") + ".pdf",
-        "Fichiers PDF (*.pdf)"
-        );
-    if (fileName.isEmpty()) return;
-
-    // Configuration du PDF
-    QPrinter printer(QPrinter::HighResolution);
-    printer.setOutputFormat(QPrinter::PdfFormat);
-    printer.setOutputFileName(fileName);
-    printer.setPageLayout(QPageLayout(QPageSize(QPageSize::A4),
-                                      QPageLayout::Portrait,
-                                      QMarginsF(15,15,15,15),
-                                      QPageLayout::Millimeter));
-
-    QPainter painter(&printer);
-    painter.setRenderHints(QPainter::Antialiasing | QPainter::TextAntialiasing | QPainter::SmoothPixmapTransform);
-
-    const QRectF pageRect = printer.pageRect(QPrinter::DevicePixel);
-    double y = 50;
-
-    // ====== TITRE ======
-    QFont font = painter.font();
-    font.setPointSize(22);
-    font.setBold(true);
-    painter.setFont(font);
-    painter.drawText(QRectF(0, y, pageRect.width(), 50), Qt::AlignCenter, "Liste des Fournisseurs");
-    y += 70;
-
-    // ====== GRAPHIC PIE CHART ======
-    QMap<QString,int> companyCounts;
-    int companyCol = 1; // adjust if your "Entreprise" column index is different
-    for (int row = 0; row < table->rowCount(); ++row) {
-        QTableWidgetItem *item = table->item(row, companyCol);
-        if (item) companyCounts[item->text()] += 1;
-    }
-
-    QPieSeries *series = new QPieSeries();
-    for (auto it = companyCounts.begin(); it != companyCounts.end(); ++it) {
-        series->append(it.key(), it.value());
-    }
-
-    QChart chart;
-    chart.addSeries(series);
-    chart.setTitle("Répartition par entreprise");
-    chart.legend()->setVisible(true);
-    chart.legend()->setAlignment(Qt::AlignRight);
-
-    QChartView chartView(&chart);
-    chartView.setRenderHint(QPainter::Antialiasing);
-
-    QPixmap chartPixmap(pageRect.width(), 300);
-    chartPixmap.fill(Qt::white);
-    QPainter chartPainter(&chartPixmap);
-    chartView.resize(chartPixmap.size());
-    chartView.render(&chartPainter);
-    chartPainter.end();
-
-    painter.drawPixmap(0, y, chartPixmap);
-    y += chartPixmap.height() + 30;
-
-    // ====== TABLEAU ======
-    painter.drawText(QRectF(0, y, pageRect.width(), 30), Qt::AlignCenter, "Détails des fournisseurs");
-    y += 40;
-
-    QPoint tablePos(50, static_cast<int>(y));
-    table->render(&painter, tablePos);
-
-    painter.end();
-
-    QMessageBox::information(page, "Succès", "PDF généré avec succès !\n" + QFileInfo(fileName).fileName());
-}
-
 
 
 //ai:
@@ -786,4 +699,246 @@ void fournisseur::afficherFournisseursPrioritairesMA2()
     }
 
     QMessageBox::information(page, "MA2 – Fournisseurs prioritaires", msg);
+}
+
+//EXPORTATION PDF
+
+void fournisseur::exporterPDF()
+{
+    // === 1. Récupération des données ===
+    struct RowData {
+        int id;
+        QString nom, pieces, date, tel, email;
+        ScoreFournisseur score;
+        double criticite() const { return score.scoreValeur + score.scoreRareté; }
+        bool operator==(const RowData& o) const { return id == o.id; }
+    };
+
+    QList<RowData> rows;
+    QMap<QString, int> entrepriseCount;
+
+    QSqlQuery q;
+    if (!q.exec("SELECT ID_FOURNISSEUR, NOM_ENT, TYPES_DES_PIECES, "
+                "TO_CHAR(DATE_DE_PARTENERIAT, 'dd/MM/yyyy'), TEL, EMAIL "
+                "FROM FOURNISSEUR ORDER BY NOM_ENT")) {
+        QMessageBox::critical(nullptr, "Erreur SQL", q.lastError().text());
+        return;
+    }
+
+    while (q.next()) {
+        RowData r;
+        r.id = q.value(0).toInt();
+        r.nom = q.value(1).toString().trimmed();
+        r.pieces = q.value(2).toString().trimmed();
+        r.date = q.value(3).toString();
+        r.tel = q.value(4).toString();
+        r.email = q.value(5).toString();
+        r.score = calculerScoreFournisseur(r.id);
+        rows << r;
+        entrepriseCount[r.nom]++;
+    }
+
+    if (rows.isEmpty()) {
+        QMessageBox::information(nullptr, "Export PDF", "Aucun fournisseur dans la base.");
+        return;
+    }
+
+    // === 2. Top 5 + Stats ===
+    auto sorted = rows;
+    std::sort(sorted.begin(), sorted.end(), [](const RowData& a, const RowData& b){
+        return a.criticite() > b.criticite();
+    });
+    QList<RowData> top5 = sorted.mid(0, 5);
+
+    double sumScore = 0;
+    int maxScore = 0, minScore = 99999;
+    for (const auto& r : rows) {
+        int s = r.score.scoreTotal;
+        sumScore += s;
+        maxScore = qMax(maxScore, s);
+        minScore = qMin(minScore, s);
+    }
+    double avgScore = sumScore / rows.size();
+
+    // === 3. Stats entreprises (triées) ===
+    QString statsTable = R"(
+        <table style="width:75%; margin:35px auto; font-size:11pt; border-collapse:collapse; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+            <tr style="background:#2c3e50; color:white;">
+                <th style="padding:14px; font-size:12pt;">Entreprise</th>
+                <th style="padding:14px; font-size:12pt;">Nombre</th>
+                <th style="padding:14px; font-size:12pt;">Pourcentage</th>
+            </tr>
+    )";
+
+    QList<QPair<QString, int>> list;
+    for (auto it = entrepriseCount.constBegin(); it != entrepriseCount.constEnd(); ++it)
+        list << qMakePair(it.key(), it.value());
+
+    std::sort(list.begin(), list.end(), [](const auto& a, const auto& b){ return a.second > b.second; });
+
+    int total = rows.size();
+    for (int i = 0; i < list.size(); ++i) {
+        double pct = list[i].second * 100.0 / total;
+        statsTable += QString(R"(
+            <tr style="background:%1;">
+                <td style="padding:12px;">%2</td>
+                <td style="padding:12px; text-align:center;">%3</td>
+                <td style="padding:12px; text-align:center; font-weight:bold;">%4%</td>
+            </tr>
+        )").arg(i%2==0 ? "#f8f9fa" : "#ffffff")
+                          .arg(list[i].first.toHtmlEscaped())
+                          .arg(list[i].second)
+                          .arg(QString::number(pct, 'f', 1));
+    }
+    statsTable += "</table>";
+
+    // === 4. HTML FINAL — TOUT est parfait ===
+    QString html = QStringLiteral(R"(
+    <html>
+    <head>
+        <meta charset="utf-8">
+        <style>
+            body { font-family: "Segoe UI", Arial, sans-serif; margin: 40px; line-height: 1.6; color: #2c3e50; background: white; }
+            h1 { text-align: center; font-size: 28pt; color: #2c3e50; margin: 10px 0 5px 0; }
+            h2 { font-size: 18pt; color: #2980b9; border-bottom: 3px solid #3498db; padding-bottom: 10px; margin-top: 50px; margin-bottom: 20px; }
+            .header { text-align: center; color: #7f8c8d; font-size: 12pt; margin-bottom: 30px; }
+            .box { background: #f0f8ff; padding: 20px; border-radius: 12px; border-left: 6px solid #3498db; margin: 30px 0; font-size: 11pt; }
+            .formula { background: #fff8e1; border-left-color: #ff9800; }
+            table { width: 100%; border-collapse: collapse; margin: 30px 0; font-size: 10.5pt; }
+            th, td { border: 1.8px solid #95a5a6; padding: 12px; text-align: center; vertical-align: top; }
+            th { background: linear-gradient(#3498db, #2980b9); color: white; font-weight: bold; font-size: 11pt; }
+            tr:nth-child(even) { background-color: #f8fdff; }
+            .top1 { background: #d5f4e6 !important; font-weight: bold; }
+            .top2 { background: #e8f8f5 !important; }
+            .top3 { background: #f4f9f4 !important; }
+            .top4 { background: #f8f9f8 !important; }
+            .top5 { background: #fcfcfc !important; }
+            .footer { margin-top: 100px; text-align: center; color: #95a5a6; font-size: 9pt; }
+        </style>
+    </head>
+    <body>
+
+        <h1>Rapport Complet des Fournisseurs</h1>
+        <div class="header">
+            <strong>OSANA Smart Electronics Repair Shop</strong><br>
+            Généré le %1
+        </div>
+
+        <div class="box">
+            <strong>Synthèse globale :</strong><br>
+            • Nombre total de fournisseurs : <strong>%2</strong><br>
+            • Score moyen : <strong>%3 pts</strong><br>
+            • Score maximum : <strong>%4</strong> — Score minimum : <strong>%5</strong>
+        </div>
+
+        <h2>1. Répartition des Fournisseurs par Entreprise</h2>
+        %6
+
+        <h2>2. Liste Complète des Fournisseurs</h2>
+        <table>
+            <tr>
+                <th>ID</th><th>Entreprise</th><th>Pièces Fournies</th><th>Date Partenariat</th>
+                <th>Téléphone</th><th>Email</th>
+                <th>Valeur</th><th>Rareté</th><th>Diversité</th><th>Ancienneté</th><th>Score Total</th>
+            </tr>
+    )").arg(QDateTime::currentDateTime().toString("dddd dd MMMM yyyy à hh:mm"))
+                       .arg(rows.size())
+                       .arg(QString::number(avgScore,'f',1))
+                       .arg(maxScore).arg(minScore)
+                       .arg(statsTable);
+
+    // === Tableau complet ===
+    for (int i = 0; i < rows.size(); ++i) {
+        const auto& r = rows[i];
+        QString rowClass = (i < 5) ? " class=\"top" + QString::number(i+1) + "\"" : "";
+        html += "<tr" + rowClass + ">";
+        html += "<td>" + QString::number(r.id) + "</td>";
+        html += "<td>" + r.nom.toHtmlEscaped() + "</td>";
+        html += "<td style=\"text-align:left; max-width:380px;\">" +
+                r.pieces.toHtmlEscaped().replace(";", "<br>• ") + "</td>";
+        html += "<td>" + r.date + "</td>";
+        html += "<td>" + r.tel.toHtmlEscaped() + "</td>";
+        html += "<td>" + r.email.toHtmlEscaped() + "</td>";
+        html += "<td>" + QString::number(r.score.scoreValeur) + "</td>";
+        html += "<td>" + QString::number(r.score.scoreRareté) + "</td>";
+        html += "<td>" + QString::number(r.score.scoreDiversité) + "</td>";
+        html += "<td>" + QString::number(r.score.scoreAnciennete/10) + "</td>";
+        html += "<td><strong>" + QString::number(r.score.scoreTotal) + "</strong></td>";
+        html += "</tr>";
+    }
+
+    html += QStringLiteral(R"(
+        </table>
+
+        <h2>3. Top 5 Fournisseurs par Criticité (Valeur + Rareté)</h2>
+        <table>
+            <tr>
+                <th>Rang</th><th>Entreprise</th><th>Criticité</th><th>Score Total</th><th>Ancienneté</th>
+            </tr>
+    )");
+
+    for (int i = 0; i < top5.size(); ++i) {
+        const auto& r = top5[i];
+        html += QString(R"(
+            <tr class="top%1">
+                <td><strong>%2</strong></td>
+                <td><strong>%3</strong></td>
+                <td><strong>%4</strong></td>
+                <td><strong>%5</strong></td>
+                <td>%6 an(s)</td>
+            </tr>
+        )").arg(i+1).arg(i+1).arg(r.nom.toHtmlEscaped())
+                    .arg(int(r.criticite())).arg(r.score.scoreTotal).arg(r.score.scoreAnciennete/10);
+    }
+
+    html += QStringLiteral(R"(
+        </table>
+
+        <div class="box">
+            <h2>Légende des Couleurs (Top 5)</h2>
+            <ul>
+                <li>1er → Fond vert clair = Meilleure criticité</li>
+                <li>2e à 5e → Dégradé selon le classement</li>
+            </ul>
+        </div>
+
+        <div class="box formula">
+            <h2>Formule du Score Total</h2>
+            <p><strong>Score = Valeur + Rareté + Diversité + Ancienneté</strong></p>
+            <ul>
+                <li><strong>Valeur</strong> : Volume et régularité des commandes</li>
+                <li><strong>Rareté</strong> : Pièces uniques ou rares</li>
+                <li><strong>Diversité</strong> : Nombre de catégories de pièces</li>
+                <li><strong>Ancienneté</strong> : Années de partenariat × 10 points</li>
+            </ul>
+        </div>
+
+        <div class="footer">
+            Rapport généré automatiquement — OSANA Smart Electronics Repair Shop © 2025
+        </div>
+    </body></html>
+    )");
+
+    // === Export PDF ===
+    QString fichier = QFileDialog::getSaveFileName(
+        nullptr, "Exporter Rapport Fournisseurs",
+        QDir::homePath() + "/Desktop/Rapport_Fournisseurs_OSANA_" + QDate::currentDate().toString("yyyy-MM-dd") + ".pdf",
+        "Fichiers PDF (*.pdf)");
+
+    if (fichier.isEmpty()) return;
+    if (!fichier.endsWith(".pdf", Qt::CaseInsensitive)) fichier += ".pdf";
+
+    QPrinter printer(QPrinter::HighResolution);
+    printer.setPageSize(QPageSize::A4);
+    printer.setPageOrientation(QPageLayout::Landscape);
+    printer.setOutputFormat(QPrinter::PdfFormat);
+    printer.setOutputFileName(fichier);
+    printer.setPageMargins(QMarginsF(10,10,10,10), QPageLayout::Millimeter);
+
+    QTextDocument doc;
+    doc.setHtml(html);
+    doc.print(&printer);
+
+    QMessageBox::information(nullptr, "Succès",
+                             "Rapport PDF généré avec succès !\n\nFichier enregistré sur le Bureau.");
 }

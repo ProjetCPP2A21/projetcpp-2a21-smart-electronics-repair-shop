@@ -24,6 +24,9 @@
 #include <QAbstractItemModel>
 #include <QStandardItemModel>
 #include <QStandardItem>
+#include <QStandardPaths>   // ← AJOUTE ÇA !
+#include <QFileInfo>
+#include <QTextDocument>
 class fournisseur : public QObject
 {
     Q_OBJECT
