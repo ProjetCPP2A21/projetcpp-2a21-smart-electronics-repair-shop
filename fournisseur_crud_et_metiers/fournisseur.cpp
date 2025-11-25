@@ -14,7 +14,7 @@ fournisseur::fournisseur(QWidget *parentWidget, QObject *parent)
         table->setColumnCount(8);
         QStringList headers = {
             "ID", "Nom Entreprise", "Contact Nom", "Contact Prénom",
-            "Téléphone", "Email", "Type Pièces", "Date Partenariat"
+            "Téléphone", "Email", "Type Pièces", "Date Partenariat" , "Score"
         };
         table->setHorizontalHeaderLabels(headers);
     }
@@ -54,7 +54,7 @@ int fournisseur::genererIdSiVide()
     if (ok && id > 0) return id;
 
     QSqlQuery q;
-    if (!q.exec("SELECT NVL(MAX(ID_FORUNISSEUR), 0) + 1 AS NEXT_ID FROM FOURNISSEUR")) {
+    if (!q.exec("SELECT NVL(MAX(ID_FOURNISSEUR), 0) + 1 AS NEXT_ID FROM FOURNISSEUR")) {
         qDebug() << "Erreur récup ID:" << q.lastError().text();
         return -1;
     }
@@ -99,7 +99,7 @@ void fournisseur::ajouterFournisseur()
 
     QSqlQuery query;
     query.prepare(
-        "INSERT INTO FOURNISSEUR (ID_FORUNISSEUR, NOM_ENT, NOM_F, PRENOM_F, TEL, EMAIL, ADRESSE, DATE_DE_PARTENERIAT, TYPES_DES_PIECES) "
+        "INSERT INTO FOURNISSEUR (ID_FOURNISSEUR, NOM_ENT, NOM_F, PRENOM_F, TEL, EMAIL, ADRESSE, DATE_DE_PARTENERIAT, TYPES_DES_PIECES) "
         "VALUES (:id, :nom, :nomf, :prenomf, :tel, :email, :adr, TO_DATE(:date,'YYYY-MM-DD'), :type)"
         );
     query.bindValue(":id", id);
@@ -136,8 +136,8 @@ void fournisseur::rechercherFournisseurParId()
     }
 
     QSqlQuery query;
-    query.prepare("SELECT ID_FORUNISSEUR, NOM_ENT, NOM_F, PRENOM_F, TEL, EMAIL, TYPES_DES_PIECES, ADRESSE, DATE_DE_PARTENERIAT "
-                  "FROM FOURNISSEUR WHERE ID_FORUNISSEUR = :id");
+    query.prepare("SELECT ID_FOURNISSEUR, NOM_ENT, NOM_F, PRENOM_F, TEL, EMAIL, TYPES_DES_PIECES, ADRESSE, DATE_DE_PARTENERIAT "
+                  "FROM FOURNISSEUR WHERE ID_FOURNISSEUR = :id");
     query.bindValue(":id", id);
 
     if (!query.exec()) {
@@ -189,7 +189,7 @@ void fournisseur::modifierFournisseur()
 
     QString currentEmail, currentTel, currentNomF, currentPrenomF;
     QSqlQuery q;
-    q.prepare("SELECT NOM_F, PRENOM_F, TEL, EMAIL FROM FOURNISSEUR WHERE ID_FORUNISSEUR = :id");
+    q.prepare("SELECT NOM_F, PRENOM_F, TEL, EMAIL FROM FOURNISSEUR WHERE ID_FOURNISSEUR = :id");
     q.bindValue(":id", id);
     if (q.exec() && q.next()) {
         currentNomF = q.value("NOM_F").toString();
@@ -206,7 +206,7 @@ void fournisseur::modifierFournisseur()
                           "ADRESSE=:adr, DATE_DE_PARTENERIAT=TO_DATE(:date,'YYYY-MM-DD'), TYPES_DES_PIECES=:type";
     if (telephone != currentTel) updateQuery += ", TEL=:tel";
     if (email != currentEmail) updateQuery += ", EMAIL=:email";
-    updateQuery += " WHERE ID_FORUNISSEUR=:id";
+    updateQuery += " WHERE ID_FOURNISSEUR=:id";
 
     QSqlQuery query;
     query.prepare(updateQuery);
@@ -246,7 +246,7 @@ void fournisseur::supprimerFournisseur()
         return;
 
     QSqlQuery query;
-    query.prepare("DELETE FROM FOURNISSEUR WHERE ID_FORUNISSEUR = :id");
+    query.prepare("DELETE FROM FOURNISSEUR WHERE ID_FOURNISSEUR = :id");
     query.bindValue(":id", id);
 
     if (!query.exec()) {
@@ -268,15 +268,15 @@ void fournisseur::rafraichirListeFournisseurs()
         return;
     }
 
-    table->setColumnCount(8);
+    table->setColumnCount(9); // now includes Score column
     table->clearContents();
     table->setRowCount(0);
 
-    QSqlQuery query("SELECT ID_FORUNISSEUR, NOM_ENT, NOM_F, PRENOM_F, TEL, EMAIL, TYPES_DES_PIECES, ADRESSE, DATE_DE_PARTENERIAT FROM FOURNISSEUR");
+    QSqlQuery query("SELECT ID_FOURNISSEUR, NOM_ENT, NOM_F, PRENOM_F, TEL, EMAIL, TYPES_DES_PIECES, ADRESSE, DATE_DE_PARTENERIAT FROM FOURNISSEUR");
     int row = 0;
     while (query.next()) {
         table->insertRow(row);
-        table->setItem(row, 0, new QTableWidgetItem(query.value("ID_FORUNISSEUR").toString()));
+        table->setItem(row, 0, new QTableWidgetItem(query.value("ID_FOURNISSEUR").toString()));
         table->setItem(row, 1, new QTableWidgetItem(query.value("NOM_ENT").toString()));
         table->setItem(row, 2, new QTableWidgetItem(query.value("NOM_F").toString()));
         table->setItem(row, 3, new QTableWidgetItem(query.value("PRENOM_F").toString()));
@@ -285,13 +285,21 @@ void fournisseur::rafraichirListeFournisseurs()
         table->setItem(row, 6, new QTableWidgetItem(query.value("TYPES_DES_PIECES").toString()));
         table->setItem(row, 7, new QTableWidgetItem(query.value("DATE_DE_PARTENERIAT").toString()));
 
+        // ---- NEW: add Score column ----
+        int id = query.value("ID_FOURNISSEUR").toInt();
+        ScoreFournisseur sc = calculerScoreFournisseur(id);
+        table->setItem(row, 8, new QTableWidgetItem(QString::number(sc.scoreTotal)));
+
+        // Make first 8 columns non-editable
         for (int col = 0; col < 8; ++col) {
             QTableWidgetItem *it = table->item(row, col);
             if (it) it->setFlags(it->flags() & ~Qt::ItemIsEditable);
         }
+
         row++;
     }
 }
+
 
 // TRIER
 void fournisseur::trierParNomEntreprise()
@@ -490,7 +498,7 @@ void fournisseur::afficherTopEntreprise()
 
     QMap<QString, int> companyCounts;
 
-    int companyColumn = 1; // adjust this to the column index of "Entreprise" in your table
+    int companyColumn = 1;
     for (int row = 0; row < table->rowCount(); ++row) {
         QTableWidgetItem *item = table->item(row, companyColumn);
         if (item) {
@@ -518,4 +526,264 @@ void fournisseur::afficherTopEntreprise()
                              QString("L'entreprise avec le plus de fournisseurs est : %1\nNombre : %2")
                                  .arg(topCompany)
                                  .arg(maxCount));
+}
+//ma1:
+fournisseur::ScoreFournisseur fournisseur::calculerScoreFournisseur(int idF)
+{
+    ScoreFournisseur sc;
+    sc.scoreValeur = 0;
+    sc.scoreRareté = 0;
+    sc.scoreDiversité = 0;
+    sc.scoreAnciennete = 0;
+    sc.scoreTotal = 0;
+
+    QSqlQuery query;
+    query.prepare("SELECT TYPES_DES_PIECES, DATE_DE_PARTENERIAT FROM FOURNISSEUR WHERE ID_FOURNISSEUR = :id");
+    query.bindValue(":id", idF);
+
+    if (!query.exec() || !query.next()) {
+        return sc; // tout à zéro
+    }
+
+    QString typesTxt = query.value(0).toString().toLower().trimmed();
+    QVariant dateVar = query.value(1);
+
+    if (typesTxt.isEmpty()) return sc;
+
+    // --- Nettoyage et déduplication des pièces ---
+    QStringList piecesList = typesTxt.split(",", Qt::SkipEmptyParts);
+    QSet<QString> pieces;
+    for (QString p : piecesList) {
+        p = p.trimmed();
+        if (!p.isEmpty()) pieces.insert(p);
+    }
+
+    // --- Catégories ---
+    QSet<QString> critiques = {"batterie","ecran","carte","ic","chip","processeur","cpu","gpu",
+                               "ram","rom","ssd","hdd","motherboard","carte mere","pcb"};
+    QSet<QString> importants = {"connecteur","bouton","camera","microphone","speaker","haut parleur",
+                                "antenne","capteur","sensor","led","diode","switch"};
+    QSet<QString> communs = {"vis","cable","coque","plastique","metal","boitier","ruban",
+                             "tissu","adhesif","joint","clip","ressort","fil"};
+
+    // --- SCORE DIVERSITE ---
+    int recognizedPieces = 0;
+    for (const QString &p : pieces) {
+        if (critiques.contains(p) || importants.contains(p) || communs.contains(p))
+            recognizedPieces++;
+    }
+    sc.scoreDiversité = recognizedPieces * 10;
+
+    // --- SCORE VALEUR ---
+    for (const QString &p : pieces) {
+        if (critiques.contains(p))       sc.scoreValeur += 40;
+        else if (importants.contains(p)) sc.scoreValeur += 20;
+        else if (communs.contains(p))    sc.scoreValeur += 5;
+        // unknown pieces ignored
+    }
+
+    // --- SCORE RARETE (une seule fois par pièce connue) ---
+    for (const QString &p : pieces) {
+        if (!(critiques.contains(p) || importants.contains(p) || communs.contains(p)))
+            continue;
+
+        QSqlQuery q2;
+        q2.prepare("SELECT COUNT(*) FROM FOURNISSEUR "
+                   "WHERE ',' || LOWER(TYPES_DES_PIECES) || ',' LIKE :motif");
+        q2.bindValue(":motif", QString("%%%1%%").arg(p));
+
+        if (q2.exec() && q2.next()) {
+            int countP = q2.value(0).toInt();
+            if (countP == 1)       sc.scoreRareté += 50;
+            else if (countP <= 3)  sc.scoreRareté += 20;
+            else                   sc.scoreRareté += 5;
+        }
+    }
+
+    // --- SCORE ANCIENNETE (MA1 date handling kept) ---
+    QDate datePartenariat;
+    if (dateVar.type() == QVariant::Date) {
+        datePartenariat = dateVar.toDate();
+    } else if (dateVar.type() == QVariant::DateTime) {
+        datePartenariat = dateVar.toDateTime().date();
+    } else {
+        QString dateStr = dateVar.toString().left(10);
+        datePartenariat = QDate::fromString(dateStr, "yyyy-MM-dd");
+        if (!datePartenariat.isValid())
+            datePartenariat = QDate::fromString(dateStr, "dd/MM/yyyy");
+    }
+
+    if (datePartenariat.isValid() && datePartenariat <= QDate::currentDate()) {
+        int years = datePartenariat.daysTo(QDate::currentDate()) / 365;
+        sc.scoreAnciennete = years * 2;
+    }
+
+    // --- SCORE TOTAL ---
+    sc.scoreTotal = sc.scoreValeur + sc.scoreRareté + sc.scoreDiversité + sc.scoreAnciennete;
+
+    return sc;
+}
+
+
+
+
+void fournisseur::afficherScoreFournisseurMA1()
+{
+    auto idEdit = page->findChild<QLineEdit*>("Id_2");
+    if (!idEdit) {
+        QMessageBox::warning(page, "Erreur", "Champ ID introuvable !");
+        return;
+    }
+
+    bool ok;
+    int id = idEdit->text().trimmed().toInt(&ok);
+    if (!ok || id <= 0) {
+        QMessageBox::warning(page, "Erreur", "Veuillez entrer un ID valide.");
+        return;
+    }
+
+    ScoreFournisseur sc = calculerScoreFournisseur(id);
+
+    QString details = QString(
+                          "===== SCORE FOURNISSEUR ID %1 =====\n\n"
+                          "Valeur des pièces      : %2 pts\n"
+                          "Rareté                  : %3 pts\n"
+                          "Diversité               : %4 pts\n"
+                          "Ancienneté (années ×10) : %5 pts\n\n"
+                          "SCORE TOTAL             : %6 pts"
+                          ).arg(id)
+                          .arg(sc.scoreValeur)
+                          .arg(sc.scoreRareté)
+                          .arg(sc.scoreDiversité)
+                          .arg(sc.scoreAnciennete)
+                          .arg(sc.scoreTotal);
+
+    QMessageBox::information(page, "Évaluation Fournisseur (MA1)", details);
+
+    // Optionnel : mettre à jour le tableau
+    auto table = page->findChild<QTableWidget*>("tabaff_6");
+    if (table) {
+        for (int row = 0; row < table->rowCount(); ++row) {
+            if (table->item(row, 0) && table->item(row, 0)->text().toInt() == id) {
+                if (table->columnCount() > 8) {
+                    QTableWidgetItem *item = table->item(row, 8);
+                    if (!item) {
+                        item = new QTableWidgetItem();
+                        table->setItem(row, 8, item);
+                    }
+                    item->setText(QString::number(sc.scoreTotal));
+                }
+                break;
+            }
+        }
+    }
+}
+
+//ma2:
+QList<fournisseur::FournisseurCritique> fournisseur::identifierFournisseursPrioritaires()
+{
+    QList<FournisseurCritique> list;
+
+    // --- Get all suppliers at once ---
+    QSqlQuery q("SELECT ID_FOURNISSEUR, TYPES_DES_PIECES, DATE_DE_PARTENERIAT FROM FOURNISSEUR");
+
+    while (q.next())
+    {
+        int id = q.value(0).toInt();
+        QString typesTxt = q.value(1).toString().trimmed().toLower();
+        QVariant dateVar  = q.value(2);
+
+        // --- NOSENSE FILTER ---
+        if (typesTxt.isEmpty()) continue;       // skip if no pieces
+        if (!dateVar.isValid()) continue;       // skip if invalid date
+        if (typesTxt.length() < 2) continue;    // skip very short nonsense entries
+
+        // --- Calculate score ---
+        ScoreFournisseur sc = calculerScoreFournisseur(id);
+
+        // Skip suppliers with zero score in critical categories
+        if (sc.scoreValeur + sc.scoreRareté == 0) continue;
+
+        FournisseurCritique fc;
+        fc.id = id;
+
+        // --- SCORE CRITICITÉ ---
+        // Weight: Rareté 50%, Valeur 50%, optionally add Diversité 10% bonus
+        fc.scoreCriticite = sc.scoreRareté * 0.5 + sc.scoreValeur * 0.5 + sc.scoreDiversité * 0.1;
+
+        list.append(fc);
+    }
+
+    // --- TRI par scoreCriticité décroissant ---
+    std::sort(list.begin(), list.end(), [](const FournisseurCritique &a, const FournisseurCritique &b){
+        return a.scoreCriticite > b.scoreCriticite;
+    });
+
+    return list;
+}
+
+void fournisseur::afficherFournisseursPrioritairesMA2()
+{
+    auto table = page->findChild<QTableWidget*>("tabaff_6");
+    auto idEdit = page->findChild<QLineEdit*>("Id_2");
+    if (!table || table->rowCount() == 0) {
+        QMessageBox::warning(page, "Attention", "Aucun fournisseur à analyser.");
+        return;
+    }
+
+    QList<FournisseurCritique> list = identifierFournisseursPrioritaires();
+    if (list.isEmpty()) return;
+
+    // --- Clear previous colors ---
+    for (int row = 0; row < table->rowCount(); ++row)
+        for (int col = 0; col < table->columnCount(); ++col)
+            table->item(row, col)->setBackground(Qt::darkGray);
+
+    // --- Highlight top suppliers ---
+    int topN = qMin(10, list.size());
+    for (int i = 0; i < topN; ++i) {
+        int id = list[i].id;
+        int red   = 255 - i * 15;
+        int green = 140 - i * 10;
+        int blue  = 50;
+
+        QColor color(red, green, blue);
+        for (int row = 0; row < table->rowCount(); ++row) {
+            QTableWidgetItem* idItem = table->item(row, 0);
+            if (idItem && idItem->text().toInt() == id) {
+                for (int col = 0; col < table->columnCount(); ++col)
+                    table->item(row, col)->setBackground(color);
+                break;
+            }
+        }
+    }
+
+    QString msg;
+    bool hasId = idEdit && !idEdit->text().trimmed().isEmpty();
+    int id = hasId ? idEdit->text().trimmed().toInt() : -1;
+
+    if (!hasId || id <= 0) {
+        msg += "Fournisseurs prioritaires :\n\n";
+        msg += "Le tableau met en évidence les fournisseurs les plus critiques.\n";
+        msg += "Couleurs (du plus critique au moins critique) :\n";
+        msg += " • Orange clair → Criticité maximale (top fournisseur)\n";
+        msg += " • Orange moyen → Criticité élevée\n";
+        msg += " • Rouge foncé  → Criticité modérée\n\n";
+        msg += "Entrez un ID dans le champ prévu pour consulter les détails d'un fournisseur spécifique.";
+    } else {
+        // --- Find the supplier in the list ---
+        auto it = std::find_if(list.begin(), list.end(), [id](const FournisseurCritique &fc){ return fc.id == id; });
+        if (it != list.end()) {
+            ScoreFournisseur sc = calculerScoreFournisseur(id);
+            msg += QString("MA2 – Détails du fournisseur ID %1 :\n\n").arg(id);
+            msg += QString("Score Valeur   : %1\n").arg(sc.scoreValeur);
+            msg += QString("Score Rareté   : %1\n").arg(sc.scoreRareté);
+            msg += QString("Score Criticité (Valeur + Rareté) : %1\n").arg(it->scoreCriticite);
+            msg += "\n";
+        } else {
+            msg += "Fournisseur non classé.";
+        }
+    }
+
+    QMessageBox::information(page, "MA2 – Fournisseurs prioritaires", msg);
 }

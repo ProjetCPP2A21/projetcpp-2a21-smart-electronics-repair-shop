@@ -24,8 +24,6 @@
 #include <QAbstractItemModel>
 #include <QStandardItemModel>
 #include <QStandardItem>
-#include <QtCharts>
-
 class fournisseur : public QObject
 {
     Q_OBJECT
@@ -33,7 +31,17 @@ class fournisseur : public QObject
 public:
     explicit fournisseur(QWidget *parentWidget, QObject *parent = nullptr);
     ~fournisseur() = default;
-
+    typedef struct {
+        int scoreValeur;
+        int scoreRareté;
+        int scoreDiversité;
+        int scoreAnciennete;
+        int scoreTotal;
+    } ScoreFournisseur;
+    typedef struct {
+        int id;
+        int scoreCriticite;
+    } FournisseurCritique;
 public slots:
     //crud:
     void ajouterFournisseur();
@@ -47,6 +55,10 @@ public slots:
     void afficherStatistiques();
     void exporterPDF();
     void afficherTopEntreprise();
+    ScoreFournisseur calculerScoreFournisseur(int idF);
+    QList <FournisseurCritique> identifierFournisseursPrioritaires();
+    void afficherScoreFournisseurMA1();
+    void afficherFournisseursPrioritairesMA2();
 
 private:
     QWidget *page;

@@ -48,9 +48,13 @@ osana_dashboard::osana_dashboard(QWidget *parent)
             gestionFournisseurs, &fournisseur::afficherStatistiques);
     connect(ui->menu_fournisseur->findChild<QPushButton*>("PDF_2"),&QPushButton::clicked,
             gestionFournisseurs, &fournisseur::exporterPDF);
-    connect(ui->menu_fournisseur->findChild<QPushButton*>("mai_f"),&QPushButton::clicked,
+    /*connect(ui->menu_fournisseur->findChild<QPushButton*>("mai_f"),&QPushButton::clicked,
             gestionFournisseurs, &fournisseur::afficherTopEntreprise);
-
+    */
+    connect(ui->menu_fournisseur->findChild<QPushButton*>("mai_1"),&QPushButton::clicked,
+            gestionFournisseurs, &fournisseur::afficherScoreFournisseurMA1);
+    connect(ui->menu_fournisseur->findChild<QPushButton*>("mai_2"),&QPushButton::clicked,
+            gestionFournisseurs, &fournisseur::afficherFournisseursPrioritairesMA2);
 
     //connexions client:
     connect(ui->menu_client->findChild<QPushButton*>("btnAjouterClient"), &QPushButton::clicked,

@@ -4013,7 +4013,7 @@ color :rgb(255, 255, 255);
        <string notr="true">background-color: rgb(85, 0, 255);</string>
       </property>
       <property name="text">
-       <string>MAI</string>
+       <string>SS</string>
       </property>
      </widget>
      <widget class="QPushButton" name="mai_2">
@@ -4029,7 +4029,7 @@ color :rgb(255, 255, 255);
        <string notr="true">background-color: rgb(85, 0, 255);</string>
       </property>
       <property name="text">
-       <string>MAI</string>
+       <string>PF</string>
       </property>
      </widget>
      <zorder>retour_11</zorder>
