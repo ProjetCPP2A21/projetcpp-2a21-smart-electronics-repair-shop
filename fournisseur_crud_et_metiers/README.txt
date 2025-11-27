@@ -1,3 +1,0 @@
--probleme affichage fonction export.
--statistique crash.
--supprimer non-fonctionel.
