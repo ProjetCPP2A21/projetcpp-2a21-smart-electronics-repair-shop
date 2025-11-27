@@ -3273,27 +3273,27 @@ border-top-color: rgb(255, 255, 255);
          <colorrole role="Button">
           <brush brushstyle="SolidPattern">
            <color alpha="255">
-            <red>0</red>
-            <green>0</green>
-            <blue>74</blue>
+            <red>170</red>
+            <green>150</green>
+            <blue>180</blue>
            </color>
           </brush>
          </colorrole>
          <colorrole role="Base">
           <brush brushstyle="SolidPattern">
            <color alpha="255">
-            <red>0</red>
-            <green>0</green>
-            <blue>74</blue>
+            <red>170</red>
+            <green>150</green>
+            <blue>180</blue>
            </color>
           </brush>
          </colorrole>
          <colorrole role="Window">
           <brush brushstyle="SolidPattern">
            <color alpha="255">
-            <red>0</red>
-            <green>0</green>
-            <blue>74</blue>
+            <red>170</red>
+            <green>150</green>
+            <blue>180</blue>
            </color>
           </brush>
          </colorrole>
@@ -3311,27 +3311,27 @@ border-top-color: rgb(255, 255, 255);
          <colorrole role="Button">
           <brush brushstyle="SolidPattern">
            <color alpha="255">
-            <red>0</red>
-            <green>0</green>
-            <blue>74</blue>
+            <red>170</red>
+            <green>150</green>
+            <blue>180</blue>
            </color>
           </brush>
          </colorrole>
          <colorrole role="Base">
           <brush brushstyle="SolidPattern">
            <color alpha="255">
-            <red>0</red>
-            <green>0</green>
-            <blue>74</blue>
+            <red>170</red>
+            <green>150</green>
+            <blue>180</blue>
            </color>
           </brush>
          </colorrole>
          <colorrole role="Window">
           <brush brushstyle="SolidPattern">
            <color alpha="255">
-            <red>0</red>
-            <green>0</green>
-            <blue>74</blue>
+            <red>170</red>
+            <green>150</green>
+            <blue>180</blue>
            </color>
           </brush>
          </colorrole>
@@ -3349,27 +3349,27 @@ border-top-color: rgb(255, 255, 255);
          <colorrole role="Button">
           <brush brushstyle="SolidPattern">
            <color alpha="255">
-            <red>0</red>
-            <green>0</green>
-            <blue>74</blue>
+            <red>170</red>
+            <green>150</green>
+            <blue>180</blue>
            </color>
           </brush>
          </colorrole>
          <colorrole role="Base">
           <brush brushstyle="SolidPattern">
            <color alpha="255">
-            <red>0</red>
-            <green>0</green>
-            <blue>74</blue>
+            <red>170</red>
+            <green>150</green>
+            <blue>180</blue>
            </color>
           </brush>
          </colorrole>
          <colorrole role="Window">
           <brush brushstyle="SolidPattern">
            <color alpha="255">
-            <red>0</red>
-            <green>0</green>
-            <blue>74</blue>
+            <red>170</red>
+            <green>150</green>
+            <blue>180</blue>
            </color>
           </brush>
          </colorrole>
@@ -3384,6 +3384,9 @@ border-top-color: rgb(255, 255, 255);
          </colorrole>
         </disabled>
        </palette>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(170, 150, 180);</string>
       </property>
       <property name="text">
        <string>Rechercher</string>
@@ -3531,6 +3534,9 @@ border-top-color: rgb(255, 255, 255);
         <width>111</width>
         <height>29</height>
        </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 85, 0);</string>
       </property>
       <property name="text">
        <string>Statistiques</string>
@@ -4013,7 +4019,7 @@ color :rgb(255, 255, 255);
        <string notr="true">background-color: rgb(85, 0, 255);</string>
       </property>
       <property name="text">
-       <string>MAI</string>
+       <string>Score </string>
       </property>
      </widget>
      <widget class="QPushButton" name="mai_2">
@@ -4029,7 +4035,7 @@ color :rgb(255, 255, 255);
        <string notr="true">background-color: rgb(85, 0, 255);</string>
       </property>
       <property name="text">
-       <string>MAI</string>
+       <string>Criticité</string>
       </property>
      </widget>
      <zorder>retour_11</zorder>
