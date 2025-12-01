@@ -33,6 +33,8 @@
 #include <QApplication>
 #include "qrcodegen.hpp"
 #include <QUrl>
+#include <QSqlTableModel>
+#include <QSqlRecord>
 
 #include <QPalette>
 
@@ -774,17 +776,27 @@ void MainWindow::on_btmisajour_stock_clicked()
 
 void MainWindow::statistique()
 {
-    QSqlQuery query;
-    query.prepare("SELECT categorie, SUM(quantite) FROM stock GROUP BY categorie");
+    // Récupère le modèle actuellement affiché dans le tableView
+    QAbstractItemModel* model = ui->tableView->model();
+    if (!model) return;
 
-    QPieSeries *series = new QPieSeries();
-    if(query.exec()) {
-        while(query.next()) {
-            QString categorie = query.value(0).toString();
-            int total = query.value(1).toInt();
-            series->append(categorie, total);
-        }
+    QMap<QString, int> totals; // catégorie -> somme des quantités
+
+    int rowCount = model->rowCount();
+    int categorieCol = 3; // colonne catégorie
+    int quantiteCol = 4;  // colonne quantité
+
+    for (int row = 0; row < rowCount; ++row)
+    {
+        QString categorie = model->index(row, categorieCol).data().toString();
+        int quantite = model->index(row, quantiteCol).data().toInt();
+        totals[categorie] += quantite;
     }
+
+    // Création du graphique
+    QPieSeries *series = new QPieSeries();
+    for (auto it = totals.begin(); it != totals.end(); ++it)
+        series->append(it.key(), it.value());
 
     for (auto slice : series->slices())
         slice->setLabelVisible(true);
@@ -794,10 +806,10 @@ void MainWindow::statistique()
     chart->setTitle("Répartition des quantités par catégorie");
     chart->legend()->setAlignment(Qt::AlignBottom);
 
-    chartViewGlobal = new QChartView(chart);  // sauvegarde pour l’export
+    chartViewGlobal = new QChartView(chart);
     chartViewGlobal->setRenderHint(QPainter::Antialiasing);
 
-
+    // Supprime le layout précédent si existant
     if(ui->chartFrame_->layout() != nullptr)
         delete ui->chartFrame_->layout();
 
@@ -806,10 +818,19 @@ void MainWindow::statistique()
     ui->chartFrame_->setLayout(layout);
 }
 
+
+
+
+
 void MainWindow::on_btstatistique_stock_clicked()
 {
     statistique();
 }
+
+
+
+
+
 
 
 
@@ -947,38 +968,44 @@ void MainWindow::envoyerSMSsimple(const QString& message)
 }
 void MainWindow::verifierStockEtAlerter()
 {
-    QSqlQuery q;
-    q.exec("SELECT nom, quantite FROM stock WHERE quantite <= 10");
+    QSqlTableModel model;
+    model.setTable("stock");
+    model.setEditStrategy(QSqlTableModel::OnManualSubmit);
 
     QString alertes = "🚨 ALERTE STOCK CRITIQUE 🚨\n\n";
     bool alerte = false;
     int compteurProduits = 0;
 
-    while (q.next()) {
-        QString nom = q.value(0).toString();
-        int qty = q.value(1).toInt();
-        alertes += "• " + nom + " : seulement " + QString::number(qty) + " en stock !!\n";
-        alerte = true;
+    int rows = model.rowCount();
 
+    for (int i = 0; i < rows; i++)
+    {
+        QString nom = model.data(model.index(i, model.fieldIndex("nom"))).toString();
+        int qty     = model.data(model.index(i, model.fieldIndex("quantite"))).toInt();
 
-        QString message = QString("ALERTE: %1 (Qte: %2)").arg(nom, QString::number(qty));
-        envoyerSMSsimple(message);
-        compteurProduits++;
+        if (qty <= 10)   // équivalent du WHERE
+        {
+            alertes += "• " + nom + " : seulement " + QString::number(qty) + " en stock !!\n";
+            alerte = true;
 
+            QString message = QString("ALERTE: %1 (Qte: %2)").arg(nom).arg(qty);
+            envoyerSMSsimple(message);
+            compteurProduits++;
 
-        QThread::msleep(800);
+            QThread::msleep(800);
 
-
-        if (compteurProduits >= 3) break;
+            if (compteurProduits >= 3)
+                break;
+        }
     }
 
-    if (alerte) {
+    if (alerte)
+    {
         QMessageBox::critical(this, "ALERTE ENVOYÉE",
                               alertes +
                                   QString("\n\n✓ %1 alertes SMS envoyées!").arg(compteurProduits),
                               QMessageBox::Ok);
 
-        // Son d'alerte
         QApplication::beep(); QThread::msleep(300);
         QApplication::beep(); QThread::msleep(300);
         QApplication::beep();
