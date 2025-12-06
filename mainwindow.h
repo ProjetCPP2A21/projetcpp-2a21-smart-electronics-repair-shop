@@ -12,6 +12,7 @@
 #include <QtCharts/QChart>
 #include "qrcodegen.hpp"
 #include <QNetworkAccessManager>
+#include"arduino.h"
 // --- Correction pour Qt 6 ---
 // La macro QT_CHARTS_USE_NAMESPACE n'existe plus.
 // On utilise l'espace de nom standard.
@@ -76,9 +77,20 @@ private slots:
 
     void on_btn_retour_login_2_clicked();
 
+    void on_employe_clicked();
+
+
+    void on_btn_retour_menu_clicked();
+
+    void on_retour_connection_clicked();
+
+    void on_pushButton_exit_clicked();
+    void update_rfid();
+
 private:
     Ui::MainWindow *ui;
     void chargerTable(const QString &filter = "");
+    Arduino A;
     //stock
     stock tm;
     Employer emp;

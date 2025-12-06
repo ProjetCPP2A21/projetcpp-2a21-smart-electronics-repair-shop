@@ -54,7 +54,7 @@
 #include <QtCharts/QPieSeries>
 #include <QtCharts/QPieSlice>
 #include <QtCharts/QChart>
-
+#include "arduino.h"
 // ====================================================================
 // CONSTRUCTEUR & DESTRUCTEUR
 // ====================================================================
@@ -93,7 +93,16 @@ MainWindow::MainWindow(QWidget *parent)
 , networkManager(new QNetworkAccessManager(this))
 {
     ui->setupUi(this);
-    ui->stackedWidget->setCurrentWidget(ui->menu);
+    ui->stackedWidget->setCurrentWidget(ui->page_2);
+    int ret = A.connect_arduino(); // Connexion à l'Arduino
+    switch(ret){
+    case(0):qDebug()<< "arduino is available and connected to : "<< A.getarduino_port_name();
+        break;
+    case(1):qDebug() << "arduino is available but not connected to :" <<A.getarduino_port_name();
+        break;
+    case(-1):qDebug() << "arduino is not available";
+    }
+    QObject::connect(A.getserial(), SIGNAL(readyRead()), this, SLOT(update_rfid()));
     connect(ui->btexporterPDF_stock, &QPushButton::clicked, this, &MainWindow::exporterPDF);
 
     ui->tableView->setItemDelegate(new StockColorDelegate(this));
@@ -1050,8 +1059,7 @@ void MainWindow::on_btn_login_clicked()
         QMessageBox::information(this, "Bienvenue", "Connexion réussie !");
 
         // Aller sur la page App (page)
-        ui->stackedWidget->setCurrentWidget(ui->page);
-
+        ui->stackedWidget->setCurrentWidget(ui->menu);
         rafraichir();
         ui->input_user->clear();
         ui->input_pass->clear();
@@ -1468,5 +1476,78 @@ bool MainWindow::verifierChamps()
 
     // Si on arrive ici, tout est BON !
     return true;
+}
+void MainWindow::on_employe_clicked()
+{
+    ui->stackedWidget->setCurrentWidget(ui->page);
+
+}
+void MainWindow::on_btn_retour_menu_clicked()
+{
+    ui->stackedWidget->setCurrentWidget(ui->menu);
+
+}
+
+
+void MainWindow::on_retour_connection_clicked()
+{
+    ui->stackedWidget->setCurrentWidget(ui->page_2);
+
+}
+
+
+void MainWindow::on_pushButton_exit_clicked()
+{
+    ui->stackedWidget->setCurrentWidget(ui->menu);
+}
+
+void MainWindow::update_rfid()
+{
+    // On récupère le port série
+    QSerialPort *serial = A.getserial();
+
+    // IMPORTANT : On utilise une boucle while et canReadLine()
+    // Cela garantit qu'on ne lit QUE si une ligne complète est arrivée (terminée par \n)
+    while (serial->canReadLine()) {
+
+        QByteArray data = serial->readLine();
+
+        // Nettoyage strict du code reçu
+        QString uid = QString::fromUtf8(data).trimmed(); // Enlève les espaces début/fin et \n
+        uid = uid.replace(" ", "");                      // Enlève les espaces au milieu
+
+        // Si le code est trop court (bruit), on l'ignore et on attend la suite
+        if (uid.length() < 4) {
+            continue;
+        }
+
+        qDebug() << "✅ UID COMPLET REÇU :" << uid;
+
+        // --- Vérification dans la base de données ---
+        QSqlQuery query;
+        query.prepare("SELECT NOMEMPLOYE, PRENOM FROM EMPLOYES WHERE CODE_RFID = :uid");
+        query.bindValue(":uid", uid);
+
+        if (query.exec()) {
+            if (query.next()) {
+                // --- CAS 1 : Employé trouvé ---
+                QString nom = query.value("NOMEMPLOYE").toString();
+                QString prenom = query.value("PRENOM").toString();
+
+                QMessageBox::information(this, "Accès Autorisé",
+                                         "Bienvenue " + prenom + " " + nom);
+                // Si vous voulez aller au menu après un scan réussi :
+                // ui->stackedWidget->setCurrentWidget(ui->menu);
+            } else {
+                // --- CAS 2 : Carte inconnue ---
+                // On affiche dans la console pour que vous puissiez copier le code
+                qDebug() << "❌ INCONNU - COPIEZ CE CODE DANS ORACLE :" << uid;
+
+                QMessageBox::warning(this, "Accès Refusé", "Carte non reconnue : " + uid);
+            }
+        } else {
+            qDebug() << "Erreur SQL :" << query.lastError().text();
+        }
+    }
 }
 

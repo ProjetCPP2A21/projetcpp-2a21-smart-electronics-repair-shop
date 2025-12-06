@@ -1,4 +1,4 @@
-QT += core gui sql printsupport charts
+QT += core gui sql printsupport serialport charts
 QT+=sql
 QT += network
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
@@ -11,6 +11,7 @@ CONFIG += c++17
 
 SOURCES += \
     appareil.cpp \
+    arduino.cpp \
     connection.cpp \
     employer.cpp \
     main.cpp \
@@ -21,6 +22,7 @@ SOURCES += \
 HEADERS += \
     ../../../QR-Code-generator-master (1)/QR-Code-generator-master/cpp/qrcodegen.hpp \
     appareil.h \
+    arduino.h \
     connection.h \
     employer.h \
     mainwindow.h \
