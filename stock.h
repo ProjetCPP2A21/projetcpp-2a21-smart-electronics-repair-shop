@@ -3,7 +3,8 @@
 #include<QSqlQuery>
 #include<QSqlQueryModel>
 #include<QString>
-
+#include <QSerialPort>
+class QSerialPort;
 class stock
 {
 private:
@@ -42,9 +43,9 @@ public:
     QSqlQueryModel * rechercher(QString nom);
     QSqlQueryModel * trier(QString critere, QString ordre);
 
-
-
-
+    // Nouvelle méthode pour Arduino
+     void rechercherArduino(QSerialPort* arduino, const QString& idText);
+void verifierStockEtAlerter();
 
 };
 

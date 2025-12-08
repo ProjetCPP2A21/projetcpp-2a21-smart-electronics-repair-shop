@@ -5,7 +5,7 @@
 #include <QSqlError>
 #include <QMessageBox>
 #include <QApplication>
-
+#include <QSerialPort>
 stock::stock(int id, QString nom, QString reference, QString categorie, QString quantite,
              QString prixachat, QString prixvente, QString fournisseur, QString datelivraison)
 {
@@ -144,4 +144,42 @@ QSqlQueryModel* stock::trier(QString critere, QString ordre)
     }
 
     return model;
+}
+void stock::rechercherArduino(QSerialPort* arduino, const QString& idText)
+{
+    // VOTRE FONCTION EXACTE - copier/coller
+    if (idText.isEmpty()) {
+        QMessageBox::warning(nullptr, "Erreur", "Veuillez entrer un ID !");
+        return;
+    }
+
+    QSqlQuery query;
+    query.prepare("SELECT * FROM EMPLOYES WHERE TRIM(ID_EMPLOYE) = :id");
+    query.bindValue(":id", idText.trimmed());
+
+    bool idExiste = false;
+
+    if (!query.exec()) {
+        qDebug() << "Erreur SQL :" << query.lastError().text();
+        QMessageBox::critical(nullptr, "Erreur SQL", query.lastError().text());
+        return;
+    }
+
+    if (query.next()) {
+        idExiste = true;
+        QMessageBox::information(nullptr, "Succès", "ID trouvé dans la base !");
+    } else {
+        QMessageBox::warning(nullptr, "Non trouvé", "ID introuvable dans la base.");
+    }
+
+    if (arduino && arduino->isOpen()) {
+        QString signal = idExiste ? "1" : "0";
+        QByteArray data = signal.toLatin1();
+        arduino->write(data);
+        arduino->flush();
+
+        qDebug() << "Envoyé à Arduino :" << data;
+    } else {
+        QMessageBox::critical(nullptr, "Erreur Arduino", "Arduino n'est pas connecté !");
+    }
 }

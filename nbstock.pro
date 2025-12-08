@@ -1,9 +1,4 @@
-QT += core gui
-
-QT       += core sql
-QT       += charts
-
-QT += network
+QT += core gui widgets sql charts network serialport
 
 
   # ou simplement "qrcode" selon la version de Qt

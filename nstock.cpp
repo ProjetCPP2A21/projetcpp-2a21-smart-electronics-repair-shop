@@ -26,10 +26,15 @@
 #include <QStyledItemDelegate>
 #include <QPainter>
 #include <QPalette>
-#include <QJsonObject>      // ← AJOUTEZ CETTE LIGNE
+#include <QJsonObject>
 #include <QJsonDocument>
+//
+#include <QtSerialPort/QSerialPort>
+#include <QtSerialPort/QSerialPortInfo>
+#include <QSqlError>
+#include <QSqlTableModel>
 
-// ---- Delegate pour colorer la quantité <=10 ----
+
 class StockColorDelegate : public QStyledItemDelegate
 {
 public:
@@ -69,6 +74,24 @@ nstock::nstock(QWidget *parent)
     connect(ui->btexporterPDF_stock, &QPushButton::clicked, this, &nstock::exporterPDF);
     networkManager = new QNetworkAccessManager(this);
     ui->tableView->setItemDelegate(new StockColorDelegate(this));
+    arduino = new QSerialPort(this);
+
+    // Trouver automatiquement l'Arduino
+    foreach (const QSerialPortInfo &info, QSerialPortInfo::availablePorts()) {
+        if (info.vendorIdentifier() != 0) {   // Arduino détecté
+            arduino->setPort(info);
+            break;
+        }
+    }
+
+    arduino->setBaudRate(QSerialPort::Baud9600);
+
+    if (arduino->open(QIODevice::ReadWrite)) {
+        qDebug() << "Arduino connecté !";
+        QThread::msleep(1200);  // Laisser l'Arduino redémarrer
+    } else {
+        qDebug() << "Erreur ouverture Arduino !";
+    }
 
 }
 
@@ -141,16 +164,15 @@ void nstock::on_btajouter_stock_clicked()
                 ui->tableView->setModel(stmp.afficher());
                 QMessageBox::information(this, "Succès", "Ajout effectué avec succès !");
 
-                // 🔔 AJOUTEZ CES 2 LIGNES SEULEMENT :
+
                 if (quantiteInt <= 10) {
                 QString message = QString("AJOUT: %1 (Qte: %2)").arg(nom, quantite);
                 envoyerSMSsimple(message);
                 }
 
-            // ⚠️ FIN DE LA PARTIE À SUPPRIMER ⚠️
 
-            verifierStockEtAlerter();  // ← GARDEZ CELUI-CI SEULEMENT
 
+            verifierStockEtAlerter();
 } else {
         QMessageBox::critical(this, "Erreur", "Échec de l'ajout !");
     }
@@ -219,7 +241,7 @@ void nstock::on_btmodifier_stock_clicked()
     if (test) {
         QMessageBox::information(this, "Succès", "Modification effectuée !");
         ui->tableView->setModel(s.afficher());
-        // 🔔 AJOUTEZ CES 2 LIGNES SEULEMENT :
+
         if (quantiteInt <= 10){
         QString message = QString("AJOUT: %1 (Qte: %2)").arg(nom, quantite);
             envoyerSMSsimple(message);
@@ -262,50 +284,30 @@ void nstock::on_btmisajour_stock_clicked()
 }
 
 
-/*void nstock::statistique()
-{
-    QSqlQuery query;
-    query.prepare("SELECT categorie, SUM(quantite) FROM stock GROUP BY categorie");
 
-    QPieSeries *series = new QPieSeries();
-
-    if(query.exec()) {
-        while(query.next()) {
-            QString categorie = query.value(0).toString();
-            int total = query.value(1).toInt();
-
-            series->append(categorie, total);
-        }
-    }
-
-    for (auto slice : series->slices()) {
-        slice->setLabelVisible(true);
-    }
-
-    QChart *chart = new QChart();
-    chart->addSeries(series);
-    chart->setTitle("Répartition des quantités par catégorie");
-    chart->legend()->setAlignment(Qt::AlignBottom);
-
-    QChartView *chartView = new QChartView(chart);
-    chartView->setRenderHint(QPainter::Antialiasing);
-
-    chartView->resize(600, 400);
-    chartView->show();
-}*/
 void nstock::statistique()
 {
-    QSqlQuery query;
-    query.prepare("SELECT categorie, SUM(quantite) FROM stock GROUP BY categorie");
+    // Récupère le modèle actuellement affiché dans le tableView
+    QAbstractItemModel* model = ui->tableView->model();
+    if (!model) return;
 
-    QPieSeries *series = new QPieSeries();
-    if(query.exec()) {
-        while(query.next()) {
-            QString categorie = query.value(0).toString();
-            int total = query.value(1).toInt();
-            series->append(categorie, total);
-        }
+    QMap<QString, int> totals; // catégorie -> somme des quantités
+
+    int rowCount = model->rowCount();
+    int categorieCol = 3; // colonne catégorie
+    int quantiteCol = 4;  // colonne quantité
+
+    for (int row = 0; row < rowCount; ++row)
+    {
+        QString categorie = model->index(row, categorieCol).data().toString();
+        int quantite = model->index(row, quantiteCol).data().toInt();
+        totals[categorie] += quantite;
     }
+
+    // Création du graphique
+    QPieSeries *series = new QPieSeries();
+    for (auto it = totals.begin(); it != totals.end(); ++it)
+        series->append(it.key(), it.value());
 
     for (auto slice : series->slices())
         slice->setLabelVisible(true);
@@ -315,10 +317,10 @@ void nstock::statistique()
     chart->setTitle("Répartition des quantités par catégorie");
     chart->legend()->setAlignment(Qt::AlignBottom);
 
-    chartViewGlobal = new QChartView(chart);  // sauvegarde pour l’export
+    chartViewGlobal = new QChartView(chart);
     chartViewGlobal->setRenderHint(QPainter::Antialiasing);
 
-
+    // Supprime le layout précédent si existant
     if(ui->chartFrame_->layout() != nullptr)
         delete ui->chartFrame_->layout();
 
@@ -327,10 +329,15 @@ void nstock::statistique()
     ui->chartFrame_->setLayout(layout);
 }
 
+
+
+
+
 void nstock::on_btstatistique_stock_clicked()
 {
     statistique();
 }
+
 
 
 
@@ -432,24 +439,17 @@ void nstock::on_btQR_stock_clicked()
     dialog.setFixedSize(img.width()+20, img.height()+20);
     dialog.exec();
 }
-  // ajoute ça en haut avec les autres includes si ce n'est pas déjà là
-
-// ==== ALERTE SMS 100% GRATUITE ET AUTOMATIQUE (LA PLUS FACILE DU MONDE) ====
-
-// SMS 100% GRATUIT + 100% AUTOMATIQUE (LA SOLUTION FINALE)
-// SMS 100% GRATUIT + 100% AUTOMATIQUE (MÉTHODE QUI MARCHE EN TUNISIE 2025)
-// SMS 100% GRATUIT + 100% AUTOMATIQUE + MARCHE À COUP SÛR EN TUNISIE
-// ALERTE STOCK CRITIQUE : VISUELLE + SONORE + AUTOMATIQUE
 
 
-// Delegate interne pour colorer la quantité <= 10
 
-// Dans nstock.cpp
+
+
+
 void nstock::envoyerSMSsimple(const QString& message)
 {
-    // ⭐ TELEGRAM - AVEC VOS VRAIES VALEURS ⭐
+
     QString botToken = "8187829076:AAEuILOkPV-6h1muaynULKPxRJK4fqxGoU8";
-    QString chatId = "8345893376"; // VOTRE CHAT ID
+    QString chatId = "8345893376";
 
     QUrl url(QString("https://api.telegram.org/bot%1/sendMessage").arg(botToken));
     QNetworkRequest request(url);
@@ -468,7 +468,7 @@ void nstock::envoyerSMSsimple(const QString& message)
         if (reply->error() == QNetworkReply::NoError) {
             QByteArray response = reply->readAll();
             qDebug() << "✅ Telegram envoyé! Réponse:" << response;
-            QMessageBox::information(this, "Succès", "✅ Message reçu sur Telegram!");
+            QMessageBox::information(this, "Succès", "✅ Message reçu sur TLF!");
         } else {
             qDebug() << "❌ Erreur Telegram:" << reply->errorString();
             QMessageBox::warning(this, "Erreur", "Vérifiez votre connexion Internet");
@@ -478,40 +478,54 @@ void nstock::envoyerSMSsimple(const QString& message)
 }
 void nstock::verifierStockEtAlerter()
 {
-    QSqlQuery q;
-    q.exec("SELECT nom, quantite FROM stock WHERE quantite <= 10");
+    QSqlTableModel model;
+    model.setTable("stock");
+    model.setEditStrategy(QSqlTableModel::OnManualSubmit);
 
     QString alertes = "🚨 ALERTE STOCK CRITIQUE 🚨\n\n";
     bool alerte = false;
     int compteurProduits = 0;
 
-    while (q.next()) {
-        QString nom = q.value(0).toString();
-        int qty = q.value(1).toInt();
-        alertes += "• " + nom + " : seulement " + QString::number(qty) + " en stock !!\n";
-        alerte = true;
+    int rows = model.rowCount();
 
-        // ⭐ REMPLACEZ PAR SMS SIMPLE ⭐
-        QString message = QString("ALERTE: %1 (Qte: %2)").arg(nom, QString::number(qty));
-        envoyerSMSsimple(message);
-        compteurProduits++;
+    for (int i = 0; i < rows; i++)
+    {
+        QString nom = model.data(model.index(i, model.fieldIndex("nom"))).toString();
+        int qty     = model.data(model.index(i, model.fieldIndex("quantite"))).toInt();
 
-        // Petite pause entre les envois
-        QThread::msleep(800);
+        if (qty <= 10)   // équivalent du WHERE
+        {
+            alertes += "• " + nom + " : seulement " + QString::number(qty) + " en stock !!\n";
+            alerte = true;
 
-        // Limiter à 3 produits maximum
-        if (compteurProduits >= 3) break;
+            QString message = QString("ALERTE: %1 (Qte: %2)").arg(nom).arg(qty);
+            envoyerSMSsimple(message);
+            compteurProduits++;
+
+            QThread::msleep(800);
+
+            if (compteurProduits >= 3)
+                break;
+        }
     }
 
-    if (alerte) {
+    if (alerte)
+    {
         QMessageBox::critical(this, "ALERTE ENVOYÉE",
                               alertes +
                                   QString("\n\n✓ %1 alertes SMS envoyées!").arg(compteurProduits),
                               QMessageBox::Ok);
 
-        // Son d'alerte
         QApplication::beep(); QThread::msleep(300);
         QApplication::beep(); QThread::msleep(300);
         QApplication::beep();
     }
+}
+//
+void nstock::on_btRechercheArduino_clicked()
+{
+    QString idText = ui->lineEdit_idArduino->text().trimmed();
+
+    // SIMPLE APPEL - sans le 'if' incorrect
+    stmp.rechercherArduino(arduino, idText);
 }

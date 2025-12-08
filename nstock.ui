@@ -582,6 +582,32 @@ background-color: rgb(0, 0, 74);</string>
      <string/>
     </property>
    </widget>
+   <widget class="QPushButton" name="btRechercheArduino">
+    <property name="geometry">
+     <rect>
+      <x>370</x>
+      <y>520</y>
+      <width>93</width>
+      <height>29</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>verification</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit_idArduino">
+    <property name="geometry">
+     <rect>
+      <x>470</x>
+      <y>520</y>
+      <width>301</width>
+      <height>26</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 255, 255);</string>
+    </property>
+   </widget>
    <zorder>label_3</zorder>
    <zorder>label_2</zorder>
    <zorder>catgorie</zorder>
@@ -620,6 +646,8 @@ background-color: rgb(0, 0, 74);</string>
 </zorder>
    <zorder>btQR_stock</zorder>
    <zorder>labelQR</zorder>
+   <zorder>btRechercheArduino</zorder>
+   <zorder>lineEdit_idArduino</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">

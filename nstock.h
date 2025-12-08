@@ -11,10 +11,15 @@
 #include <QNetworkAccessManager>
 #include <QNetworkRequest>
 #include <QNetworkReply>
-#include <QApplication>      // AJOUTÉ ICI (pour QApplication::beep())
-#include <QThread>           // AJOUTÉ ICI (pour le son d'alerte)
+#include <QApplication>
+#include <QThread>
 #include "stock.h"
 #include "qrcodegen.hpp"
+//
+
+#include <QtSerialPort/QSerialPort>
+#include <QtSerialPort/QSerialPortInfo>
+
 
 using namespace qrcodegen;
 
@@ -40,6 +45,10 @@ private slots:
     void on_btstatistique_stock_clicked();
     void on_btQR_stock_clicked();
     void exporterPDF();
+//
+    void on_btRechercheArduino_clicked();
+
+
 
 private:
     Ui::stock *ui;
@@ -47,12 +56,12 @@ private:
     void statistique();
     QChartView *chartViewGlobal = nullptr;
     QNetworkAccessManager *networkManager;
+//
+    QSerialPort *arduino;
 
-    // ALERTE STOCK CRITIQUE (gratuite, automatique, visuelle + sonore)
 private:
-private:
-    void envoyerSMSsimple(const QString& message);  // ← AJOUTEZ CETTE LIGNE
+    void envoyerSMSsimple(const QString& message);
     void verifierStockEtAlerter();
 };
 
-#endif // NSTOCK_H
+#endif
